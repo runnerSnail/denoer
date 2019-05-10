@@ -4,7 +4,7 @@ node_js:
 before_install:
 - openssl aes-256-cbc -K $encrypted_61e903060b97_key -iv $encrypted_61e903060b97_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
+# - chmod 600 ~/.ssh/id_rsa
 script: 
 after_success:
 - ssh -tt root@118.24.95.125 < ./run.sh
