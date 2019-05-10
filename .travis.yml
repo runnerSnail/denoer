@@ -8,7 +8,7 @@ before_install:
 script:
 - echo 1
 after_success:
-- ssh -tt  $str < ./run.sh
+- ssh -tt -i /home/travis/id_rsa  $str < ./run.sh
 addons:
   ssh_known_hosts: $str1
 env:
