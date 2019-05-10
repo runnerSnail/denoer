@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { decrement, increment } from '../actions';
-import Counter from '../components/Counter';
-import { StoreState } from '../types';
+import { decrement, increment } from '../redux/actions';
+import Counter from '../components/demo/Counter';
+import { StoreState } from '../redux/types';
 
 
 // 将 reducer 中的状态插入到组件的 props 中

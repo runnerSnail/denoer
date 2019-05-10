@@ -8,12 +8,11 @@ import CountCon from './container/CounterCon';
 
 const App: React.FC = () => {
   return (
-    // <Router>
-    //   <Switch>
-    //     <Route exact path="/" component={ CountCon } />
-    //   </Switch>
-    // </Router>
-    <div>111</div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={CountCon} />
+      </Switch>
+    </Router>
   );
 }
 

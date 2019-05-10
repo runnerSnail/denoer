@@ -1,30 +1,24 @@
-import React,{Component} from 'react';
-import { RouteComponentProps } from 'react-router';
+
+import * as React from 'react';
 
 
-// 创建props接口
+// 创建类型接口
 export interface IProps {
     value: number,
     onIncrement: () => void,
     onDecrement: () => void
 }
-// 创建state接口
-export interface IState {
-    
-}
 
 // 使用接口代替 PropTypes 进行类型校验
-export default class Counter extends Component<IProps & RouteComponentProps<{}>,IState> {
-    // public props: IProps & RouteComponentProps;
-    // public state: IState = {
+// const Counter = ({ value }: Iprops) => {
+//     return <p>Clicked: { value } times</p>
+// }
 
-    // }
-    constructor(props:any) {
-        super(props);
-        this.state = {
-            
-        };
-    }
+// export default Counter;
+
+
+// 使用接口代替 PropTypes 进行类型校验
+export default class Counter extends React.PureComponent<IProps> {
     public render() {
         const { value, onIncrement, onDecrement } = this.props;
         return (
