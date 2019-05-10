@@ -1,13 +1,20 @@
 
 import * as React from 'react';
 import './Counter.scss';
+import { RouteProps, RouteComponentProps } from 'react-router';
 // 创建类型接口
 export interface IProps {
     value: number,
     onIncrement: () => void,
     onDecrement: () => void
 }
-
+export interface IState {
+    // ...
+}
+export interface IRouter {
+    // ...
+    id:string
+}
 // 使用接口代替 PropTypes 进行类型校验
 // const Counter = ({ value }: Iprops) => {
 //     return <p>Clicked: { value } times</p>
@@ -18,7 +25,7 @@ export interface IProps {
 
 // 使用接口代替 PropTypes 进行类型校验
 // @CSSModules(styles)
-export default class Counter extends React.PureComponent<IProps> {
+export default class Counter extends React.PureComponent<IProps & RouteComponentProps<IRouter>,IState> {
     public render() {
         const { value, onIncrement, onDecrement } = this.props;
         return (
