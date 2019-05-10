@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '8'
+before_install:
+- openssl aes-256-cbc -K $encrypted_977861291e6d_key -iv $encrypted_977861291e6d_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+# - curl -fsSL https://deno.land/x/install/install.sh | sh
+# - export PATH="/home/travis/.deno/bin:$PATH"
+# - sudo apt-get install sshpass
+script: 
+
+after_success:
+- ssh -tt root@118.24.95.125 < ./run.sh
+
+addons:
+    ssh_known_hosts: 118.24.95.125
