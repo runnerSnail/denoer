@@ -6,11 +6,13 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - eval $(ssh-agent)
 - chmod 600 ~/.ssh/id_rsa
-
 - ssh-add  ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/config
+
 
 script: true
 after_success:
 - ssh -tt root@118.24.95.125 < ./run.sh
+
 addons:
   ssh_known_hosts: 118.24.95.125
