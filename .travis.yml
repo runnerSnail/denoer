@@ -1,13 +1,12 @@
 language: node_js
 node_js:
 - '8'
+services:
+  - sshpass
 before_install:
 - openssl aes-256-cbc -K $encrypted_61e903060b97_key -iv $encrypted_61e903060b97_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
-- wget https://mirrors.ustc.edu.cn/epel/6/x86_64/sshpass-1.06-1.el6.x86_64.rpm
-
-- rpm -ivh sshpass-1.06-1.el6.x86_64.rpm
 - sshpass -p $password ssh-add ~/.ssh/id_rsa
 script: true
 after_success:
