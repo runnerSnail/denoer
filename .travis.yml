@@ -4,9 +4,12 @@ node_js:
 before_install:
 - openssl aes-256-cbc -K $encrypted_61e903060b97_key -iv $encrypted_61e903060b97_iv
   -in id_rsa.enc -out /home/travis/.ssh/id_rsa -d
+
 - chmod 600 /home/travis/.ssh/id_rsa
+
+- ssh-add -K /home/travis/.ssh/id_rsa
 script: true
 after_success:
-- ssh -i /home/travis/.ssh/id_rsa root@118.24.95.125 
+- ssh -tt root@118.24.95.125 < ./run.sh
 addons:
   ssh_known_hosts: 118.24.95.125
