@@ -4,10 +4,10 @@ node_js:
 before_install:
 - openssl aes-256-cbc -K $encrypted_61e903060b97_key -iv $encrypted_61e903060b97_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
-- eval $(ssh-agent)
-- chmod 600 ~/.ssh/id_rsa
-- ssh-add  ~/.ssh/id_rsa
-- cp .travis/ssh_config ~/.ssh/config
+# - eval $(ssh-agent)
+# - chmod 600 ~/.ssh/id_rsa
+# - ssh-add  ~/.ssh/id_rsa
+# - cp .travis/ssh_config ~/.ssh/config
 
 
 script: true
