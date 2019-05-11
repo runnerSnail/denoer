@@ -5,7 +5,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_61e903060b97_key -iv $encrypted_61e903060b97_iv
   -in id_rsa.enc -out /home/travis/.ssh/id_rsa -d
 - chmod 600 /home/travis/.ssh/id_rsa
-
+- cat /home/travis/.ssh/config
 script: true
 after_success:
 - ssh -tt root@118.24.95.125 < ./run.sh
