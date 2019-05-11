@@ -1,8 +1,7 @@
 language: node_js
 node_js:
 - '8'
-services:
-  - sshpass
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_61e903060b97_key -iv $encrypted_61e903060b97_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
@@ -13,6 +12,9 @@ after_success:
 - ssh -tt $user$ip < ./run.sh
 addons:
   ssh_known_hosts: $ip
+  apt:
+    packages:
+      - sshpass
 env:
   global:
   - secure: ZHOEyOmbDriyffoUFDeAaKtPfqoX1+n6KL9uf1HPB7xQ+Ngy1Tt1/wre9wiGiY5zF8UC7+Zf+A383hdCmeE36s1Pb1sPnBrEt5G6nSK99mVVs4frnsXsKBCJAIy5QCbsfnsDfbX2ux85Pz/Km8ltUtUWkM59iWzdi924WC4PvFjVqqI3CJExQRC2s8+wh88TJNLCtVP6pBjMm8bJmOslHJ2tt+JoQms1eGxECG258GE5Bgc91tuUcqf5wKuwU7E5lCxHOzdHIE5aZN20yUExU1NhSta3JkMnJ1cEb9pgd3XqC1884iRAYSehOWgmXjb+kF5VGuAxnVuNl7cBHr+2nFEzN+gWbTQH1otH88gUniAcfD3rkBzrlimAALf32eYlBOhxrVqOvfpuzrwqeX4sfgH5mV3yr77lfy1UKkC0hWhJCWJ705jl7KIx2hsnWFtdbmqVhaHXLVe9+y2ip2WIWd5PJOmuJGQ+y8znuJC2qgkVcpm0yOP/V6PwezfjGngFpQWIBVKB7NVaw0BRAutzj1qBZBWZRBKCBpPABrwfi+iI+ae6ueZIAKGw6kqjiZPxpLrDjqJN8n8bfGkTshp5QkeopPbGPIwqco78Uj/ANcWX6zWockhscRHqNthFhqZ62E5JkqIXQmzaeIgE500v54xbgmicvjATXoTDv2iHbX8=
