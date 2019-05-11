@@ -4,15 +4,15 @@ node_js:
 before_install:
 - openssl aes-256-cbc -K $encrypted_61e903060b97_key -iv $encrypted_61e903060b97_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
-# - eval $(ssh-agent)
 - chmod 600 ~/.ssh/id_rsa
-# - ssh-add  ~/.ssh/id_rsa
-# - cp .travis/ssh_config ~/.ssh/config
-
-
+- sshpass -p $password ssh-add ~/.ssh/id_rsa
 script: true
 after_success:
-- ssh -tt root@118.24.95.125 < ./run.sh
-
+- ssh -tt $user$ip < ./run.sh
 addons:
-  ssh_known_hosts: 118.24.95.125
+  ssh_known_hosts: $ip
+env:
+  global:
+  - secure: ZHOEyOmbDriyffoUFDeAaKtPfqoX1+n6KL9uf1HPB7xQ+Ngy1Tt1/wre9wiGiY5zF8UC7+Zf+A383hdCmeE36s1Pb1sPnBrEt5G6nSK99mVVs4frnsXsKBCJAIy5QCbsfnsDfbX2ux85Pz/Km8ltUtUWkM59iWzdi924WC4PvFjVqqI3CJExQRC2s8+wh88TJNLCtVP6pBjMm8bJmOslHJ2tt+JoQms1eGxECG258GE5Bgc91tuUcqf5wKuwU7E5lCxHOzdHIE5aZN20yUExU1NhSta3JkMnJ1cEb9pgd3XqC1884iRAYSehOWgmXjb+kF5VGuAxnVuNl7cBHr+2nFEzN+gWbTQH1otH88gUniAcfD3rkBzrlimAALf32eYlBOhxrVqOvfpuzrwqeX4sfgH5mV3yr77lfy1UKkC0hWhJCWJ705jl7KIx2hsnWFtdbmqVhaHXLVe9+y2ip2WIWd5PJOmuJGQ+y8znuJC2qgkVcpm0yOP/V6PwezfjGngFpQWIBVKB7NVaw0BRAutzj1qBZBWZRBKCBpPABrwfi+iI+ae6ueZIAKGw6kqjiZPxpLrDjqJN8n8bfGkTshp5QkeopPbGPIwqco78Uj/ANcWX6zWockhscRHqNthFhqZ62E5JkqIXQmzaeIgE500v54xbgmicvjATXoTDv2iHbX8=
+  - secure: REUcM7vjMdDV5HSv8oS9w67lGqwjxHHK8Zzq+wKLwtbSY8fDYQtD6PJIFfeHkraV+wvtiRYrRyi/HVkCRXqmE8tvMjghHfvd3mnXq6pN4PiX0flfKB5bsS6XeVV9luhFPrarZFQYugRcC8gJqhDWJXI4n1sQaSTu1ly+afyWi9m+5qklFo1+RtqY8/3uY1uORK/yyLJ6i2F5Bp/xb1LanWbEV/17xtPHmCRTcWeTRr0Zf0biHwmddYnNUaDdmGvNDwfh+zxS98hqX9WP7nLxJqdBvVsBksKX2wlh9YmQg13wF4QzUI0SWFQo60ixes7++mH8X+jnDQY0PSZv8MAJJFwB4BBs6ygPwjL72P5ewhoGzeYdHffVxYVHAaMlElycx07wuPezCoChvvRepsXsFRjHtnnhoL/kVPTqK6VZAO6NRk7xjMuJrVmIOzXSTjwqxYsWRwTuIO10tbAThMvJ1EQOiwE2jkh7qsAoCgJszNYwaPGeMDOyryIUP0WzhFL/SGPF5FZHYKlKOAdx5PKZy1hv9UlMsWJEhtWOv5YKa3WsVzj8j9dmdl8523llUbTuWSKez6WGoq/1EoHEcWazW806g9RzeJ4wnAdgawt7QxLRRUGwsBAcTBfqv2RyHOVWTAfJeb8xIqG9F3T0wn1NhFH2g21LwoeuVyUPIzPcc/w=
+  - secure: vBS116A0RFrhh3P3T3fSRFur4jLz/hiye2SRkJd1jkRMWvlWM+sdXgL9jGd0kIOa0xj5l6rdvHnRXenqpg9+9qq0k/VwSmneB+TYrDErNiwIaZfWR95KrC66K0Q7bbWAwnkRad3p24u25PkfzP1n0H7Q3H99mtTzWBLWPdtu/i5lXmp7gh4MjKeSU8vBJBjdw3jeDYeSie6FTdez4OXdIdhqAHZTuO+C1cX1pR3vPxxwiHYckxms4DWfkEyNMCQO0a0djhmvtQkRpCSQFbwTy6iIeHvvr/+yIoiAiEks0W8IBp3N0IJytGMEO4xrZx+Q7ps/3Vb9LjqUeds/cTRFwYpvrgCE8M+kb105porBJ/Li6mnnsy3vHXvMHX+L73FP9/yAM/iZvNMV1n0zeSOEsVaWXfAHfQUfmqvbO3U2Lht+bQCLEdvGzY1vcGB/h3W8bcInLw2sHwo8ennIWAzfsL6rcfbVzSMgk3dnrsOy1YQ/Nj5Ej9lD5c2Dqn9Jbu0tIbZAAWIst9ep2VfCY1gekt/x2FzKAASNmDavaKvcUW3dNJngVpia08JxHabV7E/rMNdxz1RUuuINiERNB8JdZJXyY8haWJS3FHj1kOdL1+3GXQzsv7Sf32M4ygiKaqw5HiBJj8h5DIGH8u6sKilgYSGWebc+hGorVck2voj+Vao=

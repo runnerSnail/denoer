@@ -1,5 +1,0 @@
-Host 118.24.95.125
-  User git
-  StrictHostKeyChecking no
-  IdentityFile ~/.ssh/id_rsa
-  IdentitiesOnly yes
