@@ -1,0 +1,23 @@
+@import './var.sass'
+
+@mixin full($x: 100%, $y: 100%)
+  width: $x
+  height: $y
+
+@mixin flex($direct: center, $jc: center, $ai: center)
+  display: flex
+  flex-direction: $direct
+  justify-content: $jc
+  align-items: $ai
+
+@mixin box()
+  box-sizing: border-box
+
+@mixin bg($bgColor: $c-bg)
+  background: $bgColor
+
+@mixin border($direct: bottom, $color: $c-divider, $width: 1, $style: solid)
+  @if $direct == 'all'
+    border: $width + px $style $color
+  @else
+    border-#{$direct}: $width + px $style $color
