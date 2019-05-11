@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { renderRoutes } from 'react-router-config'
 
 import routes from './routes'
+import './styles/base.sass'
 
 // 引入 container 组件 CountCon
 import CountCon from './container/CounterCon';
