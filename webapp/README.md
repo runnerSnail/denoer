@@ -2,6 +2,11 @@
 
 npm run start
 
+## TODO LIST
+
+1. 主题色配置
+2. mock
+
 #### 2019/05/12
 
 1. 解决 antd 按需引入样式不生效问题
