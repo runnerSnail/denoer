@@ -12,7 +12,7 @@ const { Header } = Layout
 export default class Nav extends React.PureComponent {
     public render () {
       return (
-        <Header style={{ width: '100%', position: 'fixed', zIndex: 1, top: 0, height: '63px', background: '#333', paddingLeft: '10px' }}>
+        <Header style={{ width: '100%', position: 'fixed', zIndex: 1, top: 0, height: '63px', background: '#aaa', paddingLeft: '10px' }}>
           <div className={styles['logo']} />
           <div style={{ height: '63px', lineHeight: '63px', display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
             <span><Icon type="appstore" />首页</span>
