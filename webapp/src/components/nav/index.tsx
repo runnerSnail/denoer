@@ -1,9 +1,7 @@
 
 import * as React from 'react'
 import { RouteProps, RouteComponentProps } from 'react-router'
-import Layout from 'antd/lib/layout'
-import Menu from 'antd/lib/menu'
-import Icon from 'antd/lib/icon'
+import { Layout, Menu, Icon } from 'antd'
 
 import styles from './style.module.sass'
 

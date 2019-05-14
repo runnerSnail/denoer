@@ -1,16 +1,20 @@
 import React from 'react'
-// import Layout from 'antd/lib/layout'
-import Breadcrumb from 'antd/lib/breadcrumb'
-// import List from 'antd/lib/list'
-// import Avatar from 'antd/lib/avatar'
-// import Icon from 'antd/lib/icon'
-import { Icon, Avatar, List, Layout } from 'antd'
+import { Layout, List, Avatar, Icon, Carousel, Button } from 'antd'
 
 
 import { request, sleep } from 'utils'
 import { Nav } from 'components'
 
+import './style.sass'
+
 const { Content, Footer, Sider } = Layout
+
+const IconText = ({ type, text }) => (
+  <span>
+    <Icon type={type} style={{ marginRight: 8 }} />
+    {text}
+  </span>
+)
 export default class Home extends React.Component {
 
   state= {
@@ -22,47 +26,55 @@ export default class Home extends React.Component {
     await sleep(1000)
     this.setState({
       dataSource: [
-        { title: '文章1', desc: '描述1描述1描述1描述1描述1描述1描述1描述1描述1描述1描述1描述1描述1描述1' },
-        { title: '文章2', desc: '描述2描述2描述2描述2描述2描述2描述2描述2描述2描述2描述2描述2描述2描述2描述2' },
-        { title: '文章3', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章4', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章5', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章6', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章7', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章8', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章9', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章10', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章11', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章12', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章13', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章14', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章15', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章16', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章17', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章18', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章19', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章20', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' },
-        { title: '文章21', desc: '描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3描述3' }
+        {
+          title: '文章1',
+          desc: '描述3描述3描述3描述3描述3描述3描述3描述3',
+          content: 'la;ehgawkl;gwek;lagjhfkjfsaklhlkjhgkjlghslkg'
+        },
+        {
+          title: '文章2',
+          desc: '描述3描述3描述3描述3描述3描述3描述3描述3',
+          content: 'lkwghneioqthasmfnasfuiqtghjbdmnbasfabfqjwtgbajksb'
+        },
+        {
+          title: '文章3',
+          desc: '描述3描述3描述3描述3描述3描述3描述3描述3',
+          content: 'lkwghneioqthasmfnasfuiqtghjbdmnbasfabfqjwtgbajksb'
+        }
       ],
       loading: false
     })
   }
 
-  _renderRow = ({ title = '', desc = '' }) => {
+  _renderRow = ({ title = '', desc = '', content = '' }) => {
     return (
-      <List.Item>
+      <List.Item
+        key={title}
+        actions={[
+          <IconText type="star-o" text="156" />,
+          <IconText type="like-o" text="156" />,
+          <IconText type="message" text="2" />,
+        ]}
+        extra={
+          <img
+            width={272}
+            alt='logo'
+            src='https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
+          />
+        }
+      >
         <List.Item.Meta
           avatar={<Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />}
           title={<a href='/'>{title}</a>}
           description={desc}
         />
-        <div>2 天前</div>
+        {content}
       </List.Item>
     )
   }
 
   _listHeader = () => (
-    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+    <div style={{ marginTop: 50, display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
       <span>全部</span>
       <span>精华</span>
       <span>分享</span>
@@ -75,11 +87,26 @@ export default class Home extends React.Component {
     return (
       <Layout className='layout'>
         <Nav />
-        <Layout style={{ padding: '20px 50px', marginTop: 64, display: 'flex', flexDirection: 'row' }}>
-          <Content style={{ marginRight: 100 }}>
+        <Layout style={{
+          padding: '20px 50px',
+          marginTop: 64,
+          display: 'flex',
+          flexDirection: 'row',
+          // background: '#fff'
+        }}
+        >
+          <Content>
+            <Carousel
+              dots
+              autoplay
+            >
+              <div>第一张</div>
+              <div>第二张</div>
+              <div>第三张</div>
+            </Carousel>
             <List
               loading={this.state.loading}
-              itemLayout='horizontal'
+              itemLayout='vertical'
               dataSource={this.state.dataSource}
               renderItem={this._renderRow}
               header={this._listHeader()}
@@ -93,9 +120,30 @@ export default class Home extends React.Component {
               }}
             />
           </Content>
-          <Sider style={{ background: '#eee', breakpoint: 'lg' }}>
-            <div style={{ width: 200, height: 200, background: '#216525', borderRadius: '3px' }} />
-            <div style={{ width: 200, height: 200, background: '#999', marginTop: 20, borderRadius: '3px' }} />
+          <Sider
+            className='sider'
+            style={{
+              marginLeft: 50,
+              backgroundColor: 'rgb(240, 242, 245)'
+            }}
+          >
+            <div style={{ width: 300, height: 'auto', overflow: 'hidden', background: '#fff', color: '#000', padding: 10 }}>
+              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <img src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' style={{ width: 60, height: 60, borderRadius: 30 }} />
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ fontSize: 14 }}>runSnail</span>
+                  <span style={{ fontSize: 12, marginTop: 10 }}>个人说明: 人生如棋，我愿为卒，行动虽慢，可谁见我后退一步。</span>
+                </div>
+              </div>
+              <div style={{ marginTop: 10, marginBottom: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+                <Button size='small' type='primary'>发表文章</Button>
+                <Button size='small' type='primary'>撰写文章</Button>
+                <Button size='small' type='primary'>分享资源</Button>
+              </div>
+            </div>
+            <div style={{ width: 300, height: 200, background: '#999', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>
+            <div style={{ width: 300, height: 200, background: '#aaa', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>
+            <div style={{ width: 300, height: 200, background: '#bbb', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>
           </Sider>
         </Layout>
         <Footer style={{ textAlign: 'center', paddingBottom: 50 }}>
