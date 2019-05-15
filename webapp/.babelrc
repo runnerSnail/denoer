@@ -1,0 +1,20 @@
+{
+  "plugins": [
+    [
+      "import",
+      { "libraryName": "antd", "libraryDirectory": "es", "style": true }
+    ]
+  ],
+  "presets": [
+    "react-app",
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "esmodules": true
+        }
+      }
+    ]
+  ]
+}

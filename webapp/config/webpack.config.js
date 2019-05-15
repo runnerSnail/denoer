@@ -40,6 +40,8 @@ const useTypeScript = fs.existsSync(paths.appTsConfig)
 // style files regexes
 const cssRegex = /\.css$/
 const cssModuleRegex = /\.module\.css$/
+const lessRegex = /\.less$/
+const lessModuleRegex = /\.module\.less$/
 const sassRegex = /\.(scss|sass)$/
 const sassModuleRegex = /\.module\.(scss|sass)$/
 
@@ -356,8 +358,7 @@ module.exports = function (webpackEnv) {
                         }
                       }
                     }
-                  ],
-                  ['import', { libraryName: 'antd', style: 'css' }]
+                  ]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -427,6 +428,21 @@ module.exports = function (webpackEnv) {
             // Opt-in support for SASS (using .scss or .sass extensions).
             // By default we support SASS Modules with the
             // extensions .module.scss or .module.sass
+            {
+              test: lessRegex,
+              exclude: lessModuleRegex,
+              use: [...getStyleLoaders({ importLoaders: 2 }), {
+                loader: 'less-loader', // compiles Less to CSS
+                options: {
+                  // modifyVars: require(paths.appTheme),
+                  javascriptEnabled: true
+                } }],
+              // Don't consider CSS imports dead code even if the
+              // containing package claims to have no side effects.
+              // Remove this when webpack adds a warning or an error for this.
+              // See https://github.com/webpack/webpack/issues/6571
+              sideEffects: true
+            },
             {
               test: sassRegex,
               exclude: sassModuleRegex,
