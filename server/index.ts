@@ -1,6 +1,7 @@
 import Onion from './dependcy/http_compose/onion.ts';
 
 const app = new Onion();
+
 app.use(async (req, next) => {
     console.log(1);
     await next();
