@@ -1,9 +1,10 @@
+import React from 'react'
 import Loadable from 'react-loadable'
 import { Icon } from 'antd'
 
-type Props = {
-  loader: Element,
-  Loading: Function
+interface Props {
+  loader: any,
+  Loading?: any
 }
 
 const withLoadable = ({ loader, Loading }: Props) => Loadable({
@@ -14,7 +15,7 @@ const withLoadable = ({ loader, Loading }: Props) => Loadable({
 export default withLoadable
 
 const DefaultLoading = () => (
-  <div style={{ textAlign: 'center', padding: 5 }}>
-  <Icon type='loading' />
+  <div style={{ textAlign: 'center', padding: 50 }}>
+    <Icon type='loading' />
   </div>
 )

@@ -1,9 +1,11 @@
-import Publish from '../pages/posts/publish'
+import { Loadable } from 'components'
 
 export default [
   {
     path: '/publish',
     exact: true,
-    component: Publish
+    component: Loadable({
+      loader: import('../pages/posts/publish')
+    })
   }
 ]

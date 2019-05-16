@@ -1,9 +1,11 @@
-import User from '../pages/user'
+import { Loadable } from 'components'
 
 export default [
   {
     path: '/user',
     exact: true,
-    component: User
+    component: Loadable({
+      loader: import('../pages/user')
+    })
   }
 ]

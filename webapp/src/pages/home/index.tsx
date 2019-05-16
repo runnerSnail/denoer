@@ -3,13 +3,9 @@ import { Layout, List, Avatar, Icon, Carousel, Button } from 'antd'
 
 
 import { request, sleep } from 'utils'
-import { Nav } from 'components'
+import { Page } from 'components'
 
 import './style.sass'
-
-interface HomeProps {
-  history: object
-}
 
 interface HomeState {}
 
@@ -21,7 +17,10 @@ const IconText = ({ type, text }) => (
     {text}
   </span>
 )
-export default class Home extends React.Component<HomeProps, HomeState> {
+export default class Home extends React.Component<any, HomeState> {
+  constructor (props: any) {
+    super(props)
+  }
 
   state= {
     dataSource: [],
@@ -55,6 +54,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
   toPublish = (path) => () => {
     console.log('path:', path)
     console.log('history:', this.props.history)
+    this.props.history.push(path)
   }
 
   _renderRow = ({ title = '', desc = '', content = '' }) => {
@@ -98,14 +98,12 @@ export default class Home extends React.Component<HomeProps, HomeState> {
     console.log('request:', request)
     console.log('props:', this.props)
     return (
-      <Layout className='layout'>
-        <Nav />
+      <Page>
         <Layout style={{
           padding: '20px 50px',
           marginTop: 64,
           display: 'flex',
           flexDirection: 'row',
-          // background: '#fff'
         }}
         >
           <Content>
@@ -159,10 +157,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
             <div style={{ width: 300, height: 200, background: '#bbb', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>
           </Sider>
         </Layout>
-        <Footer style={{ textAlign: 'center', paddingBottom: 50 }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
-      </Layout>
+      </Page>
     )
   }
 }

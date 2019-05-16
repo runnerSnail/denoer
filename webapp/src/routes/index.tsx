@@ -1,9 +1,7 @@
 import { Loadable } from 'components'
 
-import Home from '../pages/home'
 import UserRoutes from './user'
 import PostsRoutes from './posts'
-import NotFound from '../pages/404'
 
 const routes = [
   {
@@ -17,7 +15,9 @@ const routes = [
   ...UserRoutes,
   ...PostsRoutes,
   {
-    component: NotFound
+    component: Loadable({
+      loader: import('../pages/404')
+    })
   }
 ]
 
