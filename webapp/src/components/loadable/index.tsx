@@ -1,9 +1,8 @@
 import Loadable from 'react-loadable'
 import { Icon } from 'antd'
-import { Class } from '@babel/types';
 
 type Props = {
-  loader: Class,
+  loader: Element,
   Loading: Function
 }
 
