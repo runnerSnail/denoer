@@ -1,15 +1,18 @@
-import { Pool } from "../dependcy/dep";
+import { Pool } from "../dependcy/dep.ts";
+import  {dbConfig} from '../config/dbjson.ts';
 
 // 创建连接池
 const pool = new Pool({
-    database: "test",
-    user: "test",
+    database: dbConfig.database,
+    user: dbConfig.user,
+    host: dbConfig.host,
+    port: dbConfig.port,
+    password: dbConfig.password,
+}, 10);
 
-    }, 10);
-// then you can do one-off queries like this
-// await pool.query("SELECT _ FROM my_table;");
-// or get client from pool
-// const client = await pool.connect();
-// client.query("SELECT _ FROM my_table;");
-// remember to release the client back to pool
-// client.release();
+export async function testDB() {
+    const client = await pool.connect();
+    let result = await client.query("SELECT * FROM article;");
+    console.log(result.rows);
+}
+export default pool;
