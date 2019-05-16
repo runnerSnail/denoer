@@ -1,3 +1,5 @@
+import { Loadable } from 'components'
+
 import Home from '../pages/home'
 import UserRoutes from './user'
 import PostsRoutes from './posts'
@@ -8,7 +10,9 @@ const routes = [
     root: true,
     path: ['/', '/home', '/index'],
     exact: true,
-    component: Home
+    component: Loadable({
+      loader: import('../pages/home')
+    })
   },
   ...UserRoutes,
   ...PostsRoutes,

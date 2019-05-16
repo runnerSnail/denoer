@@ -1,7 +1,3 @@
-import Nav from './nav'
-import Counter from './demo/Counter'
-
-export {
-  Counter,
-  Nav
-}
+export { default as Nav } from './nav'
+export { default as Counter } from './demo/Counter'
+export { default as Loadable } from './loadable'

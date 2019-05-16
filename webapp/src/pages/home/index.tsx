@@ -7,6 +7,12 @@ import { Nav } from 'components'
 
 import './style.sass'
 
+interface HomeProps {
+  history: object
+}
+
+interface HomeState {}
+
 const { Content, Footer, Sider } = Layout
 
 const IconText = ({ type, text }) => (
@@ -15,7 +21,7 @@ const IconText = ({ type, text }) => (
     {text}
   </span>
 )
-export default class Home extends React.Component {
+export default class Home extends React.Component<HomeProps, HomeState> {
 
   state= {
     dataSource: [],
@@ -44,6 +50,11 @@ export default class Home extends React.Component {
       ],
       loading: false
     })
+  }
+
+  toPublish = (path) => () => {
+    console.log('path:', path)
+    console.log('history:', this.props.history)
   }
 
   _renderRow = ({ title = '', desc = '', content = '' }) => {
@@ -75,6 +86,7 @@ export default class Home extends React.Component {
 
   _listHeader = () => (
     <div style={{ marginTop: 50, display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+      {App({ title: 'czx' })}
       <span>全部</span>
       <span>精华</span>
       <span>分享</span>
@@ -84,6 +96,7 @@ export default class Home extends React.Component {
   )
   render () {
     console.log('request:', request)
+    console.log('props:', this.props)
     return (
       <Layout className='layout'>
         <Nav />
@@ -136,7 +149,7 @@ export default class Home extends React.Component {
                 </div>
               </div>
               <div style={{ marginTop: 10, marginBottom: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-                <Button size='small' type='primary'>发表文章</Button>
+                <Button size='small' type='primary' onClick={this.toPublish('/publish')}>发表文章</Button>
                 <Button size='small' type='primary'>撰写文章</Button>
                 <Button size='small' type='primary'>分享资源</Button>
               </div>
@@ -152,4 +165,14 @@ export default class Home extends React.Component {
       </Layout>
     )
   }
+}
+
+interface AppProps {
+  title: string
+}
+const App: React.SFC<AppProps> = props => {
+  console.log('props:', props)
+  return (
+    <div>{`App-${props.title}`}</div>
+  )
 }
