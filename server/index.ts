@@ -1,18 +1,14 @@
 import Onion from './dependcy/http_compose/onion.ts';
-
+import { ServerRequest } from './dependcy/dep.ts';
+const {  } = Deno;
 const app = new Onion();
 
-app.use(async (req, next) => {
-    console.log(1);
-    await next();
-    console.log(4);
-    req.respond({ body: new TextEncoder().encode('Hello World\n') });
-});
-
-app.use(async (req, next) => {
-    console.log(2);
-    await next();
-    console.log(3);
+app.use(async (req:ServerRequest, next) => {
+    // await req.body()
+    const body = await req.body();
+    const encoder = new TextDecoder();
+    const data = encoder.decode(body);
+    req.respond({ body: new TextEncoder().encode(data)});
 });
 app.listen('127.0.0.1:8000', () => {
     console.log(`启动：127.0.0.1:8000`);

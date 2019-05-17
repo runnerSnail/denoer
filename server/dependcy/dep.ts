@@ -12,3 +12,9 @@ export {
     runTests,
     test
 } from "https://deno.land/std@v0.3.4/testing/mod.ts";
+
+export * from "https://deno.land/std/textproto/mod.ts";
+
+export { BufReader } from "https://deno.land/std/io/bufio.ts"
+
+export { stringsReader } from "https://deno.land/std/io/util.ts"
