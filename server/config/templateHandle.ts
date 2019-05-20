@@ -1,22 +1,21 @@
-import { TextProtoReader, BufReader, stringsReader } from "../dependcy/dep.ts";
-const { execPath }=Deno;
+import {  BufReader, stringsReader, exists, existsSync, TextProtoReader } from "../dependcy/dep.ts";
+const { execPath } = Deno;
 function reader(s: string): TextProtoReader {
     return new TextProtoReader(new BufReader(stringsReader(s)));
 }
-export async function handleHtmlTemplate(filePath:string,obj:Object){
+type filename = string;
+export async function handleHtmlTemplate(file: filename | string, obj: Object) {
     const decoder = new TextDecoder("utf-8");
-    const data = await Deno.readFile(filePath);
-    let textHtml = decoder.decode(data);
-    let reg = /\${(.*)}/gm;
-    textHtml = textHtml.replace(reg,(match,key)=>{
-        console.log(match)
-        console.log(key);
-        console.log(obj)
-        return obj[key];
+    let unit8data: Uint8Array, textHtml: string;
+    if (existsSync("./foo")) {
+        unit8data = await Deno.readFile(file);
+        textHtml = decoder.decode(unit8data);
+    } else {
+        textHtml = file;
+    }
+    let reg = /\${\s*(.*)\s*}/gm;
+    textHtml = textHtml.replace(reg, (match, key) => {
+        return obj[key.trim()];
     })
-    console.log(textHtml);
-    // let r = reader();
-    // let [s, err] = await r.readLine();
-    // console.log(s)
+    return textHtml;
 }
-console.log(Deno.cwd())

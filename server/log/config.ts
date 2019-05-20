@@ -30,8 +30,13 @@ function setTime(fmt): string {
     }
     return fmt;
 }
+type loggerMethod = {
+    info:(msg:string)=>void,
+    debug:(msg:string)=>void,
+    error:(msg:string)=>void
+}
+let logger:loggerMethod;
 export async function setLogger() {
-    let logger;
     await log.setup({
         handlers: {
             console: new log.handlers.ConsoleHandler("DEBUG"),
@@ -57,6 +62,7 @@ export async function setLogger() {
         }
     });
     logger = log.getLogger();
-    //   logger.debuger("xxx")
+}
+export function getLogger(){
     return logger;
 }

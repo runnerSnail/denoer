@@ -1,15 +1,30 @@
-import Onion from './dependcy/http_compose/onion.ts';
+import Onion from './config/http_compose/onion.ts';
 import { ServerRequest } from './dependcy/dep.ts';
-const {  } = Deno;
+import { setLogger } from './log/config.ts';
+import router from './controllers/index.ts';
+
 const app = new Onion();
 
-app.use(async (req:ServerRequest, next) => {
-    // await req.body()
-    const body = await req.body();
-    const encoder = new TextDecoder();
-    const data = encoder.decode(body);
-    req.respond({ body: new TextEncoder().encode(data)});
+/**
+ * 配置日志
+ */
+
+setLogger().then(() => {
+    console.log('config log');
+})
+
+/**
+ * 配置路由
+ */
+app.use(async (req: ServerRequest, next) => {
+    console.log('enter compose')
+    await router.createArticle(req, next);
 });
-app.listen('127.0.0.1:8000', () => {
+
+app.use(async (req: ServerRequest, next) => {
+    req.headers.set("Content-Type","application/json");
+    req.respond({ body: new TextEncoder().encode("Hello World\n") });
+})
+app.listen(`127.0.0.1:8000`, () => {
     console.log(`启动：127.0.0.1:8000`);
 });

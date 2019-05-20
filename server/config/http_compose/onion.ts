@@ -1,5 +1,5 @@
 //@ts-ignore
-import { serve, ServerRequest } from '../dep.ts';
+import { serve, ServerRequest } from '../../dependcy/dep.ts';
 import { compose } from './compose.ts';
 const exit = Deno.exit;
 export default class Onion {
@@ -34,6 +34,7 @@ export default class Onion {
    */
   public async createServer(addr: string) {
     const server = serve(addr);
+    
     for await (const req of server) {
       try {
         // 等待执行所有中间件
@@ -42,7 +43,7 @@ export default class Onion {
           this._onError(e, req)
         });
       } catch (error) {
-        this._onError(error, req)
+        this._onError(error, req);
       }
 
     }
@@ -53,7 +54,6 @@ export default class Onion {
    * @param ctx {SafeContext} 当前HTTP上下文
    */
   private async _onError(err: Error, req: ServerRequest) {
-    console.log(err);
     if (req instanceof ServerRequest) {
       req.respond({ body: new TextEncoder().encode(err.stack), status: 500 });
     } else {
