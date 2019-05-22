@@ -1,0 +1,7 @@
+## 针对用户设置接口 权限
+
+## 利用cookie做简单的用户校验 p0
+认证流程
+1. 后端从请求中读取cookie，如果失效。利用github登陆
+2. 从github中读取用户信息写入cookie并签发带有钥匙的cookie
+3. 每次请求解析cookie验证cookie是否有效
