@@ -278,6 +278,7 @@ module.exports = function (webpackEnv) {
         'react-native': 'react-native-web',
         utils: stancePath + '/src/utils',
         components: stancePath + '/src/components',
+        service: stancePath + '/src/service',
         '@': stancePath + '/src'
       },
       plugins: [
