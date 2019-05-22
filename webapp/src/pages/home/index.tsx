@@ -34,17 +34,20 @@ export default class Home extends React.Component<any, HomeState> {
         {
           title: '文章1',
           desc: '描述3描述3描述3描述3描述3描述3描述3描述3',
-          content: 'la;ehgawkl;gwek;lagjhfkjfsaklhlkjhgkjlghslkg'
+          content: 'la;ehgawkl;gwek;lagjhfkjfsaklhlkjhgkjlghslkg',
+          article_id: 1
         },
         {
           title: '文章2',
           desc: '描述3描述3描述3描述3描述3描述3描述3描述3',
-          content: 'lkwghneioqthasmfnasfuiqtghjbdmnbasfabfqjwtgbajksb'
+          content: 'lkwghneioqthasmfnasfuiqtghjbdmnbasfabfqjwtgbajksb',
+          article_id: 2
         },
         {
           title: '文章3',
           desc: '描述3描述3描述3描述3描述3描述3描述3描述3',
-          content: 'lkwghneioqthasmfnasfuiqtghjbdmnbasfabfqjwtgbajksb'
+          content: 'lkwghneioqthasmfnasfuiqtghjbdmnbasfabfqjwtgbajksb',
+          article_id: 3
         }
       ],
       loading: false
@@ -55,7 +58,7 @@ export default class Home extends React.Component<any, HomeState> {
     this.props.history.push(path)
   }
 
-  _renderRow = ({ title = '', desc = '', content = '' }) => {
+  _renderRow = ({ title = '', desc = '', content = '', article_id }) => {
     return (
       <List.Item
         key={title}
@@ -74,7 +77,7 @@ export default class Home extends React.Component<any, HomeState> {
       >
         <List.Item.Meta
           avatar={<Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />}
-          title={<a href='/'>{title}</a>}
+          title={<a href={`/posts/${article_id}`}>{title}</a>}
           description={desc}
         />
         {content}

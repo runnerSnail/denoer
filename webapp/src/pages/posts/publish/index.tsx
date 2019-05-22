@@ -3,7 +3,7 @@ import { Select, Input, Layout, Button, Form } from 'antd'
 import Marked from 'marked'
 
 import { Page } from 'components' // Nav
-import { request } from 'utils'
+import { fetchPostsInfo, fetchPublishPosts, fetchUpdatePosts } from 'service/posts'
 
 import styles from './style.module.sass'
 
@@ -20,7 +20,8 @@ class Publish extends React.Component<any, State> {
   }
 
   componentDidMount () {
-    request('22', { article_id: 1 }, { basePath: '/api/acticle' })
+    /** 根据 article_id 查询文章详情 */
+    fetchPostsInfo(1)
   }
 
   handleSubmit = (e) => {
@@ -30,8 +31,8 @@ class Publish extends React.Component<any, State> {
       if (!err) {
         console.log('values:', values)
         /** 根据是否有 article_id 判断是更新文章还是创建文章 */
-        await request('create', { ...values }, { basePath: '/api/article' })
-        await request('update', { ...values }, { basePath: '/api/article' })
+        await fetchPublishPosts({...values})
+        await fetchUpdatePosts({ ...values })
       }
       console.log('err:', err)
     })

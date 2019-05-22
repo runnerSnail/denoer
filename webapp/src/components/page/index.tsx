@@ -1,7 +1,6 @@
 import React from 'react'
 import { Layout } from 'antd'
 
-
 import { Nav } from 'components'
 
 const { Footer } = Layout
@@ -12,7 +11,7 @@ export default class Page extends React.Component<Object, State> {
   render () {
     const { children } = this.props
     return (
-    <Layout className='layout'>
+    <Layout style={{ paddingTop: 64 }}>
       <Nav />
       {children}
       <Footer style={{ textAlign: 'center', paddingBottom: 50 }}>

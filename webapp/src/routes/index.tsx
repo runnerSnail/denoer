@@ -9,14 +9,14 @@ const routes = [
     path: ['/', '/home', '/index'],
     exact: true,
     component: Loadable({
-      loader: import('../pages/home')
+      loader: import(/* webpackChunkName: "home" */ '../pages/home')
     })
   },
   ...UserRoutes,
   ...PostsRoutes,
   {
     component: Loadable({
-      loader: import('../pages/404')
+      loader: import(/* webpackChunkName: "404" */ '../pages/404')
     })
   }
 ]
