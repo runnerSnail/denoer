@@ -17,8 +17,12 @@ setLogger().then(() => {
  * 配置路由
  */
 app.use(async (req: ServerRequest, next) => {
-    console.log('enter compose')
     await router.createArticle(req, next);
+    await next();
+});
+app.use(async (req: ServerRequest, next) => {
+    await router.getArticle(req, next);
+    // await next();
 });
 
 app.use(async (req: ServerRequest, next) => {

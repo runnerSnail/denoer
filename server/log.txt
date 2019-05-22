@@ -9,3 +9,11 @@ ERROR 2019-05-21 23:50:53 插入 {
 } 失败
 ERROR 2019-05-21 23:53:13 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
 ERROR 2019-05-21 23:55:22 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
+ERROR 2019-05-22 15:33:07 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
+ERROR 2019-05-22 15:33:45 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
+ERROR 2019-05-22 15:36:04 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
+ERROR 2019-05-22 15:37:08 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
+ERROR 2019-05-22 15:38:42 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
+ERROR 2019-05-22 15:40:00 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
+ERROR 2019-05-22 15:42:08 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
+ERROR 2019-05-22 19:36:03 路径匹配错误
