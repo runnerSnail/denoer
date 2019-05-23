@@ -1,18 +1,19 @@
 import { ServerRequest } from "../dependcy/dep.ts";
 import { getLogger } from "../log/config.ts";
 import errorReponseHandle from "../utils/errorReponseHandle.ts";
-import transaction from "../utils/transaction.ts";
+import transaction from "../model/transaction.ts";
 import successHandle from "../utils/successHandle.ts";
 import formatSelectResult from "../model/format.ts";
 export async function getArticle(req: ServerRequest, next) {
     let article_id
-    if (!(req.url.indexOf('/api/getarticle/') > -1)) {
+    if (!(req.url.indexOf('/api/getArticle/') > -1)) {
         return
     }
     try {
-        article_id = req.url.match(/\/api\/getarticle\/(\d.)/)[1];
+        article_id = req.url.match(/\/api\/getArticle\/article_id=(\d.)/)[1];
     } catch (error) {
-        getLogger().error(`selectArticle: ${error}`)
+        getLogger().error(`selectArticle: 提取id错误`)
+        req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, 'id不存在')), status: 200 });
         return
     }
 

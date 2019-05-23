@@ -1,7 +1,7 @@
 import { ServerRequest } from "../dependcy/dep.ts";
 import {getLogger} from "../log/config.ts";
 import errorReponseHandle from "../utils/errorReponseHandle.ts";
-import transaction from "../utils/transaction.ts";
+import transaction from "../model/transaction.ts";
 import successHandle from "../utils/successHandle.ts";
 import setUpdateSql from "../utils/updateHandle.ts";
 export async function updateArticle(req:ServerRequest,next){
@@ -10,10 +10,10 @@ export async function updateArticle(req:ServerRequest,next){
     
     try {
         let article_id:string;
-        article_id = req.url.match(/\/api\/getarticle\/(\d.)/)[1];
         let body = await req.body();
         let praseBodyString = new TextDecoder().decode(body);
         const params = JSON.parse(praseBodyString);
+        article_id = params['article_id'];
         // 禁止更新id 创建时间 //
         let newObj:any;
         // title content img type
@@ -21,6 +21,9 @@ export async function updateArticle(req:ServerRequest,next){
         if(params['content'])newObj['content']=params['content'];
         if(params['img'])newObj['img']=params['img'];
         if(params['type'])newObj['type']=params['type'];
+        // 更新阅读量和点赞
+        if(params['support_num'])newObj['support_num']=1;
+        if(params['read_num'])newObj['read_num']=1;
         let sql = setUpdateSql('article',{column:'article_id',id:article_id},newObj);
         let affect:any =  await transaction(sql);
         req.respond({ body: new TextEncoder().encode(successHandle(200,{},'更新成功')),status: 200 });

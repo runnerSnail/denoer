@@ -22,9 +22,12 @@ app.use(async (req: ServerRequest, next) => {
 });
 app.use(async (req: ServerRequest, next) => {
     await router.getArticle(req, next);
+    await next();
+});
+app.use(async (req: ServerRequest, next) => {
+    await router.getHome(req, next);
     // await next();
 });
-
 app.use(async (req: ServerRequest, next) => {
     req.headers.set("Content-Type","application/json");
     req.respond({ body: new TextEncoder().encode("Hello World\n") });
