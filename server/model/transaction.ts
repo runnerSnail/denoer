@@ -8,6 +8,7 @@ export default async function  transaction(sql:string):Promise<string>{
             await client.query("COMMIT");
         } catch (error) {
             await client.query("ROLLBACK");
+            console.log(error);
             affect = null;
         }finally{
             client.release();

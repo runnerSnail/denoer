@@ -17,3 +17,193 @@ ERROR 2019-05-22 15:38:42 INSERT INTO "public"."article"("title", "content", "re
 ERROR 2019-05-22 15:40:00 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
 ERROR 2019-05-22 15:42:08 INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "user_id") VALUES('文章1', '文章1', 0, 8, 1, 20144859) RETURNING  "article_id";
 ERROR 2019-05-22 19:36:03 路径匹配错误
+DEBUG 2019-05-24 11:23:17 a0aaa9ede2fcff68e91f
+ERROR 2019-05-24 11:23:19 TypeError: Cannot read property 'rows' of null
+DEBUG 2019-05-24 11:26:38 ebc6341f234de9a3938e
+ERROR 2019-05-24 11:26:40 TypeError: Cannot read property 'rows' of null
+DEBUG 2019-05-24 11:28:30 eed49dc14d49f3b7fc9e
+DEBUG 2019-05-24 11:38:58 feb9718abd8b6cfe5380
+DEBUG 2019-05-24 11:39:01 checkUser:
+DEBUG 2019-05-24 11:39:01 addUser: 
+DEBUG 2019-05-24 11:39:01 addUser:
+DEBUG 2019-05-24 11:39:01 checkUser:
+DEBUG 2019-05-24 11:40:42 c89a68e0e4b6a5ebc0b5
+DEBUG 2019-05-24 11:40:44 checkUser:
+DEBUG 2019-05-24 11:40:44 addUser:
+DEBUG 2019-05-24 11:40:44 checkUser:
+DEBUG 2019-05-24 11:44:36 db1a9dd07c117dfa9009
+DEBUG 2019-05-24 11:44:39 checkUser:
+DEBUG 2019-05-24 11:44:39 addUser:[object Object]
+DEBUG 2019-05-24 11:44:39 checkUser:
+DEBUG 2019-05-24 11:46:54 f05dba54adffcaadbb6a
+DEBUG 2019-05-24 11:46:56 checkUser:
+DEBUG 2019-05-24 11:46:56 addUser:[object Object]
+DEBUG 2019-05-24 11:46:56 checkUser:
+DEBUG 2019-05-24 11:49:58 d220d20bf21bb3533b95
+DEBUG 2019-05-24 11:50:20 checkUser:
+DEBUG 2019-05-24 11:50:20 checkUser:
+DEBUG 2019-05-24 11:56:01 63eb3776ec788000504d
+DEBUG 2019-05-24 11:56:03 addUser:40654631
+DEBUG 2019-05-24 11:56:03 checkUser:
+DEBUG 2019-05-24 12:57:09 e4f56ae3afacd480b957
+DEBUG 2019-05-24 12:57:11 INSERT INTO "public"."user"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 12:57:11 addUser:40654631
+DEBUG 2019-05-24 12:58:35 b1fb6d429673b8564fb1
+DEBUG 2019-05-24 12:58:37 INSERT INTO "public"."user"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 12:58:37 sqlresult:[object Object]
+DEBUG 2019-05-24 12:58:37 addUser:40654631
+DEBUG 2019-05-24 13:41:28 517f6aa77d2392c5e2d5
+DEBUG 2019-05-24 13:41:31 INSERT INTO "public"."user"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 13:41:31 sqlresult:
+DEBUG 2019-05-24 13:41:31 addUser:40654631
+DEBUG 2019-05-24 13:41:45 141ced348e2de916698e
+DEBUG 2019-05-24 13:41:47 INSERT INTO "public"."user"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 13:41:47 sqlresult:
+DEBUG 2019-05-24 13:41:47 addUser:40654631
+DEBUG 2019-05-24 13:43:38 f1f542a9d4df0d1ff417
+DEBUG 2019-05-24 13:43:40 INSERT INTO "public"."user"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 13:43:40 sqlresult:
+DEBUG 2019-05-24 13:43:40 addUser:40654631
+DEBUG 2019-05-24 13:45:08 eebc46cda627f773c2b7
+DEBUG 2019-05-24 13:45:11 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 13:45:11 sqlresult:[object Object]
+DEBUG 2019-05-24 13:45:11 addUser:40654631
+DEBUG 2019-05-24 13:52:16 033cde638b338575dfcb
+DEBUG 2019-05-24 13:52:19 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 13:52:19 sqlresult:[object Object]
+DEBUG 2019-05-24 13:52:19 addUser:40654631
+DEBUG 2019-05-24 13:53:53 0c6f943fafd03cae2743
+ERROR 2019-05-24 13:53:56 HttpOther: connection error: Connection reset by peer (os error 54)
+DEBUG 2019-05-24 13:53:57 result1:undefined
+DEBUG 2019-05-24 13:53:57 result2:
+DEBUG 2019-05-24 13:53:57 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('undefined', 'undefined', 'undefined', 'undefined','undefined', 'undefined', 'undefined', 'undefined') RETURNING  "user_id";
+DEBUG 2019-05-24 13:53:57 sqlresult:[object Object]
+DEBUG 2019-05-24 13:53:57 addUser:undefined
+DEBUG 2019-05-24 13:54:38 e84afb5330863b4e8ffc
+DEBUG 2019-05-24 13:54:44 result1:40654631
+DEBUG 2019-05-24 13:54:44 result2:
+DEBUG 2019-05-24 13:54:44 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 13:54:44 sqlresult:[object Object]
+DEBUG 2019-05-24 13:54:44 addUser:40654631
+DEBUG 2019-05-24 13:55:21 f567071eab15b629fb55
+DEBUG 2019-05-24 13:55:24 result1:40654631
+DEBUG 2019-05-24 13:55:24 result2:
+DEBUG 2019-05-24 13:55:24 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 13:55:24 sqlresult:[object Object]
+DEBUG 2019-05-24 13:55:24 addUser:40654631
+DEBUG 2019-05-24 13:56:50 51aeb629a784b03db7ba
+DEBUG 2019-05-24 13:56:52 checkUser:
+DEBUG 2019-05-24 13:56:52 result1:40654631
+DEBUG 2019-05-24 13:56:52 result2:
+DEBUG 2019-05-24 13:56:52 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 13:56:52 sqlresult:[object Object]
+DEBUG 2019-05-24 13:56:52 addUser:40654631
+DEBUG 2019-05-24 13:56:52 checkUser:
+DEBUG 2019-05-24 13:57:21 6f45aace269f20002369
+DEBUG 2019-05-24 13:57:23 checkUser:
+DEBUG 2019-05-24 13:57:23 result1:40654631
+DEBUG 2019-05-24 13:57:23 result2:
+DEBUG 2019-05-24 13:57:23 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 13:57:23 sqlresult:[object Object]
+DEBUG 2019-05-24 13:57:23 addUser:40654631
+DEBUG 2019-05-24 13:57:23 checkUser:
+DEBUG 2019-05-24 14:00:48 e40798a8e1aff2af2ece
+DEBUG 2019-05-24 14:00:51 checkUser:null
+DEBUG 2019-05-24 14:00:51 result1:40654631
+DEBUG 2019-05-24 14:00:51 result2:null
+DEBUG 2019-05-24 14:00:51 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 14:00:51 sqlresult:[object Object]
+DEBUG 2019-05-24 14:00:51 addUser:40654631
+DEBUG 2019-05-24 14:00:51 checkUser:null
+DEBUG 2019-05-24 14:03:14 80b1f77ac8dd8679d082
+DEBUG 2019-05-24 14:03:16 checkUser:null
+DEBUG 2019-05-24 14:03:16 result1:40654631
+DEBUG 2019-05-24 14:03:16 result2:null
+DEBUG 2019-05-24 14:03:16 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 14:03:16 sqlresult:[object Object]
+DEBUG 2019-05-24 14:03:16 addUser:40654631
+DEBUG 2019-05-24 14:03:16 checkUser:null
+DEBUG 2019-05-24 14:06:00 b98319839a2f132dcea1
+ERROR 2019-05-24 14:06:03 TypeError: Cannot read property 'rows' of null
+DEBUG 2019-05-24 14:08:19 1c4861bce9274ad25925
+DEBUG 2019-05-24 14:08:21 checkUser:null
+DEBUG 2019-05-24 14:08:21 result1:40654631
+DEBUG 2019-05-24 14:08:21 result2:null
+DEBUG 2019-05-24 14:08:21 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 14:08:21 sqlresult:[object Object]
+DEBUG 2019-05-24 14:08:21 addUser:40654631
+DEBUG 2019-05-24 14:08:21 checkUser:null
+DEBUG 2019-05-24 14:09:21 d51da2a145fa43cbf328
+DEBUG 2019-05-24 14:09:24 checkUser:null
+DEBUG 2019-05-24 14:09:24 result1:40654631
+DEBUG 2019-05-24 14:09:24 result2:null
+DEBUG 2019-05-24 14:09:24 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 14:09:24 sqlresult:[object Object]
+DEBUG 2019-05-24 14:09:24 addUser:40654631
+DEBUG 2019-05-24 14:09:24 checkUser:null
+DEBUG 2019-05-24 14:09:34 f8eec421bccbea9ba8c0
+ERROR 2019-05-24 14:09:37 TypeError: Cannot read property 'rows' of null
+DEBUG 2019-05-24 14:10:45 5a3e24d278f949c34408
+ERROR 2019-05-24 14:10:47 null
+DEBUG 2019-05-24 14:10:47 checkUser:null
+DEBUG 2019-05-24 14:10:47 result1:40654631
+DEBUG 2019-05-24 14:10:47 result2:null
+DEBUG 2019-05-24 14:10:47 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+ERROR 2019-05-24 14:10:47 [object Object]
+DEBUG 2019-05-24 14:10:47 sqlresult:[object Object]
+DEBUG 2019-05-24 14:10:47 addUser:40654631
+ERROR 2019-05-24 14:10:47 null
+DEBUG 2019-05-24 14:10:47 checkUser:null
+DEBUG 2019-05-24 14:14:05 9dcfce6330e460dcd847
+ERROR 2019-05-24 14:14:07 TypeError: Cannot read property 'query' of null
+DEBUG 2019-05-24 14:16:41 90f5e7a0cdbe0d9b8c7c
+ERROR 2019-05-24 14:16:43 TypeError: Cannot read property 'query' of null
+DEBUG 2019-05-24 14:17:53 83fd7d0f51de035dba48
+DEBUG 2019-05-24 14:17:56 checkUser:null
+DEBUG 2019-05-24 14:17:56 result1:40654631
+DEBUG 2019-05-24 14:17:56 result2:null
+DEBUG 2019-05-24 14:17:56 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 14:17:57 sqlresult:[object Object]
+DEBUG 2019-05-24 14:17:57 addUser:40654631
+DEBUG 2019-05-24 14:17:57 checkUser:null
+DEBUG 2019-05-24 14:22:00 ace18ebf3ffdce441660
+DEBUG 2019-05-24 14:22:02 checkUser:null
+DEBUG 2019-05-24 14:22:02 result1:40654631
+DEBUG 2019-05-24 14:22:02 result2:null
+DEBUG 2019-05-24 14:22:02 INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('runnerSnail', 'https://avatars1.githubusercontent.com/u/40654631?v=4', '40654631', 'https://github.com/runnerSnail','Netease', 'hangzhou', 'null', '1') RETURNING  "user_id";
+DEBUG 2019-05-24 14:22:02 sqlresult:[object Object]
+DEBUG 2019-05-24 14:22:02 addUser:40654631
+DEBUG 2019-05-24 14:22:02 checkUser:null
+DEBUG 2019-05-24 14:25:26 fbdb89d4690ba370019f
+DEBUG 2019-05-24 14:25:28 checkUser:null
+DEBUG 2019-05-24 14:25:28 checkUser:null
+DEBUG 2019-05-24 14:27:03 dd1d3f6607d8e22c26d8
+DEBUG 2019-05-24 14:28:48 36ae19fe3c8968a47cfa
+DEBUG 2019-05-24 14:29:00 22a52ccd4c09e904bf19
+ERROR 2019-05-24 17:52:45 TypeError: Cannot read property '1' of null
+ERROR 2019-05-24 17:53:20 TypeError: Cannot read property '1' of null
+DEBUG 2019-05-24 18:01:01 60f97c771671a1fcb3ed
+DEBUG 2019-05-24 18:01:56 7c0d278d0cdab811cfcc
+DEBUG 2019-05-24 18:11:43 019dba82c16403a42457
+DEBUG 2019-05-24 19:05:25 eb2b1e1e5eec4ef2aa69
+DEBUG 2019-05-24 19:06:12 8b3f1cc2fb9abbd3226a
+DEBUG 2019-05-24 19:09:13 d5bef4b472e8ca7658f9
+DEBUG 2019-05-24 19:12:09 7443cb16f0f46e46b663
+DEBUG 2019-05-24 19:13:04 937a9e79132e0a6ff1b1
+DEBUG 2019-05-24 19:13:47 937a9e79132e0a6ff1b1
+ERROR 2019-05-24 19:13:48 TypeError: Cannot read property '1' of null
+DEBUG 2019-05-24 19:16:13 c4cabc80e17417de9008
+DEBUG 2019-05-24 19:16:24 c4cabc80e17417de9008
+ERROR 2019-05-24 19:16:25 TypeError: Cannot read property '1' of null
+DEBUG 2019-05-24 19:18:00 57af1004a58f48786862
+DEBUG 2019-05-24 19:19:11 98eca3a746df2a64ba54
+DEBUG 2019-05-24 19:20:15 beb04645173bfcc97617
+DEBUG 2019-05-24 19:23:59 b4f8aa322fcfd2f57fd4
+DEBUG 2019-05-24 19:31:14 206c41769fdca68582bf
+DEBUG 2019-05-24 19:33:37 1b05a65278c6cb6f8d53
+DEBUG 2019-05-24 23:43:26 11c24b77d4595cb04f74
+DEBUG 2019-05-24 23:44:36 d8f4538fe801f86409be
+DEBUG 2019-05-24 23:45:01 d8f4538fe801f86409be
+ERROR 2019-05-24 23:45:05 TypeError: Cannot read property '1' of null
+DEBUG 2019-05-24 23:45:18 d8f4538fe801f86409be
+ERROR 2019-05-24 23:45:20 TypeError: Cannot read property '1' of null

@@ -17,6 +17,7 @@ setLogger().then(() => {
  * 配置路由
  */
 app.use(async (req: ServerRequest, next) => {
+    console.log(req.url);
     await router.createArticle(req, next);
     await next();
 });
@@ -26,6 +27,14 @@ app.use(async (req: ServerRequest, next) => {
 });
 app.use(async (req: ServerRequest, next) => {
     await router.getHome(req, next);
+    await next();
+});
+app.use(async (req: ServerRequest, next) => {
+    await router.getLogin(req, next);
+    await next();
+});
+app.use(async (req: ServerRequest, next) => {
+    await router.getArticleList(req, next);
     // await next();
 });
 app.use(async (req: ServerRequest, next) => {

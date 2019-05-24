@@ -28,7 +28,7 @@ export async function updateArticle(req:ServerRequest,next){
         let affect:any =  await transaction(sql);
         req.respond({ body: new TextEncoder().encode(successHandle(200,{},'更新成功')),status: 200 });
     } catch (error) {
-        getLogger().error(`updateArticle: ${error}`)
+        getLogger().error(`updateArticle: ${error}`);
         req.respond({ body: new TextEncoder().encode(errorReponseHandle(500,'更新失败')),status: 200 });
         return
     }

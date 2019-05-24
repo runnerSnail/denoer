@@ -12,22 +12,22 @@ export async function getArticle(req: ServerRequest, next) {
     try {
         article_id = req.url.match(/\/api\/getArticle\/article_id=(\d.)/)[1];
     } catch (error) {
-        getLogger().error(`selectArticle: 提取id错误`)
+        getLogger().error(`selectArticle: 提取id错误`);
         req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, 'id不存在')), status: 200 });
-        return
+        return;
     }
 
     if (article_id && req.method === 'GET') {
-        let sql = `select * from article where article_id = ${article_id};`
+        let sql = `select * from article where article_id = ${article_id};`;
         let result: any = formatSelectResult(await transaction(sql));
         if (result) {
-            req.respond({ body: new TextEncoder().encode(successHandle(200, result, '插入成功返回id')), status: 200 });
+            req.respond({ body: new TextEncoder().encode(successHandle(200, result, '文章查询成功')), status: 200 });
         } else {
             getLogger().error(`查询 article_id:${article_id} 失败`)
             req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, '文章查询失败')), status: 200 });
         }
     } else {
-        getLogger().error(`查询 article_id:${article_id} 失败`)
+        getLogger().error(`查询 article_id:${article_id} 失败`);
         req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, 'id不存在')), status: 200 });
     }
 }
