@@ -22,6 +22,7 @@ export default function reponse(req: ServerRequest, res: Response) {
     if (res.headers) {
         reponse['headers'] = headers;
     }
+    
     req.respond(response)
 }
 interface Response {
