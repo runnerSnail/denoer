@@ -34,12 +34,21 @@ app.use(async (req: ServerRequest, next) => {
     await next();
 });
 app.use(async (req: ServerRequest, next) => {
-    await router.getArticleList(req, next);
-    // await next();
+    await router.getUserInfo(req, next);
+    await next();
 });
 app.use(async (req: ServerRequest, next) => {
-    req.headers.set("Content-Type","application/json");
-    req.respond({ body: new TextEncoder().encode("Hello World\n") });
+    await router.getArticleList(req, next);
+    await next();
+});
+app.use(async (req: ServerRequest, next) => {
+    let headers = new Headers();
+    headers.set("Content-Type","application/json");
+    let resBody = JSON.stringify({
+        code:404,
+        message:'没找到'
+    });
+    req.respond({ body: new TextEncoder().encode(resBody),status:200,headers });
 })
 app.listen(`127.0.0.1:8000`, () => {
     console.log(`启动：127.0.0.1:8000`);

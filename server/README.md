@@ -10,3 +10,5 @@
 1. 每次POST请求解析cookie验证cookie是否有效
 2. 有些操作检验是否登陆
 3. 浏览器写入 cookie
+
+## 需要 封装response 工具函数
