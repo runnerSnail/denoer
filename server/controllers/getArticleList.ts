@@ -20,12 +20,6 @@ export  async function getArticleList(req: ServerRequest, next){
             size = 10;
         }
         let sql = `select * from article  order by create_time desc limit  ${size}  offset  ${(page-1)*size}`;
-        console.log(sql);
-        let sqlResult = await transaction(sql);
-        console.log(sqlResult);
-        // let result:any = formatSelectResult();
-        // console.log(result);
+        await transaction(sql);
     }
-    
-
 }

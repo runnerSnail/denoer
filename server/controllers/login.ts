@@ -5,6 +5,7 @@ import successHandle from "../utils/successHandle.ts";
 import { getLogger } from "../log/config.ts";
 import addUser, { UserInfo } from "../model/addUser.ts";
 import checkUser from "../model/checkUser.ts";
+import reponseUtil from "../utils/response.ts";
 
 /**
  * github 获取授权过程 
@@ -58,34 +59,37 @@ export async function getLogin(req: ServerRequest, next) {
                 .then((res) => res.json())
                 .then((data) => data)
                 .catch(e => getLogger().error(e));
-            console.log('userinfo',userinfo);
             // 检验用户是否 利用GitHub注册，如果没注册创建userid，如果已经注册关联已有的userId
             userinfo = await getUser(userinfo);
-
-            let res = { body: new TextEncoder().encode('cookie'),status: 200 };
+            let headers = new Headers();
+            headers.set("Content-Type", "application/json");
+            let res = { body: new TextEncoder().encode('cookie'), status: 200, headers };
             setCookie(res, {
                 name: "user_id",
                 value: userinfo.id,
                 maxAge: 2678400
-              });
-            console.log('user_id',userinfo.user_id);
+            });
             req.respond(res);
-            
         }
     } catch (error) {
         getLogger().error(error);
-        req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, '登录错误')), status: 302 });
+        reponseUtil(req, {
+            body: errorReponseHandle(500, '用户信息'),
+            status: 200,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
     }
 }
 
-async function getUser(userinfo:any){
-    
+async function getUser(userinfo: any) {
     let result = await checkUser(userinfo.id);
-    if(result){
+    if (result) {
         return result;
     }
     result = await addUser(userinfo);
     result = await checkUser(userinfo.id);
-    if(result) return result;
+    if (result) return result;
     return null;
 }

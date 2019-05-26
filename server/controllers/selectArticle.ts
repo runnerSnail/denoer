@@ -4,6 +4,7 @@ import errorReponseHandle from "../utils/errorReponseHandle.ts";
 import transaction from "../model/transaction.ts";
 import successHandle from "../utils/successHandle.ts";
 import formatSelectResult from "../model/format.ts";
+import reponseUtil from "../utils/response.ts";
 export async function getArticle(req: ServerRequest, next) {
     let article_id
     if (!(req.url.indexOf('/api/getArticle/') > -1)) {
@@ -21,13 +22,31 @@ export async function getArticle(req: ServerRequest, next) {
         let sql = `select * from article where article_id = ${article_id};`;
         let result: any = formatSelectResult(await transaction(sql));
         if (result) {
-            req.respond({ body: new TextEncoder().encode(successHandle(200, result, '文章查询成功')), status: 200 });
+            reponseUtil(req, {
+                body: successHandle(200,result,'文章查询失败'),
+                status:200,
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            })
         } else {
-            getLogger().error(`查询 article_id:${article_id} 失败`)
-            req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, '文章查询失败')), status: 200 });
+            getLogger().error(`查询 article_id:${article_id} 失败`);
+            reponseUtil(req, {
+                body: errorReponseHandle(500,'文章查询失败'),
+                status:200,
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            })
         }
     } else {
         getLogger().error(`查询 article_id:${article_id} 失败`);
-        req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, 'id不存在')), status: 200 });
+        reponseUtil(req, {
+            body: errorReponseHandle(500,'id不存在'),
+            status:200,
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
     }
 }
