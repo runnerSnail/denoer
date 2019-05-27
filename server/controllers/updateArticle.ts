@@ -37,7 +37,7 @@ export async function updateArticle(req:ServerRequest,next){
     } catch (error) {
         getLogger().error(`updateArticle: ${error}`);
         reponseUtil(req, {
-            body: errorReponseHandle(500,'更新成功'),
+            body: errorReponseHandle(500,'更新失败'),
             status:200,
             headers:{
                 "Content-Type":"application/json"
