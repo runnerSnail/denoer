@@ -14,3 +14,4 @@ export default async function  transaction(sql:string):Promise<string>{
         }
         return affect;
 }
+transaction('select * from article order by create_time desc limit 10 offset 0;');

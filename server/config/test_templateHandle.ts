@@ -9,4 +9,8 @@ test(async function testLogger(){
     let  html = await handleHtmlTemplate('fsfsfsf ${ a   }',{a:1,b:2});
     assertEquals(html,'fsfsfsf 1');
 })
+test(async function testLogger(){
+    let  html = await handleHtmlTemplate('<html>title:${ a   }<html>',{a:'测试'});
+    assertEquals(html,'<html>title:测试<html>');
+})
 runTests()
