@@ -38,3 +38,6 @@ npm run start
 #### 2019/05/29
 1. 测试语雀图片可以被使用到网站中（前期时间紧迫可以可以不用做文章中的图片上传）
 
+####
+1. 服务端渲染模版已经完成 [handleHtmlTemplate](../server/config/test_templateHandle.ts)
+2. cd server && deno run --allow-all   config/test_templateHandle.ts  进行测试
