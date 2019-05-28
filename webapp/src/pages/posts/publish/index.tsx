@@ -100,7 +100,9 @@ class Publish extends React.Component<any, State> {
 
   render () {
     return (
-      <Page>
+      <Page
+        {...this.props}
+      >
         <Layout className={styles['wrapper']}>
           {this._renderContent()}
           {this._renderSider()}

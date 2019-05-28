@@ -15,9 +15,11 @@ export default class PostsDetails extends Component<any> {
   render () {
     const { params = {} } = this.props.match || {}
     return (
-      <Page>
-        <div style={{ paddingTop: 70 }}>
-          <div style={{ margin: '0 auto', width: '620px', paddingTop: 20, paddingBottom: 40 }}>
+      <Page
+        {...this.props}
+      >
+        <div className={styles['wrapper']}>
+          <div className={styles['zxc']}>
             <div style={{ marginTop: 30, fontSize: 40 }}>{`文章标题啊啊啊啊啊a`}</div>
             <div style={{ marginTop: 30, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
               <img src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' style={{ width: 48, height: 48 }} />
