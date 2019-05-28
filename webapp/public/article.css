@@ -1,0 +1,85 @@
+@charset 'utf-8';
+html{color:#000;background:#FFF;font-family:Arial,'Microsoft YaHei','宋体';}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,strong{padding:0;margin:0;font-family:'Microsoft YaHei',Arial,'宋体';}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+a{text-decoration:none; color:#00c; outline:none;}
+var,em,strong{font-style:normal;}
+address,caption,cite,code,dfn,em,strong,th,var, optgroup{font-style:inherit;font-weight:inherit;}
+del,ins{text-decoration:none;}
+li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:baseline;}
+sub{vertical-align:baseline;}
+legend{color:#000;}
+input,button,textarea,select,optgroup,option{font-family:inherit; font-size:inherit;font-style:inherit;font-weight:inherit;}
+input,button,textarea,select{*font-size:100%;}
+body{-webkit-user-select:none;-webkit-text-size-adjust:none;}
+*{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.clearfix:after {content:"\200B"; display:block; height:0; clear:both; }
+.clearfix { *zoom:1; }
+/* 详情页样式 */
+body{
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+-webkit-font-smoothing: antialiased;
+color: rgba(0, 0, 0, 0.65);
+font-size: 14px;
+}
+header{
+max-width: 750px;
+margin: 0 auto;
+height: 63px;
+max-height: 40px;
+line-height: 40px;
+border-bottom: 1px solid #ececec;
+background: #fff;
+}
+
+header ul{
+display: flex;
+}
+
+header ul li{
+max-width: 100px;
+flex: 1;
+text-align: center;
+}
+
+header ul li:hover{
+color: #1890ff;
+border-bottom: 2px solid #1890ff;
+}
+header ul li a{
+display: inline-block;
+height: 100%;
+width: 100%;
+}
+header ul li a i{
+display: inline-block;
+vertical-align: middle;
+height: 36px;
+}
+.logo{
+display: inline-block;
+width: 40px;
+height: 40px;
+background: #000;
+}
+.container{
+width: auto;
+min-width: 375px;
+margin: 20px auto;
+}
+a{
+text-decoration: none;
+color: rgba(0, 0, 0, 0.65);
+}
+.article{
+height: 1000px;
+background: #000;
+display: inline-block;
+vertical-align: top;
+}
