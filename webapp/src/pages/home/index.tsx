@@ -6,7 +6,6 @@ import { request, sleep } from 'utils'
 import { Page } from 'components'
 
 import './style.sass'
-import { string } from 'prop-types';
 
 const { Content, Footer, Sider } = Layout
 

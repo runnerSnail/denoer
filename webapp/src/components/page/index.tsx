@@ -18,7 +18,7 @@ export default class Page extends React.Component<Object, State> {
       <Nav {...this.props} />
       {children}
       <Footer style={{ textAlign: 'center', paddingBottom: 50 }}>
-          Ant Design ©2018 Created by Ant UED
+          {`Denoer ©2019 Created by runSnail & OnlyFlyer`}
         </Footer>
     </Layout>
     )
