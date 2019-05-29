@@ -11,7 +11,9 @@
     <meta name="description"
         content="A secure runtime for JavaScript and TypeScript built with V8, Rust, and Tokio;deno致力于拥抱前端生态，服务端实现web标准解决node痛点，带给你更友好地服务端体验">
     <title>文章title</title>
-    <link rel="stylesheet" href="/article.css">
+    <link rel="stylesheet" type="text/css" href="/comments/jquery-comments.css">
+    <link rel="stylesheet" type="text/css" href="/article.css">
+    <link crossorigin="anonymous" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" href="https://lib.baomitu.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -45,14 +47,19 @@
             <li><a href="/about">关于</a></li>
         </ul>
     </header>
-    <div class="container">
-        <div class="article">
-        </div>
-    </div>
 
-    <div>这是一个多页</div>
+    <div class="container">
+        文章页面
+    </div>
+    <div class="comments-container" id="comments-container">
+
+    </div>
+    <footer class="ant-layout-footer" style="text-align: center; padding-bottom: 50px;">Ant Design ©2018 Created by Ant
+        UED</footer>
     <script crossorigin="anonymous" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
         src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/comments/jquery-comments.js"></script>
+    <script type="text/javascript" src="/article.js"></script>
 </body>
 
 </html>
