@@ -44,3 +44,6 @@ npm run start
 ####
 1. 服务端渲染模版已经完成 [handleHtmlTemplate](../server/config/test_templateHandle.ts)
 2. cd server && deno run --allow-all   config/test_templateHandle.ts  进行测试
+
+#### 打包 npm run build && gulp
+gulp 是打包详情页
