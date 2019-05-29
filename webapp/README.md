@@ -9,6 +9,9 @@ npm run start
 3. ts 组件函数式写法调研
 4. 动态路由(loaderable/按需加载)
 5. CDN 调研
+6. https://www.whongbin.cn/index/article/detail/id/25.html(github三方登录)
+7. 解析 markdown 样式文件
+8. 多入口打包压缩
 
 #### 2019/05/22
 
