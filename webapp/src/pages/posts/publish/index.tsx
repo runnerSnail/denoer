@@ -38,15 +38,14 @@ class Publish extends React.Component<any, State> {
     })
   }
 
-  handleChange = (event: { target }) => {
-    // console.log('props:', this.props)
-    // console.log('event:', event)
-    // console.log('zxc:', event.target.value, typeof event.target.value)
-    this.setState({ content: Marked(event.target.value) })
-  }
+  handleChange = (event: { target }) => { this.setState({ content: Marked(event.target.value) }) }
 
   _renderContent = () => {
     const { getFieldDecorator: D, getFieldsValue: G } = this.props.form
+    const { content = '' } = this.state
+    let editSty = content
+      ? { flex: 1, height: 'auto', marginRight: 20, minHeight: '500px', maxHeight: '700px' }
+      : { width: '100%', height: 'auto', minHeight: '500px', maxHeight: '700px' }
     return (<Content>
       <Form layout='inline'>
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -72,14 +71,15 @@ class Publish extends React.Component<any, State> {
         <Form.Item>
           {D('img')(<Input placeholder='主图链接' style={{ width: 500 }} />)}
         </Form.Item>
-        <div style={{ marginTop: 10 }}>
-          <Form.Item>
-            {D('content', {
-              rules: [{ required: true, message: '内容必填' }]
-            })(<TextArea onChange={this.handleChange} style={{ width: 800, height: '700px' }} />)}
-          </Form.Item>
+        <div style={{ marginTop: 10, display: 'flex', flexDirection: 'row', width: '100%' }}>
+          <TextArea onChange={this.handleChange} style={editSty} />
+          {
+            content &&
+            <div className={`markdown-body ${styles['md-wrapper']}`}>
+              <div dangerouslySetInnerHTML={{ __html: this.state.content }} />
+            </div>
+          }
         </div>
-          {/* <div dangerouslySetInnerHTML={{ __html: this.state.content }} style={{ flex: 1 }} /> */}
       </Form>
   </Content>
   )}
