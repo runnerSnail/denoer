@@ -6,12 +6,46 @@ npm run start
 
 1. 主题色配置
 2. mock
-3. ts 组件函数式写法调研
+3. ~~ts 组件函数式写法调研~~
 4. 动态路由(loaderable/按需加载)
 5. CDN 调研
 6. https://www.whongbin.cn/index/article/detail/id/25.html(github三方登录)
-7. 解析 markdown 样式文件
-8. 多入口打包压缩
+7. ~~解析 markdown 样式文件~~
+8. ~~antd 按需引入~~
+9. 多入口打包压缩
+
+#### 2019/05/29
+
+1. 代码高亮(三方包: marked)
+2. ts 有状态组件按照类的方式创建组件，无状态组件使用的是 SFC 创建形式，如下
+
+```JavaScript
+
+const Button: SFC<Props> = ({ onClick: handleClick, color, children }) => (
+  <button style={{ color }} onClick={handleClick}>
+    {children}
+  </button>
+)
+
+```
+ 个人建议无状态组件可以直接使用函数的方式，如下
+
+ ```JavaScript
+ 
+ export default function ({ color, handleClick, ...otherProps }) {
+   return (
+    <button style={{ color }} onClick={handleClick}>
+      {children}
+    </button>
+   )
+ }
+ // ---
+ import Btn from 'path'
+
+ <Btn color='color' handleClick='event' />
+ 
+ 
+ ```
 
 #### 2019/05/22
 
