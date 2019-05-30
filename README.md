@@ -36,3 +36,9 @@
     client.release();
 ```
 ## 目前代码 还不符合deno规范 待优化
+## 本站顶部搜索实现
+   1. ajax访问谷歌官网 https://www.google.com/
+   2. 加载成功了，则利用谷歌搜索，err则显示百度搜索结果 
+   3. 超过3秒自动跳转百度搜索
+   4. 百度：https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=site:denoer.cn+关键字
+   5. 谷歌：https://www.google.com.hk/search?hl=zh-CN&q=site:denoer.cn+关键字

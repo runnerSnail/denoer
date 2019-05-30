@@ -8,7 +8,7 @@ import { StoreState } from '../redux/types';
 
 // 将 reducer 中的状态插入到组件的 props 中
 const mapStateToProps = (state: StoreState): { value: number } => ({
-    value: state
+    value: state.num
 })
 
 // 将 对应action 插入到组件的 props 中
