@@ -21,3 +21,7 @@
     border: $width + px $style $color
   @else
     border-#{$direct}: $width + px $style $color
+
+@mixin dpr($size, $properties...)
+  @each $property in $properties
+    #{$property}: $size + px; /* px */

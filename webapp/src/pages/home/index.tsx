@@ -5,23 +5,13 @@ import { Layout, List, Avatar, Icon, Carousel, Button } from 'antd'
 import { request, sleep } from 'utils'
 import { Page } from 'components'
 
+import Item from './components/item'
 import './style.sass'
 
 const { Content, Footer, Sider } = Layout
 
 interface HomeState {}
-interface IconProps {
-  type: string,
-  text: string,
-  onClick?: any
-}
 
-const IconText = ({ type, text, onClick }: IconProps) => (
-  <span onClick={onClick}>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-)
 export default class Home extends React.Component<any, HomeState> {
   constructor (props: any) {
     super(props)
@@ -63,32 +53,14 @@ export default class Home extends React.Component<any, HomeState> {
     this.props.history.push(path)
   }
 
-  _renderRow = ({ title = '', desc = '', content = '', article_id, ...args }) => {
-    return (
-      <List.Item
-        key={title}
-        actions={[
-          <IconText type="star-o" text="156" />,
-          <IconText type="like-o" text="156" />,
-          <IconText type="message" text="2" />,
-        ]}
-        extra={
-          <img
-            width={272}
-            alt='logo'
-            src='https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
-          />
-        }
-      >
-        <List.Item.Meta
-          avatar={<Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />}
-          title={<span onClick={this._jumpTo(`/posts/${article_id}`)}>{title}</span>}
-          description={desc}
-        />
-        {content}
-      </List.Item>
-    )
-  }
+  _renderRow = ({ title = '', desc = '', content = '', article_id, ...args }) => (
+    <Item
+      title={title}
+      desc={desc}
+      content={content}
+      onClick={this._jumpTo(`/posts/${article_id}`)}
+    />
+  )
 
   _listHeader = () => (
     <div className='list-header'>
