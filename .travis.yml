@@ -10,7 +10,7 @@ before_install:
 - ssh-add ~/.ssh/id_rsa
 script: true
 after_success:
-- ssh -tt $user@$ip < ./run.sh $cdnpassword
+- ssh -tt $user@$ip < ./run.sh 123
 addons:
   ssh_known_hosts:
   - "$ip"
