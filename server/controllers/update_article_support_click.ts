@@ -6,7 +6,7 @@ import successHandle from "../utils/successHandle.ts";
 import reponseUtil from "../utils/response.ts";
 import checkSupport from "../model/check_support.ts";
 import { getCookies } from "../dependcy/dep.ts";
-export async function updateArticle(req: ServerRequest, next) {
+export async function updateArticleSupport(req: ServerRequest, next) {
     if (!(req.url.indexOf('/api/article/clicksupport') > -1)) return;
 
     try {

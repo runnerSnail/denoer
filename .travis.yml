@@ -8,9 +8,11 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 - eval `ssh-agent -s`
 - ssh-add ~/.ssh/id_rsa
+# 上传cdn
+- 
 script: true
 after_success:
-- ssh -tt $user@$ip < ./run.sh 123
+- ssh -tt $user@$ip < ./run.sh
 addons:
   ssh_known_hosts:
   - "$ip"

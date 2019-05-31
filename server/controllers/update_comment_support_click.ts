@@ -4,7 +4,7 @@ import errorReponseHandle from "../utils/errorReponseHandle.ts";
 import transaction from "../model/transaction.ts";
 import successHandle from "../utils/successHandle.ts";
 import reponseUtil from "../utils/response.ts";
-export async function updateArticle(req: ServerRequest, next) {
+export async function updateCommentSupport(req: ServerRequest, next) {
     if (!(req.url.indexOf('/api/comment/clicksupport') > -1)) return;
 
     try {

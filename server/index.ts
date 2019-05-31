@@ -48,6 +48,15 @@ app.use(async (req: ServerRequest, next) => {
     await next();
 });
 
+app.use(async (req: ServerRequest, next) => {
+    await router.updateArticleSupport(req, next);
+    await next();
+});
+
+app.use(async (req: ServerRequest, next) => {
+    await router.updateCommentSupport(req, next);
+    await next();
+});
 
 // 404 
 app.use(async (req: ServerRequest, next) => {
@@ -62,6 +71,7 @@ app.use(async (req: ServerRequest, next) => {
         }
     })
 })
+
 app.listen(`127.0.0.1:8000`, () => {
     console.log(`启动：127.0.0.1:8000`);
 });
