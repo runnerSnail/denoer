@@ -43,7 +43,7 @@ export async function getLogin(req: ServerRequest, next) {
                 .then((response) => {
                     return response.body;
                 })
-                .then(async data => {
+                .then(async (data:any) => {
                     let text = await data.text();
                     access_token = text.match(/access_token=(\S+)&scope/)[1];
                 })

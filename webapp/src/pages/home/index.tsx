@@ -1,8 +1,5 @@
 import React from 'react'
-import { Layout, List, Avatar, Icon, Carousel, Button } from 'antd'
-
-
-import { request, sleep } from 'utils'
+import { Layout, List, Carousel, Button } from 'antd'
 import { Page } from 'components'
 
 import Item from './components/item'

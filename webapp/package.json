@@ -71,8 +71,9 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "build": "node scripts/build.js && gulp",
+    "test": "node scripts/test.js",
+    "deploy":"echo 等待完成脚本自动化部署"
   },
   "eslintConfig": {
     "extends": "react-app"

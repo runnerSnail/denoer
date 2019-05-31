@@ -5,12 +5,8 @@ import { Nav } from 'components'
 
 const { Footer } = Layout
 
-interface State {}
 
-export default class Page extends React.Component<Object, State> {
-  constructor (props: any) {
-    super(props)
-  }
+export default class Page extends React.Component {
   render () {
     const { children } = this.props
     return (

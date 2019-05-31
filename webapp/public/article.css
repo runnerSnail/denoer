@@ -186,9 +186,6 @@ header ul li a i {
   background: #000;
 }
 .container {
-  width: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   margin: 20px auto;
   padding: 0 20px;
   max-width: 960px;
@@ -210,4 +207,61 @@ a {
 .comment-wrapper .name:hover{
     color:#2793e6;
     text-decoration: underline;
+}
+.meta-bottom {
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+.like {
+  display: inline-block;
+}
+.like .like-group {
+  position: relative;
+  padding: 13px 0 15px 0;
+  font-size: 0;
+  border: 1px solid #EA6F5A;
+  border-radius: 40px;
+}
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.like .like-group .btn-like {
+  display: inline-block;
+  font-size: 19px;
+}
+.like .like-group .btn-like:before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 2px;
+  width: 50px;
+  height: 50px;
+  background-image: url(//cdn2.jianshu.io/assets/web/like_animation_steps-62a00a7….png);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 1000px 50px;
+}
+.like .like-group .modal-wrap{
+  font-size: 18px;
+  border-left: 1px solid rgba(236, 97, 73, 0.4);
+  display: inline-block;
+  margin-left: -15px;
 }
