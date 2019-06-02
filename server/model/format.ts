@@ -1,8 +1,26 @@
 export default function formatSelectResult(queryResult:any){
+    let result : Object | Array<any>;
     if(!queryResult || !queryResult.rows || queryResult.rows.length === 0) return null;
-    let obj:any = {};
-    for (let index = 0; index < queryResult.rows[0].length; index++) {
-        obj[queryResult.rowDescription.columns[index].name] = queryResult.rows[0][index];
+    // 单行结果
+    console.log(queryResult.rows.length)
+    if(queryResult.rows.length === 1){
+        result = {};
+        for (let index = 0; index < queryResult.rows[0].length; index++) {
+            result[queryResult.rowDescription.columns[index].name] = queryResult.rows[0][index];
+        }
     }
-    return obj;
+    // 多行结果
+    if(queryResult.rows.length > 1){
+        let tempResult = [];
+        for(let row = 0;row < queryResult.rows.length;row++){
+            let obj = {};
+            for (let index = 0; index < queryResult.rows[0].length; index++) {
+                obj[queryResult.rowDescription.columns[index].name] = queryResult.rows[row][index];
+            }
+            tempResult.push(obj);
+        }
+        result = tempResult;
+    }
+
+    return result;
 }

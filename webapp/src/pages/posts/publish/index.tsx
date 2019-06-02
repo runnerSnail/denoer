@@ -43,6 +43,7 @@ class Publish extends React.Component<any, State> {
   _renderContent = () => {
     const { getFieldDecorator: D, getFieldsValue: G } = this.props.form
     const { content = '' } = this.state
+    console.log(content);
     let editSty = content
       ? { flex: 1, height: 'auto', marginRight: 20, minHeight: '500px', maxHeight: '700px' }
       : { width: '100%', height: 'auto', minHeight: '500px', maxHeight: '700px' }

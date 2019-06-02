@@ -18,7 +18,6 @@ setLogger().then(() => {
  * 配置路由
  */
 app.use(async (req: ServerRequest, next) => {
-    console.log(req.url);
     await router.createArticle(req, next);
     await next();
 });
@@ -48,19 +47,32 @@ app.use(async (req: ServerRequest, next) => {
     await next();
 });
 
+app.use(async (req: ServerRequest, next) => {
+    await router.updateArticleSupport(req, next);
+    await next();
+});
+
+app.use(async (req: ServerRequest, next) => {
+    await router.selectCommit(req, next);
+    await next();
+});
+
+app.use(async (req: ServerRequest, next) => {
+    await router.updateCommentSupport(req, next);
+    await next();
+});
+
+app.use(async (req: ServerRequest, next) => {
+    await router.insertComment(req, next);
+    await next();
+});
+
 // 404 
 app.use(async (req: ServerRequest, next) => {
-    reponseUtil(req,{
-        body:{
-            code:404,
-            message:'路径不匹配'
-        },
-        status:200,
-        headers:{
-            "Content-Type":"application/json"
-        }
-    })
+    await router.notFound(req, next);
+    await next();
 })
+
 app.listen(`127.0.0.1:8000`, () => {
     console.log(`启动：127.0.0.1:8000`);
 });

@@ -207,3 +207,18 @@ DEBUG 2019-05-24 23:45:01 d8f4538fe801f86409be
 ERROR 2019-05-24 23:45:05 TypeError: Cannot read property '1' of null
 DEBUG 2019-05-24 23:45:18 d8f4538fe801f86409be
 ERROR 2019-05-24 23:45:20 TypeError: Cannot read property '1' of null
+DEBUG 2019-06-02 13:25:24 5a80f5876e365b4ddf61
+DEBUG 2019-06-02 14:18:19 987a4d792cf5af1973e8
+DEBUG 2019-06-02 14:20:06 0972e51429960f480a54
+DEBUG 2019-06-02 14:20:37 7793643157a0b399012b
+DEBUG 2019-06-02 14:21:38 0249b839af0a56efa394
+DEBUG 2019-06-02 14:23:49 cd846e43bde4732eb502
+ERROR 2019-06-02 17:12:10 updateArticle: SyntaxError: Unexpected token l in JSON at position 171
+ERROR 2019-06-02 17:23:55 updateArticle: Error: 重复点赞
+ERROR 2019-06-02 17:25:53 updateArticle: Error: 重复点赞
+ERROR 2019-06-02 17:26:54 updateArticle: Error: 重复点赞
+ERROR 2019-06-02 17:27:01 updateArticle: Error: 重复点赞
+ERROR 2019-06-02 17:27:49 updateArticle: Error: 重复点赞
+ERROR 2019-06-02 17:32:01 updateArticle: Error: 重复点赞
+ERROR 2019-06-02 17:32:45 updateArticle: Error: 重复点赞
+ERROR 2019-06-02 17:54:19 查询 article_id:21 失败

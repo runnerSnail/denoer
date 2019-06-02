@@ -1,2 +1,4 @@
 /server/config/set_json.ts
 /webapp/package-lock.json
+/temp
+/webapp/config/OSSConfig.js

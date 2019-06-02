@@ -13,8 +13,12 @@
     <title>文章title</title>
     <link rel="stylesheet" type="text/css" href="/comments/jquery-comments.css">
     <link rel="stylesheet" type="text/css" href="/article.css">
-    <link crossorigin="anonymous" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" href="https://lib.baomitu.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link crossorigin="anonymous"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="/comments/github-markdown.min.css" rel="stylesheet">
 </head>
+<style>
+
+</style>
 
 <body>
     <header>
@@ -49,15 +53,50 @@
     </header>
 
     <div class="container">
-        文章页面
+        <div class='markdown-body md-wrapper'>
+            <hr>
+            <p><a href="https://www.baidu.com/">百度</a></p>
+            <h2 id="ccc">ccc</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th align="left">身高</th>
+                        <th align="center">体重</th>
+                        <th align="right">胸围</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="left">180m</td>
+                        <td align="center">70kg</td>
+                        <td align="right">160</td>
+                    </tr>
+                    <tr>
+                        <td align="left">170m</td>
+                        <td align="center">60kg</td>
+                        <td align="right">190</td>
+                    </tr>
+                    <tr>
+                        <td align="left">160m</td>
+                        <td align="center">50kg</td>
+                        <td align="right">180</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="article"
+            style="height: 60px;line-height: 60px; font-size: 28px;margin-top: 20px;margin-bottom: 20px;">
+            <i class="fa fa-heart-o" style="color:#ea6f5a"></i>点赞:1234变量
+            <i class="fa fa-eye" aria-hidden="true" style="margin-left:30px;color:#ea6f5a"></i>阅读量:12123变量
+        </div>
     </div>
     <div class="comments-container" id="comments-container">
 
     </div>
     <footer class="ant-layout-footer" style="text-align: center; padding-bottom: 50px;">Ant Design ©2018 Created by Ant
-        UED</footer>
-    <script crossorigin="anonymous" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
-        src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+        UED
+    </footer>
+    <script type="text/javascript" src="/comments/jquery.min.js"></script>
     <script type="text/javascript" src="/comments/jquery-comments.js"></script>
     <script type="text/javascript" src="/article.js"></script>
 </body>
