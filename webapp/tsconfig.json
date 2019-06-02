@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    // "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
     "allowJs": true,
-    "baseUrl": "./",
+    "baseUrl": "src",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -20,11 +19,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "noImplicitAny": false,
-    "paths": {
-      "*": ["*/index.js", "*/index.jsx"],
-      "@/*": ["src/*"],
-      "@": ["src/index"]
-    }
-  }
+    "noImplicitAny": false
+  },
+  "include": [
+    "src"
+  ]
 }
