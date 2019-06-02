@@ -10,30 +10,33 @@ export async function updateArticleSupport(req: ServerRequest, next) {
     if (!(req.url.indexOf('/api/article/clicksupport') > -1)) return;
 
     try {
-        let support_num: string, article_id: number;
+        let support_num: string, article_id: string;
         let body = await req.body();
         let praseBodyString = new TextDecoder().decode(body);
         const params = JSON.parse(praseBodyString);
         article_id = params['article_id'];
-        const cookies = getCookies(req);
-        let user_id = cookies['user_id'];
-
-        if (params['user_has_upvoted']) {
-            support_num = 'support_num + 1';
-        } else {
-            support_num = 'support_num - 1';
-        }
+        let user_id = params['user_id'];
 
         // 检查是否点过赞
-        let result = await checkSupport('support_article',user_id,article_id);
-        if(!result){
-            throw new Error('重复点赞')
+        let result = await checkSupport('support_article', user_id, article_id);
+        console.log(result);
+        if (!result) {
+            support_num = 'support_num + 1';
+            let sqlInsertArticleSprrort = `INSERT INTO "public"."support_article"("article_id", "gitlab_id") VALUES('${params['article_id']}', '${params['user_id']}') RETURNING  "support_article_id";`;
+            console.log(sqlInsertArticleSprrort);
+            await transaction(sqlInsertArticleSprrort);
+        } else {
+            support_num = 'support_num - 1';
+            let sqldeleteArticleSprrort = `delete from support_article  where article_id = '${article_id}' and gitlab_id = '${user_id}'`;
+            console.log(sqldeleteArticleSprrort);
+            await transaction(sqldeleteArticleSprrort);
         }
 
 
         // 更新点赞
         let sqlUpdateArticle = `update article set support_num = ${support_num} where article_id = ${article_id}`;
         await transaction(sqlUpdateArticle);
+
 
         reponseUtil(req, {
             body: successHandle(200, {}, '更新成功'),

@@ -8,12 +8,13 @@ import reponseUtil from "../utils/response.ts";
 import { getCookies } from "../dependcy/dep.ts";
 import checkSupport from "../model/check_support.ts";
 export async function getArticle(req: ServerRequest, next) {
+    if (!(req.url.indexOf('/api/getArticle') > -1)) {
+        return
+    }
     let article_id;
     const cookies = getCookies(req);
     let user_id = cookies['user_id'];
-    if (!(req.url.indexOf('/api/getArticle/') > -1)) {
-        return
-    }
+
     try {
         article_id = req.url.match(/\/api\/getArticle\/article_id=(\d.)/)[1];
         if (article_id && req.method === 'GET') {

@@ -8,9 +8,13 @@ export default function reponseUtil(req: ServerRequest, res: Response) {
             }
         }
     }
+    console.log(res.body)
     if (typeof res.body === 'object') {
         body = JSON.stringify(res.body)
+    }else{
+        body = res.body;
     }
+
     let response:any = {
         body: new TextEncoder().encode(body),
         status: res.status

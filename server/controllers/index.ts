@@ -7,6 +7,9 @@ import {getArticleList} from './getArticleList.ts';
 import { getUserInfo } from './getUserInfo.ts';
 import { updateCommentSupport } from './update_comment_support_click.ts';
 import { updateArticleSupport } from './update_article_support_click.ts';
+import selectCommit from './select_comment.ts';
+import insertComment from './insert_comment.ts';
+import { notFound } from './notfound.ts';
 
 export default {
     createArticle,
@@ -17,5 +20,8 @@ export default {
     getArticleList,
     getUserInfo,
     updateArticleSupport,
-    updateCommentSupport
+    updateCommentSupport,
+    selectCommit,
+    insertComment,
+    notFound
 }

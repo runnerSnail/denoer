@@ -6,7 +6,7 @@ export {
 } from "https://deno.land/std/http/server.ts";
 
 export {
-    setCookie，
+    setCookie,
     getCookies
 } from "https://deno.land/std/http/cookie.ts";
 export { Pool } from "https://deno.land/x/postgres@v0.1.2/pool.ts";

@@ -1,9 +1,9 @@
 $('#comments-container').comments({
     profilePictureURL: 'https://avatars0.githubusercontent.com/u/33910674?s=64&v=4',
     enableNavigation:false,
-    
+    enableEditing:false,
     fieldMappings:{
-        id:'commment_id',
+        id:'comment_id',
         created:'create_time',
         content:'content',
         fullname:'user_name',
@@ -13,37 +13,37 @@ $('#comments-container').comments({
     },
     getComments: function(success, error) {
         var commentsArray = [{
-            commment_id: 1,
+            comment_id: 1,
             create_time: '2015-10-01',
             content: 'Lorem ipsum dolort sit amet',
             user_name: 'runnerSnail',
             support_num: 2,
             user_has_upvoted: false,
             parent_id:0,
+            gitlab_id: "40654631",
             user_img: 'https://avatars0.githubusercontent.com/u/33910674?s=64&v=4'
         },{
-            commment_id: 2,
+            comment_id: 2,
             create_time: '2015-10-01',
             content: 'Lorem ipsum dolort sit amet',
             user_name: 'runnerSnail',
             support_num: 2,
             user_has_upvoted: false,
             parent_id:1,
+            gitlab_id: "40654631",
             user_img: 'https://avatars0.githubusercontent.com/u/33910674?s=64&v=4'
         }];
         success(commentsArray);
     },
     postComment:function(commentJSON,success,error){
-        var gitlab_id;
         var commentJSON = $.extend(commentJSON,{
-            article_id:200
+            article_id:21,
+            user_id:40654631
         })
         console.log(commentJSON);
-        // /api/insertCreate
-        // /api/selectCommit?article_id=xxx   get
         $.ajax({
             type: 'POST',
-            url: '/api/insertCreate',
+            url: '/api/insertCommit',
             data: JSON.stringify(commentJSON),
             success: success,
             dataType: 'json'
@@ -52,8 +52,10 @@ $('#comments-container').comments({
     },
     upvoteComment: function (commentJSON, success, error) {
         var commentJSON = $.extend(commentJSON,{
-            article_id:200
+            article_id:21,
+            user_id:40654631
         })
+        console.log(commentJSON);
         $.ajax({
             type: 'POST',
             url: '/api/comment/clicksupport',

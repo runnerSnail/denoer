@@ -10,7 +10,7 @@ export function checkParamsObject(params: Object) {
 
 export function checkParamsByArrayString(arr:Array<string>,params:Object){
     for (const item of arr) {
-        if(params[item]) return false;
+        if(!params[item]) return false;
     }
     return true;
 }

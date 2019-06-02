@@ -22,6 +22,7 @@ export async function updateCommentSupport(req: ServerRequest, next) {
 
         // 更新点赞
         let sql = `update comment set support_num = ${support_num} where comment_id = ${comment_id}`;
+        console.log(sql);
         await transaction(sql);
         reponseUtil(req, {
             body: successHandle(200, {}, '更新成功'),
