@@ -18,6 +18,7 @@ setLogger().then(() => {
  * 配置路由
  */
 app.use(async (req: ServerRequest, next) => {
+    console.log(req.url);
     await router.createArticle(req, next);
     await next();
 });

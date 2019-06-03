@@ -1,11 +1,12 @@
-# 打包前端资源
-echo $1
-git pull
-echo $0
-# 上传文件到腾讯cdn
+echo '前端打包'
+cd webapp
+npm i
+npm run build
 
-echo '开始部署'
-# 待操作
-pwd
-echo '部署完成'
-exit
+echo '前端上传cdn'
+npm run deploy
+
+echo '拷贝打包后的html前端文件到template'
+cp -r webapp/build/*.html server/template
+
+echo '启动server'

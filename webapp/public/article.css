@@ -265,3 +265,35 @@ a {
   display: inline-block;
   margin-left: -15px;
 }
+.style_title {
+  margin-top: 30px;
+  font-size: 40px;
+}
+.style_introduce__3G5I4 {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.style_img__19k0w {
+  width: 48px;
+  height: 48px;
+}
+.style_introduce-detail__2UdjI {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.article_bottom{
+  height: 60px;
+  line-height: 60px; 
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.support_hover{
+  color:#2c6ca7
+}
+.read_hover{
+  color:#2c6ca7
+}
