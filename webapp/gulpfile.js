@@ -68,8 +68,8 @@ function insertCDNPre() {
     minifyCSS: true//压缩页面CSS
   };
   return gulp.src(paths.html.src)
-    .pipe(replace(/href="/g, `href="${cdnPrex}`))
-    .pipe(replace(/src="/g, `src="${cdnPrex}`))
+    .pipe(replace(/href="\//g, `href="${cdnPrex}/`))
+    .pipe(replace(/src="\//g, `src="${cdnPrex}/`))
     .pipe(htmlmin(options))
     .pipe(gulp.dest('build/'));
 }

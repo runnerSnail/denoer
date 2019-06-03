@@ -222,3 +222,6 @@ ERROR 2019-06-02 17:27:49 updateArticle: Error: 重复点赞
 ERROR 2019-06-02 17:32:01 updateArticle: Error: 重复点赞
 ERROR 2019-06-02 17:32:45 updateArticle: Error: 重复点赞
 ERROR 2019-06-02 17:54:19 查询 article_id:21 失败
+ERROR 2019-06-03 15:30:13 selectArticle: 提取id错误
+ERROR 2019-06-03 15:31:52 selectArticle: 提取id错误
+ERROR 2019-06-03 15:34:14 selectArticle: NotFound: No such file or directory (os error 2)

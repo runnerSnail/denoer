@@ -10,6 +10,7 @@ import { updateArticleSupport } from './update_article_support_click.ts';
 import selectCommit from './select_comment.ts';
 import insertComment from './insert_comment.ts';
 import { notFound } from './notfound.ts';
+import { getArticleTemplate } from './select_article_template.ts';
 
 export default {
     createArticle,
@@ -23,5 +24,6 @@ export default {
     updateCommentSupport,
     selectCommit,
     insertComment,
-    notFound
+    notFound,
+    getArticleTemplate
 }
