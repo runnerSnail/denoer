@@ -5,5 +5,8 @@ export default async function checkSupport(tableName:string,gitlab_id:string,id:
     let sql = `select * from ${tableName} where gitlab_id = '${gitlab_id}' and article_id = ${id};`;
     console.log(sql);
     let result = formatSelectResult(await transaction(sql));
-    return result;
+    for (var i in result) {
+        return result;
+    }
+    return null;
 }

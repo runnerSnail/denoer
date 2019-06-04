@@ -6,7 +6,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js && gulp",
     "test": "node scripts/test.js",
-    "deploy": "node script/deploy.js"
+    "deploy": "node scripts/deploy.js"
   },
   "dependencies": {
     "@babel/core": "7.4.3",

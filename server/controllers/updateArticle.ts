@@ -14,9 +14,11 @@ export async function updateArticle(req:ServerRequest,next){
         let body = await req.body();
         let praseBodyString = new TextDecoder().decode(body);
         const params = JSON.parse(praseBodyString);
+        console.log(params['article_id'])
+        console.log('=====>>>')
         article_id = params['article_id'];
         // 禁止更新id 创建时间 //
-        let newObj:any;
+        let newObj:any = {};
         // title content img type
         if(params['title'])newObj['title']=params['title'];
         if(params['content'])newObj['content']=params['content'];
@@ -24,8 +26,12 @@ export async function updateArticle(req:ServerRequest,next){
         if(params['type'])newObj['type']=params['type'];
         // 更新阅读量和点赞
         if(params['support_num'])newObj['support_num']=1;
+        console.log(params['read_num'])
         if(params['read_num'])newObj['read_num']=1;
+        console.log('xxxx');
         let sql = setUpdateSql('article',{column:'article_id',id:article_id},newObj);
+        console.log(sql);
+        console.log('cccc');
         await transaction(sql);
         reponseUtil(req, {
             body: successHandle(200,{},'更新成功'),
