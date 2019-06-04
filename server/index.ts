@@ -23,11 +23,17 @@ app.use(async (req: ServerRequest, next) => {
     await next();
 });
 
+/**
+ * @desc: 文章详情
+ */
 app.use(async (req: ServerRequest, next) => {
     await router.getArticle(req, next);
     await next();
 });
 
+/**
+ * @desc: 待添加
+ */
 app.use(async (req: ServerRequest, next) => {
     await router.getHome(req, next);
     await next();
@@ -43,6 +49,9 @@ app.use(async (req: ServerRequest, next) => {
     await next();
 });
 
+/**
+ * @desc 文章列表
+ */
 app.use(async (req: ServerRequest, next) => {
     await router.getArticleList(req, next);
     await next();

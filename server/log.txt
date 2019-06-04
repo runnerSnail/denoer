@@ -222,3 +222,21 @@ ERROR 2019-06-02 17:27:49 updateArticle: Error: 重复点赞
 ERROR 2019-06-02 17:32:01 updateArticle: Error: 重复点赞
 ERROR 2019-06-02 17:32:45 updateArticle: Error: 重复点赞
 ERROR 2019-06-02 17:54:19 查询 article_id:21 失败
+ERROR 2019-06-04 23:57:59 selectArticle: 提取id错误
+ERROR 2019-06-05 00:00:29 selectArticle: 提取id错误
+ERROR 2019-06-05 00:02:45 selectArticle: 提取id错误
+ERROR 2019-06-05 00:08:55 selectArticle: 提取id错误
+ERROR 2019-06-05 00:10:44 selectArticle: 提取id错误
+ERROR 2019-06-05 00:13:28 selectArticle: 提取id错误
+ERROR 2019-06-05 00:14:02 selectArticle: 提取id错误
+ERROR 2019-06-05 00:22:15 selectArticle: 提取id错误
+ERROR 2019-06-05 00:22:46 selectArticle: 提取id错误
+ERROR 2019-06-05 00:22:59 selectArticle: 提取id错误
+ERROR 2019-06-05 00:23:27 selectArticle: 提取id错误
+ERROR 2019-06-05 00:24:53 selectArticle: 提取id错误
+ERROR 2019-06-05 00:25:08 selectArticle: 提取id错误
+ERROR 2019-06-05 00:25:23 selectArticle: 提取id错误
+ERROR 2019-06-05 00:25:31 selectArticle: 提取id错误
+ERROR 2019-06-05 00:26:31 selectArticle: 提取id错误
+ERROR 2019-06-05 00:27:06 selectArticle: 提取id错误
+ERROR 2019-06-05 00:27:58 selectArticle: 提取id错误

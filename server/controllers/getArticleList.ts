@@ -11,8 +11,8 @@ import errorReponseHandle from "../utils/errorReponseHandle.ts";
  *  --查询2行从第0行开始
  * 
  */
-export  async function getArticleList(req: ServerRequest, next){
-    if(req.url.match(/\/api\/getArticleList/)){
+export async function getArticleList(req: ServerRequest, next){
+    if(req.url.indexOf('/api/deno.posts.list') > -1) {
         let matchArr = req.url.match(/\S*page=(\S+)&size=(\S+)/);
         let page:number,size:number;
         if(matchArr && matchArr.length==3){

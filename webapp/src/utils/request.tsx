@@ -1,7 +1,13 @@
 import axios from 'axios'
 
 const productUrl = 'http://localhost:3000'
+const developUrl = 'http://127.0.0.1:8000'
 const customAxios = axios.create()
+
+interface option {
+  basePath?: string,
+  method?: string
+}
 
 customAxios.defaults.withCredentials = true
 customAxios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -17,7 +23,8 @@ const defaultOpt = {
   authFailureHandler: () => {}
 }
 
-export default (apiName, params = {}, opt = {}) => {
+export default (apiName, params = {}, opt: option) => {
+  const { method = 'POST' } = opt
 
   const reqCustom = {
     ...defaultOpt,
@@ -25,11 +32,11 @@ export default (apiName, params = {}, opt = {}) => {
   }
 
   const url = process.env.NODE_ENV === 'development'
-    ? `${reqCustom.basePath}/${apiName}`
+    ? `${developUrl}/${reqCustom.basePath}/${apiName}`
     : `${productUrl}/${reqCustom.basePath}/${apiName}`
 
   return customAxios({
-    method: 'POST',
+    method,
     withCredentials: false,
     responseType: 'json',
     url,

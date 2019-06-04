@@ -1,6 +1,8 @@
 import React from 'react'
 import { Layout, List, Carousel, Button } from 'antd'
+
 import { Page } from 'components'
+import { fetchPostsList } from 'service/posts'
 
 import Item from './components/item'
 import './style.sass'
@@ -19,6 +21,11 @@ export default class Home extends React.Component<any, HomeState> {
     loading: true
   }
   async componentDidMount () {
+    const res = await fetchPostsList({
+      page: 1,
+      size: 10
+    })
+    console.log('res:', res)
     // const res = await request('testapiServer', { aa: 'aa' }, { opt: 'opt' })
     // await sleep(1000)
     this.setState({

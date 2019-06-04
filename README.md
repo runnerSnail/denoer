@@ -23,7 +23,7 @@
 2. 路径/api/getArticle?article_id===12121 为单页面 暂定jquery+html+css编写
 3. 服务端书写简单的模版渲染引擎来渲染页面
 
-## 目前代码 还不符合deno规范 待优化 sql操作也应该封装在model里面更好的分层[带优化]
+## 目前代码 还不符合deno规范 待优化 sql操作也应该封装在model里面更好的分层[待优化]
 
 ## 本站顶部搜索实现
    1. ajax访问谷歌官网 https://www.google.com/
@@ -31,6 +31,10 @@
    3. 超过3秒自动跳转百度搜索
    4. 百度：https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=site:denoer.cn+关键字
    5. 谷歌：https://www.google.com.hk/search?hl=zh-CN&q=site:denoer.cn+关键字
+
+## 接口规范
+
+    /api/deno.模块名.描述.描述(例: 文章列表: /api/deno.posts.list, 文章详情: /api/deno.posts.detailByArticleId)
 
 ## 本站环境
     个人运营，目前采用 1核1G1M。站长会尽力优化以便于提供更优质的服务，如果您愿意支援改善服务配置。本人会为您悬挂一年横幅于本站首页
