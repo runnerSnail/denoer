@@ -225,3 +225,8 @@ ERROR 2019-06-02 17:54:19 查询 article_id:21 失败
 ERROR 2019-06-03 15:30:13 selectArticle: 提取id错误
 ERROR 2019-06-03 15:31:52 selectArticle: 提取id错误
 ERROR 2019-06-03 15:34:14 selectArticle: NotFound: No such file or directory (os error 2)
+ERROR 2019-06-04 00:10:01 updateArticle: TypeError: Cannot set property 'read_num' of undefined
+ERROR 2019-06-04 00:10:27 updateArticle: TypeError: Cannot set property 'read_num' of undefined
+ERROR 2019-06-04 00:12:17 updateArticle: TypeError: Cannot set property 'read_num' of undefined
+ERROR 2019-06-04 00:13:05 updateArticle: TypeError: Cannot set property 'read_num' of undefined
+ERROR 2019-06-04 00:46:00 selectArticle: TypeError: Cannot set property 'hasSupport' of undefined

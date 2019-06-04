@@ -17,16 +17,21 @@ export async function getArticleTemplate(req: ServerRequest, next) {
     let user_id = cookies['user_id'];
 
     try {
+        console.log('runnerSnail')
         article_id = req.url.match(/\/article\.html\?article_id=(\d+)/)[1];
         if (article_id && req.method === 'GET') {
-            let sql = `select * from article where article_id = ${article_id};`;
+            let sql = `select * from article,useres where article.article_id = ${article_id} and useres.gitlab_id = '${user_id}';`;
             let result: any = formatSelectResult(await transaction(sql));
-            let checkHas = await checkSupport('support_article',user_id,article_id)
+            let checkHas = await checkSupport('support_article',user_id,article_id);
+            console.log('nnn')
+            console.log(checkHas)
+            console.log('cccc')
             if(checkHas){
-                result.hasSupport = true;
+                result.has_support = 'true';
             }else{
-                result.hasSupport = false;
+                result.has_support = 'false';
             }
+            console.log(result)
             if (result) {
                 let htmlText = await handleHtmlTemplate('template/article.html',result);
                 reponseUtil(req, {

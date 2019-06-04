@@ -15,6 +15,7 @@ export async function updateArticleSupport(req: ServerRequest, next) {
         let praseBodyString = new TextDecoder().decode(body);
         const params = JSON.parse(praseBodyString);
         article_id = params['article_id'];
+        
         let user_id = params['user_id'];
 
         // 检查是否点过赞

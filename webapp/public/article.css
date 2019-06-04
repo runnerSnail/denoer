@@ -188,7 +188,7 @@ header ul li a i {
 .container {
   margin: 20px auto;
   padding: 0 20px;
-  max-width: 960px;
+  max-width: 750px;
 }
 a {
   text-decoration: none;
@@ -201,7 +201,7 @@ a {
   background: #f0f2f5;
 }
 .comments-container{
-    max-width: 960px;
+    max-width: 750px;
     margin: 20px auto;
 }
 .comment-wrapper .name:hover{

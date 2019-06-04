@@ -10,12 +10,12 @@
     <meta name="keywords" content="deno,deno学习交流,deno论坛,node替代,node,typescript">
     <meta name="description"
         content="A secure runtime for JavaScript and TypeScript built with V8, Rust, and Tokio;deno致力于拥抱前端生态，服务端实现web标准解决node痛点，带给你更友好地服务端体验">
-    <title>文章title</title>
+    <title>${title}</title>
     <link rel="stylesheet" type="text/css" href="/comments/jquery-comments.css">
     <link rel="stylesheet" type="text/css" href="/article.css">
     <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
         rel="stylesheet">
-    <link  href="/comments/github-markdown.min.css" rel="stylesheet">
+    <link href="/comments/github-markdown.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         <ul>
             <div class="logo"></div>
             <li>
-                <a href="/">
+                <a onclick="window.location.href='/'">
                     <i aria-label="icon: mail"><svg viewBox="64 64 896 896" class="" data-icon="mail" width="1em"
                             height="1em" fill="currentColor" aria-hidden="true" focusable="false">
                             <path
@@ -34,9 +34,9 @@
                 </a>
             </li>
             <li>
-                <a href="/post"><i aria-label="icon: appstore" class="anticon anticon-appstore"><svg
-                            viewBox="64 64 896 896" class="" data-icon="appstore" width="1em" height="1em"
-                            fill="currentColor" aria-hidden="true" focusable="false">
+                <a onclick="window.location.href='/post'"><i aria-label="icon: appstore"
+                        class="anticon anticon-appstore"><svg viewBox="64 64 896 896" class="" data-icon="appstore"
+                            width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false">
                             <path
                                 d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z">
                             </path>
@@ -44,61 +44,38 @@
                     我的文章
                 </a>
             </li>
-            <li><a href="/new">新手入门</a></li>
-            <li><a href="/api">deno API</a></li>
-            <li><a href="/about">关于</a></li>
+            <li><a onclick="window.location.href='/new'">新手入门</a></li>
+            <li><a onclick="window.location.href='/api'">deno API</a></li>
+            <li><a onclick="window.location.href='/about'">关于</a></li>
         </ul>
     </header>
-
-    <div class="container">
-        <div class="style_title">文章标题啊啊啊啊啊a</div>
-        <div class="style_introduce__3G5I4">
-            <img src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" class="style_img__19k0w">
-            <div class="style_introduce-detail__2UdjI">
-                <span>Mark Scofield</span>
-                <span>创建时间：2019-03-06</span>
+    <div style="min-height: 650px">
+        <div class="container">
+            <div class="style_title">${title}</div>
+            <div class="style_introduce__3G5I4">
+                <img src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" class="style_img__19k0w">
+                <div class="style_introduce-detail__2UdjI">
+                    <span>${user_name}</span>
+                    <span>创建时间：${add_time}</span>
+                </div>
+            </div>
+            <div class='markdown-body md-wrapper'>
+                ${content}
+            </div>
+            <div class="article_bottom">
+                <span id="clickSupportArea" title="为喜欢的点赞">
+                    <i class="fa fa-heart-o" id="support" ></i><span>点赞: <span
+                            id="support_num">${support_num}</span></span>
+                    <span id="status" style="display: none">${has_support}</span>
+                </span>
+                <i class="fa fa-eye" aria-hidden="true" style="margin-left:30px"></i>阅读量:${read_num}
             </div>
         </div>
-        <div class='markdown-body md-wrapper'>
-            <hr>
-            <p><a href="https://www.baidu.com/">百度</a></p>
-            <h2 id="ccc">ccc</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th align="left">身高</th>
-                        <th align="center">体重</th>
-                        <th align="right">胸围</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td align="left">180m</td>
-                        <td align="center">70kg</td>
-                        <td align="right">160</td>
-                    </tr>
-                    <tr>
-                        <td align="left">170m</td>
-                        <td align="center">60kg</td>
-                        <td align="right">190</td>
-                    </tr>
-                    <tr>
-                        <td align="left">160m</td>
-                        <td align="center">50kg</td>
-                        <td align="right">180</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="article_bottom" >
-            <i class="fa fa-heart-o"></i>点赞:1234变量
-            <i class="fa fa-eye" aria-hidden="true" style="margin-left:30px;"></i>阅读量:12123变量
+        <div class="comments-container" id="comments-container">
         </div>
     </div>
-    <div class="comments-container" id="comments-container">
-
-    </div>
-    <footer class="ant-layout-footer" style="text-align: center; padding-bottom: 50px;">denoer.cn  ©2019 Created by github project denoer members
+    <footer class="ant-layout-footer" style="text-align: center;">denoer.cn ©2019 Created by
+        github project denoer members
     </footer>
     <script type="text/javascript" src="/comments/jquery.min.js"></script>
     <script type="text/javascript" src="/comments/jquery-comments.js"></script>
