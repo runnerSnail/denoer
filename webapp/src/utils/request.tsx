@@ -17,7 +17,7 @@ customAxios.interceptors.response.use(
 )
 
 const defaultOpt = {
-  basePath: '/api',
+  basePath: 'api',
   errorHandler: (err) => {},
   // 未登录跳转
   authFailureHandler: () => {}
@@ -42,7 +42,10 @@ export default (apiName, params = {}, opt: option) => {
     url,
     params
   })
-  .then(res => res)
+  .then(res => {
+    console.log('res:', res)
+    return res
+  })
   .catch(err => {
     console.log('err:', err)
     // 错误捕获。。

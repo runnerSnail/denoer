@@ -248,3 +248,4 @@ ERROR 2019-06-04 00:10:27 updateArticle: TypeError: Cannot set property 'read_nu
 ERROR 2019-06-04 00:12:17 updateArticle: TypeError: Cannot set property 'read_num' of undefined
 ERROR 2019-06-04 00:13:05 updateArticle: TypeError: Cannot set property 'read_num' of undefined
 ERROR 2019-06-04 00:46:00 selectArticle: TypeError: Cannot set property 'hasSupport' of undefined
+ERROR 2019-06-05 22:34:51 selectArticle: 提取id错误

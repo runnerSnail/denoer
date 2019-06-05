@@ -13,7 +13,7 @@ export async function getArticle(req: ServerRequest, next) {
         const cookies = getCookies(req);
         let user_id = cookies['user_id'];
         try {
-            article_id = req.url.match(/\/api\/getArticle\/article_id=(\d.)/)[1];
+            article_id = req.url.match(/\/api\/deno.posts.detailByArticleId\?article_id=(\d.)/)[1];
             if (article_id && req.method === 'GET') {
                 let sql = `select * from article where article_id = ${article_id};`;
                 let result: any = formatSelectResult(await transaction(sql));

@@ -5,7 +5,7 @@ export async function fetchPostsList (params?: object) {
   // const res = await request('getArticleList',
   const res = await request('deno.posts.list',
   { ...params },
-  { basePath: 'api', method: 'GET' })
+  { method: 'GET' })
   return res
 }
 
@@ -27,8 +27,8 @@ export async function fetchUpdatePosts (params: object) {
 
 // get posts detail
 export async function fetchPostsInfo (article_id: number) {
-  const res = await request(`${article_id}`, {
-    article_id
-  }, { basePath: 'api/getacticle', method: 'GET' })
+  const res = await request(`deno.posts.detailByArticleId`, {
+    article_id // ${article_id}
+  }, { basePath: 'api', method: 'GET' })
   return res
 }
