@@ -6,18 +6,21 @@ import styles from './item.module.sass'
 interface itemProps {
   title: string,
   content: string,
-  desc: string,
-  onClick: () => void
+  // desc?: string,
+  onClick: () => void,
+  info: any
 }
 
-export default function ({ title, onClick, content, desc }: itemProps) {
+export default function ({ title, onClick, content, info }: itemProps) {
+  console.log('info:', info)
+  const { support_num = '-', read_num = '-' } = info
   return (
     <List.Item
       key={title}
       actions={[
         <IconText type="star-o" text="156" />,
-        <IconText type="like-o" text="156" />,
-        <IconText type="message" text="2" />,
+        <IconText type="like-o" text={support_num} />,
+        <IconText type="message" text={read_num} />,
       ]}
       extra={
         <img
@@ -30,7 +33,7 @@ export default function ({ title, onClick, content, desc }: itemProps) {
       <List.Item.Meta
         avatar={<Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />}
         title={<span onClick={onClick} className={styles['title']}>{title}</span>}
-        description={desc}
+        // description={content}
       />
       {content}
     </List.Item>

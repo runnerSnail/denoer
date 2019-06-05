@@ -37,11 +37,12 @@ export default class Home extends React.Component<any, HomeState> {
     this.props.history.push(path)
   }
 
-  _renderRow = ({ title = '', desc = '', content = '', article_id, ...args }) => (
+  _renderRow = ({ title = '', desc = '这撒上嘎顺利开工阿说了飞机卡上就撒了阿娇阿拉山口分', content = '', article_id, ...args }) => (
     <Item
       title={title}
-      desc={desc}
+      // desc={desc}
       content={content}
+      info={args}
       onClick={this._jumpTo(`/posts/${article_id}`)}
     />
   )
