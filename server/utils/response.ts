@@ -9,6 +9,8 @@ export default function reponseUtil(req: ServerRequest, res: Response) {
         }
     }
     headers.set("Access-Control-Allow-Origin","*");
+    headers.set("Access-Control-Allow-Credentials","*");
+    headers.set("Access-Control-Allow-Headers","*");
     if (typeof res.body === 'object') {
         body = JSON.stringify(res.body)
     }else{
