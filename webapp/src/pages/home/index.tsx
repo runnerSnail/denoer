@@ -21,36 +21,16 @@ export default class Home extends React.Component<any, HomeState> {
     loading: true
   }
   async componentDidMount () {
-    const res = await fetchPostsList({
+    const { result: dataSource = [] } = await fetchPostsList({
       page: 1,
       size: 10
     })
-    console.log('res:', res)
-    // const res = await request('testapiServer', { aa: 'aa' }, { opt: 'opt' })
-    // await sleep(1000)
     this.setState({
-      dataSource: [
-        {
-          title: '文章1',
-          desc: '描述3描述3描述3描述3描述3描述3描述3描述3',
-          content: 'la;ehgawkl;gwek;lagjhfkjfsaklhlkjhgkjlghslkg',
-          article_id: 111
-        },
-        {
-          title: '文章2',
-          desc: '描述3描述3描述3描述3描述3描述3描述3描述3',
-          content: 'lkwghneioqthasmfnasfuiqtghjbdmnbasfabfqjwtgbajksb',
-          article_id: 2
-        },
-        {
-          title: '文章3',
-          desc: '描述3描述3描述3描述3描述3描述3描述3描述3',
-          content: 'lkwghneioqthasmfnasfuiqtghjbdmnbasfabfqjwtgbajksb',
-          article_id: 3
-        }
-      ],
+      dataSource,
       loading: false
     })
+    // const res = await request('testapiServer', { aa: 'aa' }, { opt: 'opt' })
+    // await sleep(1000)
   }
 
   _jumpTo = (path) => () => {
@@ -92,7 +72,7 @@ export default class Home extends React.Component<any, HomeState> {
         pagination={{
           // showQuickJumper: true,
           total: 21,
-          pageSize: 8,
+          pageSize: 10,
           onChange: (pageNum, pageSize) => {
             console.log('pagination onChange:', pageNum, pageSize)
           }

@@ -250,3 +250,11 @@ ERROR 2019-06-04 00:13:05 updateArticle: TypeError: Cannot set property 'read_nu
 ERROR 2019-06-04 00:46:00 selectArticle: TypeError: Cannot set property 'hasSupport' of undefined
 ERROR 2019-06-05 22:34:51 selectArticle: 提取id错误
 ERROR 2019-06-05 23:21:23 selectArticle: 提取id错误
+ERROR 2019-06-06 00:38:22 selectArticle: 提取id错误
+ERROR 2019-06-06 00:38:32 selectArticle: 提取id错误
+ERROR 2019-06-06 00:38:35 selectArticle: 提取id错误
+ERROR 2019-06-06 00:38:42 selectArticle: 提取id错误
+ERROR 2019-06-06 00:39:14 selectArticle: 提取id错误
+ERROR 2019-06-06 00:39:47 selectArticle: 提取id错误
+ERROR 2019-06-06 00:40:42 selectArticle: 提取id错误
+ERROR 2019-06-06 00:41:19 selectArticle: 提取id错误

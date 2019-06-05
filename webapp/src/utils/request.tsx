@@ -42,10 +42,7 @@ export default (apiName, params = {}, opt: option) => {
     url,
     params
   })
-  .then(res => {
-    console.log('res:', res)
-    return res
-  })
+  .then(res => res.data)
   .catch(err => {
     console.log('err:', err)
     // 错误捕获。。

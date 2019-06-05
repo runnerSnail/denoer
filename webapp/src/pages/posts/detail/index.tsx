@@ -8,29 +8,7 @@ import styles from './style.module.sass'
 
 export default class PostsDetails extends Component<any> {
   state = {
-    content: `#### 哈哈司空见惯哈
-    
-    #### 小表啦啥
-    > 文章的一段引言，一般没有多大的阿婆时光就啊时光就是德国科隆伤筋动骨睡了快到啦就开始嘎时光
-    
-    #### 副标题
-
-    ![黄图](https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png)
-
-    ## 文章标题
-
-    > 文章的一段引言，一般没有多大的阿婆时光就啊时光就是德国科隆伤筋动骨睡了快到啦就开始嘎时光
-
-    #### 副标题
-
-    ![黄图](https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png)
-
-    ## 文章标题
-
-    > 文章的一段引言，一般没有多大的阿婆时光就啊时光就是德国科隆伤筋动骨睡了快到啦就开始嘎时光
-
-    #### 副标题
-    `
+    content: `#### 会嘎舒服 阿说嘎哈说昂那个卡`
   }
   async componentDidMount () {
     const { params = {} } = this.props.match || {}
