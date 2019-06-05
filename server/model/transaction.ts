@@ -5,8 +5,10 @@ export default async function  transaction(sql:string):Promise<string>{
             client = await pool.connect();
             await client.query("BEGIN");
             affect = await client.query(sql);
+            
             await client.query("COMMIT");
         } catch (error) {
+            console.log(error);
             await client.query("ROLLBACK");
             affect = null;
         }finally{
@@ -14,4 +16,4 @@ export default async function  transaction(sql:string):Promise<string>{
         }
         return affect;
 }
-transaction('select * from article order by create_time desc limit 10 offset 0;');
+transaction('select * from article where type = 0  order by create_time desc limit 10 offset 0');

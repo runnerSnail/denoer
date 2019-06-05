@@ -18,7 +18,8 @@ export async function notFound(req: ServerRequest, next) {
         req.url.indexOf("/api/article/clicksupport") > -1 ||
         req.url.indexOf("/api/article/update") > -1 ||
         req.url.indexOf("/login") > -1||
-        req.url.indexOf('/article.html')
+        req.url.indexOf('/article.html')||
+        req.url.indexOf('/api/getGoodArticle')
     ) { }
     else {
         reponseUtil(req, {

@@ -11,6 +11,7 @@ import selectCommit from './select_comment.ts';
 import insertComment from './insert_comment.ts';
 import { notFound } from './notfound.ts';
 import { getArticleTemplate } from './select_article_template.ts';
+import { getGoodArticleList } from './getGoodArticle.ts';
 
 export default {
     createArticle,
@@ -25,5 +26,6 @@ export default {
     selectCommit,
     insertComment,
     notFound,
-    getArticleTemplate
+    getArticleTemplate,
+    getGoodArticleList
 }

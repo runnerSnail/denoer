@@ -85,6 +85,10 @@ app.use(async (req: ServerRequest, next) => {
     await router.updateArticle(req, next);
     await next();
 });
+app.use(async (req: ServerRequest, next) => {
+    await router.getGoodArticleList(req, next);
+    await next();
+})
 // getArticleTemplate
 // 404 
 app.use(async (req: ServerRequest, next) => {

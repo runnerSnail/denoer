@@ -11,35 +11,13 @@ import errorReponseHandle from "../utils/errorReponseHandle.ts";
  *  --查询2行从第0行开始
  * 
  */
-export async function getArticleList(req: ServerRequest, next) {
+export async function getGoodArticleList(req: ServerRequest, next) {
     try {
-        if (req.url.indexOf('/api/deno.posts.list') > -1) {
-            let matchArr = req.url.match(/\S*page=(\S+)&size=(\S+)&type=(\S+)/);
-            let page: number, size: number, type: number;
-            if (matchArr && matchArr.length == 4) {
-                page = parseInt(matchArr[1]);
-                size = parseInt(matchArr[2]);
-                type = parseInt(matchArr[3]);
-                console.log(type);
-            } else {
-                page = 1;
-                size = 10;
-                type = 1;
-            }
-            let sql = `select * from article where (type = ${type} or type = 10)  order by create_time desc limit ${size} offset ${(page-1)*size}`;
+        if (req.url.indexOf('/api/getGoodArticle') > -1) {
+            
+            let sql = `select * from article where type = 4 `;
             console.log(sql);
             let result: any = formatSelectResult(await transaction(sql));
-            console.log(result);
-            let recodersSql = `select count(*) from article where article.type = ${type}`;
-            let recoders: any = formatSelectResult(await transaction(recodersSql));;
-            console.log('recoders');
-            console.log(recoders);
-            result = {
-                data:result,
-                recoders:recoders.count,
-                page,
-                size
-            }
             reponseUtil(req, {
                 body: successHandle(200, result, '查询成功'),
                 status: 200,
