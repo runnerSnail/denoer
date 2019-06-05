@@ -8,10 +8,6 @@ export default function reponseUtil(req: ServerRequest, res: Response) {
             }
         }
     }
-    headers.set("Access-Control-Allow-Origin","http://127.0.0.1:3000");
-    headers.set("Access-Control-Allow-Credentials","*");
-    headers.set("Access-Control-Allow-Headers","*");
-    headers.set("Access-Control-Allow-Credentials","true");
     if (typeof res.body === 'object') {
         body = JSON.stringify(res.body)
     }else{
