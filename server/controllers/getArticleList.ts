@@ -24,6 +24,7 @@ export async function getArticleList(req: ServerRequest, next){
         }
         let sql = `select * from article limit  ${size}  offset  ${(page-1)*size} order by create_time desc`;
         let result: any = formatSelectResult(await transaction(sql));
+        console.log('===>');
         if (result) {
             reponseUtil(req, {
                 body: successHandle(200,result,'查询成功'),

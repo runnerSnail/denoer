@@ -8,6 +8,7 @@ export default function reponseUtil(req: ServerRequest, res: Response) {
             }
         }
     }
+    headers.set("Access-Control-Allow-Origin","*");
     if (typeof res.body === 'object') {
         body = JSON.stringify(res.body)
     }else{
@@ -21,6 +22,8 @@ export default function reponseUtil(req: ServerRequest, res: Response) {
     if (res.headers) {
         response['headers'] = headers;
     }
+    console.log(response['headers'])
+    // response.headers.
     req.respond(response)
 }
 interface Response {

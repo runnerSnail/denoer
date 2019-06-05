@@ -8,7 +8,7 @@ import successHandle from "../utils/successHandle.ts";
 
 
 export default async function insertComment(req: ServerRequest, next) {
-    if (req.url === '/api/insertComment') {
+    if (req.url === '/api/insertCommit') {
         // 提取参数
         let body = await req.body();
         let praseBodyString = new TextDecoder().decode(body);
