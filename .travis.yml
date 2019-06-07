@@ -13,7 +13,7 @@ before_install:
 script: true
 deploy:
   - provider: cloudcontrol
-    email: "xxx.com"
+    email: "gaomengjie_forever@163.com"
     script: run.sh
 addons:
   ssh_known_hosts:
