@@ -11,10 +11,8 @@ before_install:
 # 上传cdn
 - 
 script: true
-deploy:
-  - provider: cloudcontrol
-    email: "gaomengjie_forever@163.com"
-    script: run.sh
+after_success:
+- ssh -tt $user@$ip < ./run.sh
 addons:
   ssh_known_hosts:
   - "$ip"

@@ -1,6 +1,3 @@
-
-ssh -tt $user@$ip;
-
 echo '前端打包'
 cd webapp && npm i && npm run build
 
