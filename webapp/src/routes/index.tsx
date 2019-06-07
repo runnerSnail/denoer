@@ -15,6 +15,14 @@ const routes = [
   ...UserRoutes,
   ...PostsRoutes,
   {
+    root: true,
+    path: '/about',
+    exact: true,
+    component: Loadable({
+      loader: import(/* webpackChunkName: "home" */ '../pages/about')
+    })
+  },
+  {
     component: Loadable({
       loader: import(/* webpackChunkName: "404" */ '../pages/404')
     })

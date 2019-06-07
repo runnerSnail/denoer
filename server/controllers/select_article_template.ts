@@ -20,16 +20,13 @@ export async function getArticleTemplate(req: ServerRequest, next) {
         console.log('runnerSnail')
         article_id = req.url.match(/\/article\.html\?article_id=(\d+)/)[1];
         if (article_id && req.method === 'GET') {
-            let sql = `select * from article,useres where article.article_id = ${article_id} and useres.gitlab_id = '${user_id}';`;
+            let sql = `select * from article,useres where article.article_id = ${article_id} and useres.gitlab_id = article.gitlab_id;`;
             let result: any = formatSelectResult(await transaction(sql));
             let checkHas = await checkSupport('support_article',user_id,article_id);
-            console.log('nnn')
-            console.log(checkHas)
-            console.log('cccc')
             if(checkHas){
-                result.has_support = 'true';
+                result['has_support'] = 'true';
             }else{
-                result.has_support = 'false';
+                result['has_support'] = 'false';
             }
             console.log(result)
             if (result) {

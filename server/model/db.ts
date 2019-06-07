@@ -1,5 +1,5 @@
 import { Pool } from "../dependcy/dep.ts";
-import  {dbConfig} from '../config/set_json.ts';
+import { dbConfig } from '../config/set_json.ts';
 
 // 创建连接池
 const pool = new Pool({

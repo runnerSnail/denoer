@@ -4,9 +4,10 @@ import reponseUtil from "../utils/response.ts";
 import successHandle from "../utils/successHandle.ts";
 import { getCookies } from "../dependcy/dep.ts";
 export async function notFound(req: ServerRequest, next) {
+
     if (
-        req.url !== undefined ||
-        req.url !== '/' ||
+        req.url === undefined ||
+        req.url === '/' ||
         req.url.indexOf("/home") > -1 ||
         req.url.indexOf("/api/creatArticle") > -1 ||
         req.url.indexOf("/api/getArticleList") > -1 ||
@@ -18,9 +19,10 @@ export async function notFound(req: ServerRequest, next) {
         req.url.indexOf("/api/article/clicksupport") > -1 ||
         req.url.indexOf("/api/article/update") > -1 ||
         req.url.indexOf("/login") > -1||
-        req.url.indexOf('/article.html')||
-        req.url.indexOf('/api/getGoodArticle')
-    ) { }
+        req.url.indexOf('/article.html')>-1||
+        req.url.indexOf('/api/getGoodArticle')>-1
+    ) { 
+    }
     else {
         reponseUtil(req, {
             body: {

@@ -1,9 +1,8 @@
 import Onion from './config/http_compose/onion.ts';
 import { ServerRequest } from './dependcy/dep.ts';
-import { setLogger } from './log/config.ts';
+import { setLogger,getLogger } from './log/config.ts';
 import router from './controllers/index.ts';
 import reponseUtil from './utils/response.ts';
-
 const app = new Onion();
 
 /**
@@ -18,7 +17,7 @@ setLogger().then(() => {
  * 配置路由
  */
 app.use(async (req: ServerRequest, next) => {
-    console.log(req.url);
+    getLogger().info(req.url);
     await router.createArticle(req, next);
     await next();
 });

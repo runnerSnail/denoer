@@ -21,12 +21,12 @@ export default class Home extends React.Component<any, HomeState> {
     loading: true
   }
   async componentDidMount () {
-    const { result: dataSource = [] } = await fetchPostsList({
+    const { result } = await fetchPostsList({
       page: 1,
       size: 10
     })
     this.setState({
-      dataSource,
+      dataSource:result.data,
       loading: false
     })
     // const res = await request('testapiServer', { aa: 'aa' }, { opt: 'opt' })

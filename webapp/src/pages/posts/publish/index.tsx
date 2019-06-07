@@ -57,10 +57,9 @@ class Publish extends React.Component<any, State> {
             })(<Select
               style={{ width: 100 }}
             >
-              <Select.Option value='client'>客户端</Select.Option>
-              <Select.Option value='server'>服务端</Select.Option>
+              <Select.Option value='client'>文章</Select.Option>
+              <Select.Option value='server'>分享</Select.Option>
               <Select.Option value='answer'>问答</Select.Option>
-              <Select.Option value='jd'>招聘</Select.Option>
             </Select>)}
           </Form.Item>
         </div>

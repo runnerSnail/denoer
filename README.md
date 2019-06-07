@@ -11,7 +11,7 @@
 
 ## 后端实现
 
-    . deno + deno-postgresql + 自封的web中间件[http_compose] config目录下面
+    . deno + deno-postgresql + 简单封装的一层web中间件[http_compose] config目录下面
 
     . dependcy 下面的 dep.ts 是所有三方包的的导入入口
 
