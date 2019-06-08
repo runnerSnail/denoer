@@ -293,3 +293,7 @@ ERROR 2019-06-07 22:23:10 selectArticle: TypeError: Cannot set property 'has_sup
 ERROR 2019-06-07 22:23:41 selectArticle: TypeError: Cannot set property 'has_support' of null
 ERROR 2019-06-07 22:23:52 查询 article_id:21 失败
 ERROR 2019-06-07 22:26:28 selectArticle: TypeError: Cannot set property 'has_support' of null
+ERROR 2019-06-08 17:59:25 selectArticle: 提取id错误
+ERROR 2019-06-08 17:59:39 selectArticle: 提取id错误
+ERROR 2019-06-08 18:00:42 selectArticle: 提取id错误
+ERROR 2019-06-08 18:00:52 selectArticle: 提取id错误

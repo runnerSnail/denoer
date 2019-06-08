@@ -27,7 +27,8 @@ function Txt() {
             <h1 className="margin-10">
                 deno简介
           </h1>
-            deno 是node之父致力于实现浏览器标准的、typescript、服务端脚本安全运行环境，预计夏天结束会推出第一个正式版本
+            “A secure runtime for JavaScript and TypeScript built with V8, Rust, and Tokio”<br/>
+            deno 是node之父致力于实现浏览器标准的、typescript、服务端脚本安全运行环境，预计夏天结束会推出第一个正式版本。<br/>
             <h1 className="margin-10">
                 本站简介
           </h1>
@@ -42,7 +43,7 @@ function Txt() {
             <h1 className="margin-10">
                 共建入口
           </h1>
-            您想参与网站建设请提交pr<a href="https://github.com/runnerSnail/denoer">项目地址</a><br />
+            您想参与网站建设请提交pr至---><a href="https://github.com/runnerSnail/denoer">项目地址</a><br />
 
             <h1 className="margin-20">QQ交流群: 698469316</h1>
 

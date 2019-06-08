@@ -21,6 +21,13 @@ const routes = [
     component: Loadable({
       loader: import(/* webpackChunkName: "home" */ '../pages/about')
     })
+  },{
+    root: true,
+    path: '/new',
+    exact: true,
+    component: Loadable({
+      loader: import(/* webpackChunkName: "home" */ '../pages/new')
+    })
   },
   {
     component: Loadable({
