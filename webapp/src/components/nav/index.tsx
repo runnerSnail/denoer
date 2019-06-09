@@ -49,17 +49,15 @@ export default class Nav extends React.PureComponent<any, NavState> {
   public render() {
     return (
       <Header className={styles['header-wrapper']}>
-        <div className={styles['logo']} />
+        <div className={styles['logo']}> </div>
         <Menu
-          // theme='dark'
           mode='horizontal'
-          // defaultSelectedKeys={['2']}
           className={styles['menu']}
         >
           <Menu.Item key='1' title='nav1' onClick={this._jumpTo('/')}>
             <Icon type='mail' />首页
           </Menu.Item>
-          <Menu.Item key='2' title='nav2' onClick={this._jumpTo('/article.html?article_id=21')}>
+          <Menu.Item key='2' title='nav2' onClick={this._jumpTo('/myarticle')}>
             <Icon type="appstore" />我的文章
           </Menu.Item>
           <Menu.Item key='3' title='nav3' onClick={this._jumpTo('/new')}>

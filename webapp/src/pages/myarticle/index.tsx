@@ -47,29 +47,14 @@ export default class Home extends React.Component<any, HomeState> {
     />
   )
 
-  _listHeader = () => (
-    <div className='list-header'>
-      <span>全部</span>
-      <span>精华</span>
-      <span>分享</span>
-      <span>问答</span>
-      <span>测试</span>
-    </div>
-  )
 
   _renderContent = () => (
     <Content>
-      <Carousel dots autoplay>
-        <div>
-          <img className="image-logo" src="https://denoer-1255609850.cos.ap-chengdu.myqcloud.com/logo-1.jpg" alt=""/>
-        </div>
-      </Carousel>
       <List
         loading={this.state.loading}
         itemLayout='vertical'
         dataSource={this.state.dataSource}
         renderItem={this._renderRow}
-        header={this._listHeader()}
         pagination={{
           // showQuickJumper: true,
           total: 21,
@@ -82,28 +67,6 @@ export default class Home extends React.Component<any, HomeState> {
     </Content>
   )
 
-  _renderSider = () => (
-    <Sider
-      className='sider'
-      style={{ marginLeft: 50 }}
-    >
-      <div className='sider-wrapper'>
-        <div className='sider-desc'>
-          <img src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' className='sider-avator' />
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: 14 }}>runSnail</span>
-            <span style={{ fontSize: 12, marginTop: 10 }}>个人说明: 人生如棋，我愿为卒，行动虽慢，可谁见我后退一步。</span>
-          </div>
-        </div>
-        <div className='sider-btn'>
-          <Button size='small' type='primary' onClick={this._jumpTo('/publish')}>发表文章</Button>
-          <Button size='small' type='primary'>撰写文章</Button>
-          <Button size='small' type='primary'>分享资源</Button>
-        </div>
-      </div>
-      {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#999', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))}
-    </Sider>
-  )
   render () {
     return (
       <Page
@@ -111,7 +74,6 @@ export default class Home extends React.Component<any, HomeState> {
       >
         <Layout className='wrapper'>
           {this._renderContent()}
-          {this._renderSider()}
         </Layout>
       </Page>
     )

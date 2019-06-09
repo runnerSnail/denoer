@@ -15,7 +15,7 @@ export async function getGoodArticleList(req: ServerRequest, next) {
     try {
         if (req.url.indexOf('/api/getGoodArticle') > -1) {
             
-            let sql = `select * from article where type = 4 `;
+            let sql = `select * from article where type = 10 `;
             console.log(sql);
             let result: any = formatSelectResult(await transaction(sql));
             reponseUtil(req, {

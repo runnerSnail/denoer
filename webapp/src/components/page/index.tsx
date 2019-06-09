@@ -14,7 +14,7 @@ export default class Page extends React.Component {
       <Nav {...this.props} />
       {children}
       <Footer style={{ textAlign: 'center', paddingBottom: 50 }}>
-          {`Denoer ©2019 Created from `}<a href="https://github.com/runnerSnail/denoer">github</a>
+          {`Denoer ©2019 Created  `}
         </Footer>
     </Layout>
     )

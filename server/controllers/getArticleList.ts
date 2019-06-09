@@ -16,6 +16,7 @@ export async function getArticleList(req: ServerRequest, next) {
         if (req.url.indexOf('/api/deno.posts.list') > -1) {
             let matchArr = req.url.match(/\S*page=(\S+)&size=(\S+)&type=(\S+)/);
             let page: number, size: number, type: number;
+            let typesql;
             if (matchArr && matchArr.length == 4) {
                 page = parseInt(matchArr[1]);
                 size = parseInt(matchArr[2]);
@@ -26,14 +27,12 @@ export async function getArticleList(req: ServerRequest, next) {
                 size = 10;
                 type = 1;
             }
-            let sql = `select * from article where (type = ${type} or type = 10)  order by create_time desc limit ${size} offset ${(page-1)*size}`;
-            console.log(sql);
+            if(type == 1) typesql = `(type = 1 or type = 10)`;
+            else{ typesql = `type = ${type}`;}
+            let sql = `select * from article where ${typesql}  order by create_time desc limit ${size} offset ${(page-1)*size}`;
             let result: any = formatSelectResult(await transaction(sql));
-            console.log(result);
             let recodersSql = `select count(*) from article where article.type = ${type}`;
             let recoders: any = formatSelectResult(await transaction(recodersSql));;
-            console.log('recoders');
-            console.log(recoders);
             result = {
                 data:result,
                 recoders:recoders.count,
