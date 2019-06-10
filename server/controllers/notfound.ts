@@ -10,14 +10,14 @@ export async function notFound(req: ServerRequest, next) {
         req.url === '/' ||
         req.url.indexOf("/home") > -1 ||
         req.url.indexOf("/api/deno.posts.creatPosts") > -1 ||
-        req.url.indexOf("/api/getArticleList") > -1 ||
+        req.url.indexOf("/api/deno.posts.list") > -1 ||
         req.url.indexOf("/api/getUserInfo") > -1 ||
         req.url.indexOf("/api/insertComment") > -1 ||
         req.url.indexOf("/api/selectComment") > -1 ||
-        req.url.indexOf("/api/getArticle") > -1 ||
+        req.url.indexOf("/api/deno.posts.detailByArticleId") > -1 ||
         req.url.indexOf("/api/comment/clicksupport") > -1 ||
         req.url.indexOf("/api/article/clicksupport") > -1 ||
-        req.url.indexOf("/api/article/update") > -1 ||
+        req.url.indexOf("/api/deno.posts.update") > -1 ||
         req.url.indexOf("/login") > -1||
         req.url.indexOf('/article.html')>-1||
         req.url.indexOf('/api/getGoodArticle')>-1

@@ -7,8 +7,7 @@ import setUpdateSql from "../utils/updateHandle.ts";
 import reponseUtil from "../utils/response.ts";
 export async function updateArticle(req:ServerRequest,next){
     
-    if(!(req.url.indexOf('/api/article/update')>-1)) return;
-    
+    if(!(req.url.indexOf('/api/deno.posts.update')>-1)) return;
     try {
         let article_id:string;
         let body = await req.body();
