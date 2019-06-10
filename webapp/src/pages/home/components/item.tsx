@@ -12,13 +12,12 @@ interface itemProps {
 }
 
 export default function ({ title, onClick, content, info }: itemProps) {
-  console.log('info:', info)
   const { support_num = '-', read_num = '-' } = info
   return (
     <List.Item
       key={title}
       actions={[
-        <IconText type="star-o" text="156" />,
+        // <IconText type="star-o" text="156" />,
         <IconText type="like-o" text={support_num} />,
         <IconText type="message" text={read_num} />,
       ]}
@@ -35,7 +34,7 @@ export default function ({ title, onClick, content, info }: itemProps) {
         title={<span onClick={onClick} className={styles['title']}>{title}</span>}
         // description={content}
       />
-      {content}
+      {content.length > 50 ? content.slice(0, 50) + '...' : content}
     </List.Item>
   )
 }

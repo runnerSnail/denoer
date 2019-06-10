@@ -13,7 +13,7 @@ export async function getArticle(req: ServerRequest, next) {
         const cookies = getCookies(req);
         let user_id = cookies['user_id'];
         try {
-            article_id = req.url.match(/\/api\/deno.posts.detailByArticleId\?article_id=(\d.)/)[1];
+            article_id = req.url.match(/\d+$/)[0];
             if (article_id && req.method === 'GET') {
                 let sql = `select * from article where article_id = ${article_id};`;
                 let result: any = formatSelectResult(await transaction(sql));
@@ -25,7 +25,7 @@ export async function getArticle(req: ServerRequest, next) {
                 }
                 if (result) {
                     reponseUtil(req, {
-                        body: successHandle(200,result,'文章查询失败'),
+                        body: successHandle(200,result,'文章查询成功'),
                         status:200,
                         headers:{
                             "Content-Type":"application/json"

@@ -21,7 +21,7 @@ class Publish extends React.Component<any, State> {
 
   componentDidMount () {
     /** 根据 article_id 查询文章详情 */
-    fetchPostsInfo(1)
+    fetchPostsInfo(122)
   }
 
   handleSubmit = (e) => {
@@ -86,15 +86,9 @@ class Publish extends React.Component<any, State> {
 
   _renderSider = () => (
     <Sider
-      className='sider'
-      style={{
-        marginLeft: 50,
-        backgroundColor: 'rgb(240, 242, 245)'
-      }}
+      className={`sider ${styles['sider-container']}`}
     >
-      <div style={{ width: 300, height: 200, background: '#999', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>
-      <div style={{ width: 300, height: 200, background: '#aaa', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>
-      <div style={{ width: 300, height: 200, background: '#bbb', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>
+      {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#bbb', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))}
     </Sider>
   )
 

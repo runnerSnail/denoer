@@ -18,29 +18,27 @@ export default class Home extends React.Component<any, HomeState> {
 
   state= {
     dataSource: [],
-    loading: true
+    loading: true,
+    recoders: 1,
+    size: 10
+  }
+
+  _getData = async ({ page = 1, size = 10 }) => {
+    const { result: {data = [], recoders = 1} = {} } = await fetchPostsList({ page, size })
+    console.log('文章列表:', data, recoders, page)
+    this.setState({ dataSource: data, loading: false, recoders, page })
   }
   async componentDidMount () {
-    const { result } = await fetchPostsList({
-      page: 1,
-      size: 10
-    })
-    this.setState({
-      dataSource:result.data,
-      loading: false
-    })
-    // const res = await request('testapiServer', { aa: 'aa' }, { opt: 'opt' })
-    // await sleep(1000)
+    this._getData({ page: 1, size: 10 })
   }
 
   _jumpTo = (path) => () => {
     this.props.history.push(path)
   }
 
-  _renderRow = ({ title = '', desc = '这撒上嘎顺利开工阿说了飞机卡上就撒了阿娇阿拉山口分', content = '', article_id, ...args }) => (
+  _renderRow = ({ title = '', desc = '', content = '', article_id, ...args }) => (
     <Item
       title={title}
-      // desc={desc}
       content={content}
       info={args}
       onClick={this._jumpTo(`/posts/${article_id}`)}
@@ -72,10 +70,12 @@ export default class Home extends React.Component<any, HomeState> {
         header={this._listHeader()}
         pagination={{
           // showQuickJumper: true,
-          total: 21,
-          pageSize: 10,
-          onChange: (pageNum, pageSize) => {
-            console.log('pagination onChange:', pageNum, pageSize)
+          total: this.state.recoders,
+          pageSize: this.state.size,
+          onChange: (page, size) => {
+            this.setState({ page, size }, () => {
+              this._getData({ page, size })
+            })
           }
         }}
       />

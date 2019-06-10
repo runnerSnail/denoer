@@ -26,7 +26,7 @@ export default class Home extends React.Component<any, HomeState> {
       size: 10
     })
     this.setState({
-      dataSource:result.data,
+      dataSource: result.data,
       loading: false
     })
     // const res = await request('testapiServer', { aa: 'aa' }, { opt: 'opt' })
