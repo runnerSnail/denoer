@@ -11,9 +11,9 @@ export async function fetchPostsList (params?: object) {
 
 // publish posts
 export async function fetchPublishPosts (params: object) {
-  const res = await request('create', {
+  const res = await request('deno.posts.creatPosts', {
     ...params
-  }, { basePath: '/api/article' })
+  }, { method: 'POST' })
   return res
 }
 

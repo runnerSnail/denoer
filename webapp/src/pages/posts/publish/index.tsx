@@ -26,19 +26,21 @@ class Publish extends React.Component<any, State> {
 
   handleSubmit = (e) => {
     const { validateFields: V } = this.props.form
+    const { content } = this.state
+    if (!content) return
     e.preventDefault()
     V(async (err, values) => {
       if (!err) {
         console.log('values:', values)
         /** 根据是否有 article_id 判断是更新文章还是创建文章 */
-        await fetchPublishPosts({...values})
-        await fetchUpdatePosts({ ...values })
+        await fetchPublishPosts({...values, content, user_id: '123'})
+        // await fetchUpdatePosts({ ...values })
       }
       console.log('err:', err)
     })
   }
 
-  handleChange = (event: { target }) => { this.setState({ content: Marked(event.target.value) }) }
+  handleChange = (event: { target }) => { this.setState({ content: event.target.value }) }
 
   _renderContent = () => {
     const { getFieldDecorator: D, getFieldsValue: G } = this.props.form
@@ -76,7 +78,7 @@ class Publish extends React.Component<any, State> {
           {
             content &&
             <div className={`markdown-body ${styles['md-wrapper']}`}>
-              <div dangerouslySetInnerHTML={{ __html: this.state.content }} />
+              <div dangerouslySetInnerHTML={{ __html: Marked(this.state.content) }} />
             </div>
           }
         </div>

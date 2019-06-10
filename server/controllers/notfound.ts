@@ -9,7 +9,7 @@ export async function notFound(req: ServerRequest, next) {
         req.url === undefined ||
         req.url === '/' ||
         req.url.indexOf("/home") > -1 ||
-        req.url.indexOf("/api/creatArticle") > -1 ||
+        req.url.indexOf("/api/deno.posts.creatPosts") > -1 ||
         req.url.indexOf("/api/getArticleList") > -1 ||
         req.url.indexOf("/api/getUserInfo") > -1 ||
         req.url.indexOf("/api/insertComment") > -1 ||

@@ -6,14 +6,18 @@ import successHandle from "../utils/successHandle.ts";
 import formatSelectResult from "../model/format.ts";
 import reponseUtil from "../utils/response.ts";
 export async function createArticle(req: ServerRequest, next) {
-    if (req.url === "/api/creatArticle") {
+    if (req.url.indexOf('/api/deno.posts.creatPosts') > -1) {
         let body = await req.body();
         let praseBodyString = new TextDecoder().decode(body);
         const params = JSON.parse(praseBodyString);
-        if (!params['title'] && !params['content']) {
+        const {
+            title = '', content = '', read_num = 0,
+            support_num = 0, type = 1, gitlab_id = ''
+        } = params || {}
+        if (!title && !content) {
             req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, '标题内容不能为空')), status: 200 });
         }
-        let sql = `INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "gitlab_id") VALUES('${params['title']}', '${params['content']}', ${params['read_num'] || 0}, ${params['support_num'] || 0}, ${params['type'] || 1}, ${params['gitlab_id']}) RETURNING  "article_id";`
+        let sql = `INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "gitlab_id") VALUES('${title}', '${content}', ${read_num}, ${support_num}, ${type}, ${gitlab_id}) RETURNING  "article_id";`
         let result: any = formatSelectResult(await transaction(sql));
         if (result) {
             reponseUtil(req, {
