@@ -13,7 +13,6 @@ interface itemProps {
 
 export default function ({ title, onClick, content, info }: itemProps) {
   const { support_num = '-', read_num = '-', img } = info
-  console.log('文章列:', info)
   return (
     <List.Item
       key={title}

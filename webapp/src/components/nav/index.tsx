@@ -47,12 +47,14 @@ export default class Nav extends React.PureComponent<any, NavState> {
     }, 3000)
   }
   public render() {
+    const { selectKey } = this.props
     return (
       <Header className={styles['header-wrapper']}>
         <div className={styles['logo']}> </div>
         <Menu
           mode='horizontal'
           className={styles['menu']}
+          defaultSelectedKeys={[selectKey || '1']}
         >
           <Menu.Item key='1' title='nav1' onClick={this._jumpTo('/')}>
             <Icon type='mail' />首页
@@ -63,7 +65,7 @@ export default class Nav extends React.PureComponent<any, NavState> {
           <Menu.Item key='3' title='nav3' onClick={this._jumpTo('/new')}>
             资源汇总
           </Menu.Item>
-          <Menu.Item key='5' title='nav5' onClick={this._jumpTo('/about')}>
+          <Menu.Item key='4' title='nav5' onClick={this._jumpTo('/about')}>
             <Icon type="user" />关于
           </Menu.Item>
           <Search

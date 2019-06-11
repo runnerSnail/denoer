@@ -6,7 +6,7 @@ import { Nav } from 'components'
 const { Footer } = Layout
 
 
-export default class Page extends React.Component {
+export default class Page extends React.Component<any> {
   render () {
     const { children } = this.props
     return (

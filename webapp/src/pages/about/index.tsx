@@ -10,7 +10,7 @@ export default function About(props: RouteComponentProps<{}>) {
         history.push(path)
     }
     return (
-        <Page {...props}>
+        <Page {...props} selectKey='4'>
             <Layout>
                 <div className='markdown-about'>
                     {Txt()}

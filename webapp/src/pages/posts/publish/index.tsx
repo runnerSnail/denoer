@@ -4,6 +4,7 @@ import Marked from 'marked'
 
 import { Page } from 'components' // Nav
 import { fetchPostsInfo, fetchPublishPosts, fetchUpdatePosts } from 'service/posts'
+import { TYPE_ARRAY } from 'utils'
 
 import styles from './style.module.sass'
 
@@ -75,13 +76,13 @@ class Publish extends React.Component<any, State> {
           <Form.Item>
             {D('type', {
               rules: [{ required: true, message: '板块类型必填' }],
-              initialValue: `${type}`
+              initialValue: type
             })(<Select
               style={{ width: 100 }}
             >
-              <Select.Option value='1'>文章</Select.Option>
-              <Select.Option value='2'>分享</Select.Option>
-              <Select.Option value='3'>问答</Select.Option>
+              {TYPE_ARRAY.map(({ key, value }) => (
+                <Select.Option value={key}>{value || '-'}</Select.Option>
+              ))}
             </Select>)}
           </Form.Item>
         </div>

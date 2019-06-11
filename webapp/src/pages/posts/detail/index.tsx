@@ -37,7 +37,7 @@ export default class PostsDetails extends Component<any> {
             />
             <div className={styles['introduce-detail']}>
               <span>Mark Scofield</span>
-              <span>{`点赞${support_num || '-'}个，阅读${read_num || '-'}次`}</span>
+              <span>{`点赞 ${support_num || '0'} 个，阅读 ${read_num || '0'} 次`}</span>
             </div>
           </div>
           <img src={img || defaultImg} style={{ height: 'auto', width: '100%', marginTop: 20 }} />

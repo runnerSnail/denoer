@@ -1,12 +1,12 @@
 import React from 'react'
 import { Layout, List, Carousel, Button } from 'antd'
-import isEmpty from 'lodash/isEmpty'
+// import isEmpty from 'lodash/isEmpty'
 
 import { Page } from 'components'
 import { fetchPostsList } from 'service/posts'
 
 import Item from './components/item'
-import { TYPE_ARRAY } from './const'
+import { TYPE_ARRAY } from 'utils'
 import './style.sass'
 
 const { Content, Footer, Sider } = Layout
@@ -31,7 +31,6 @@ export default class Home extends React.Component<any, any> {
     this.setState({ loading: true })
     try {
       const { result: {data = [], recoders = 1} = {} } = await fetchPostsList({ page, size, type })
-      console.log('文章列表:', data, recoders, page)
       this.setState({ dataSource: data, loading: false, recoders, page })
     } catch (err) {
       this.setState({ loading: false, dataSource: [] })
@@ -45,10 +44,10 @@ export default class Home extends React.Component<any, any> {
     this.props.history.push(path)
   }
 
-  _renderRow = ({ title = '', desc = '', content = '', article_id, ...args }) => (
+  _renderRow = ({ title = '', desc = '', article_content = '', article_id, ...args }) => (
     <Item
       title={title}
-      content={content}
+      content={article_content}
       info={args}
       onClick={this._jumpTo(`/posts/${article_id}`)}
     />
@@ -123,7 +122,7 @@ export default class Home extends React.Component<any, any> {
         <div className='sider-btn'>
           <Button size='small' type='primary' onClick={this._jumpTo('/publish')} className='sider-btn-publish'>发表文章</Button>
           <Button size='small' type='primary'>撰写文章</Button>
-          <Button size='small' type='primary' style={{ background: '#f00', borderColor: '#fff' }}>分享资源</Button>
+          <Button size='small' type='primary'>分享资源</Button>
         </div>
       </div>
       {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#999', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))}
@@ -133,6 +132,7 @@ export default class Home extends React.Component<any, any> {
     return (
       <Page
         {...this.props}
+        selectKey='1'
       >
         <Layout className='wrapper'>
           {this._renderContent()}
