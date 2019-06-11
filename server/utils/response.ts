@@ -1,4 +1,5 @@
 import { ServerRequest } from "../dependcy/dep.ts";
+import { getLogger } from "../log/config.ts";
 export default function reponseUtil(req: ServerRequest, res: Response) {
     let headers = new Headers(), body: string;
     if (res.headers) {
@@ -13,7 +14,7 @@ export default function reponseUtil(req: ServerRequest, res: Response) {
     }else{
         body = res.body;
     }
-
+    getLogger().info(`打印response: ${body}`)
     let response:any = {
         body: new TextEncoder().encode(body),
         status: res.status
@@ -21,8 +22,6 @@ export default function reponseUtil(req: ServerRequest, res: Response) {
     if (res.headers) {
         response['headers'] = headers;
     }
-    console.log(response['headers'])
-    // response.headers.
     req.respond(response)
 }
 interface Response {

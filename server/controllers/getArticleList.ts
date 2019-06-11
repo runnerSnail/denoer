@@ -32,7 +32,8 @@ export async function getArticleList(req: ServerRequest, next) {
             let sql = `select * from article where ${typesql}  order by create_time desc limit ${size} offset ${(page-1)*size}`;
             let result: any = formatSelectResult(await transaction(sql));
             let recodersSql = `select count(*) from article where article.type = ${type}`;
-            let recoders: any = formatSelectResult(await transaction(recodersSql));;
+            let recoders: any = formatSelectResult(await transaction(recodersSql));
+            getLogger().info(`开始返回`)
             result = {
                 data:result,
                 recoders:recoders.count,
