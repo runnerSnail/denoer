@@ -14,7 +14,7 @@ export default class Page extends React.Component {
       <Nav {...this.props} />
       {children}
       <Footer style={{ textAlign: 'center', paddingBottom: 50 }}>
-          {`Denoer ©2019 Created  `}
+          {`Denoer ©2019 Created By runSnail & OnlyFlyer`}
         </Footer>
     </Layout>
     )

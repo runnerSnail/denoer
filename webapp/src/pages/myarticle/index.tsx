@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, List, Carousel, Button } from 'antd'
+import { Layout, List } from 'antd' // Carousel, Button
 
 import { Page } from 'components'
 import { fetchPostsList } from 'service/posts'
@@ -7,7 +7,7 @@ import { fetchPostsList } from 'service/posts'
 import Item from './components/item'
 import './style.sass'
 
-const { Content, Footer, Sider } = Layout
+const { Content } = Layout // Footer, Sider
 
 interface HomeState {}
 
@@ -18,19 +18,18 @@ export default class Home extends React.Component<any, HomeState> {
 
   state= {
     dataSource: [],
-    loading: true
+    loading: true,
+    recoders: 1,
+    size: 10
   }
   async componentDidMount () {
-    const { result } = await fetchPostsList({
-      page: 1,
-      size: 10
-    })
-    this.setState({
-      dataSource: result.data,
-      loading: false
-    })
-    // const res = await request('testapiServer', { aa: 'aa' }, { opt: 'opt' })
-    // await sleep(1000)
+    this._getData({ page: 1, size: 10 })
+  }
+
+  _getData = async ({ page, size }) => {
+    this.setState({ loading: true })
+    const { result: {data = [], recoders = 1} = {} } = await fetchPostsList({ page, size })
+    this.setState({ dataSource: data, loading: false, recoders, page })
   }
 
   _jumpTo = (path) => () => {
@@ -57,10 +56,12 @@ export default class Home extends React.Component<any, HomeState> {
         renderItem={this._renderRow}
         pagination={{
           // showQuickJumper: true,
-          total: 21,
-          pageSize: 10,
-          onChange: (pageNum, pageSize) => {
-            console.log('pagination onChange:', pageNum, pageSize)
+          total: this.state.recoders,
+          pageSize: this.state.size,
+          onChange: (page, size) => {
+            this.setState({ page, size }, () => {
+              this._getData({ page, size })
+            })
           }
         }}
       />
@@ -72,7 +73,7 @@ export default class Home extends React.Component<any, HomeState> {
       <Page
         {...this.props}
       >
-        <Layout className='wrapper'>
+        <Layout className='my-article'>
           {this._renderContent()}
         </Layout>
       </Page>

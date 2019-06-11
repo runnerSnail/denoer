@@ -6,7 +6,7 @@ export default function setUpdateSql(tablename: string, whereValue: {
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
             if(key==='support_num' || key==='read_num'){
-                sql+=` ${key} = ${key} + 1,`
+                sql+=` ${key} = ${obj[key]} + 1,`
             }else{
                 sql+=` ${key} = ${obj[key]},`;
             }

@@ -11,17 +11,28 @@ const { Content, Sider } = Layout
 const { TextArea } = Input
 
 interface State {
-  content: string
+  content: string,
+  type?: string,
+  title?: string,
+  img?: string
 }
 class Publish extends React.Component<any, State> {
 
   state = {
-    content: ''
+    content: '',
+    type: '1',
+    title: '',
+    img: ''
   }
 
   componentDidMount () {
     /** 根据 article_id 查询文章详情 */
-    fetchPostsInfo(122)
+    this._getData(116)
+  }
+
+  _getData = async (article_id) => {
+    const { result = {} } = await fetchPostsInfo(article_id)
+    this.setState({ ...result })
   }
 
   handleSubmit = (e) => {
@@ -33,8 +44,8 @@ class Publish extends React.Component<any, State> {
       if (!err) {
         console.log('values:', values)
         /** 根据是否有 article_id 判断是更新文章还是创建文章 */
-        await fetchPublishPosts({...values, content, user_id: '123'})
-        // await fetchUpdatePosts({ ...values })
+        // await fetchPublishPosts({...values, content, user_id: '123'})
+        await fetchUpdatePosts({ ...values, content, article_id: '123' })
       }
       console.log('err:', err)
     })
@@ -44,7 +55,7 @@ class Publish extends React.Component<any, State> {
 
   _renderContent = () => {
     const { getFieldDecorator: D, getFieldsValue: G } = this.props.form
-    const { content = '' } = this.state
+    const { content = '', type = '', title = '', img = '' } = this.state
     console.log(content);
     let editSty = content
       ? { flex: 1, height: 'auto', marginRight: 20, minHeight: '500px', maxHeight: '700px' }
@@ -55,26 +66,31 @@ class Publish extends React.Component<any, State> {
           <span style={{ marginRight: 5 }}>选择板块:</span>
           <Form.Item>
             {D('type', {
-              rules: [{ required: true, message: '板块类型必填' }]
+              rules: [{ required: true, message: '板块类型必填' }],
+              initialValue: `${type}`
             })(<Select
               style={{ width: 100 }}
             >
-              <Select.Option value='client'>文章</Select.Option>
-              <Select.Option value='server'>分享</Select.Option>
-              <Select.Option value='answer'>问答</Select.Option>
+              <Select.Option value='1'>文章</Select.Option>
+              <Select.Option value='2'>分享</Select.Option>
+              <Select.Option value='3'>问答</Select.Option>
             </Select>)}
           </Form.Item>
         </div>
         <Form.Item>
           {D('title', {
-            rules: [{ required: true, message: '标题必填' }]
+            rules: [{ required: true, message: '标题必填' }],
+            initialValue: title
+
           })(<Input placeholder='标题字数 10 字以上' style={{ width: 500 }} />)}
         </Form.Item>
         <Form.Item>
-          {D('img')(<Input placeholder='主图链接' style={{ width: 500 }} />)}
+          {D('img', {
+            initialValue: img
+          })(<Input placeholder='主图链接' style={{ width: 500 }} />)}
         </Form.Item>
         <div style={{ marginTop: 10, display: 'flex', flexDirection: 'row', width: '100%' }}>
-          <TextArea onChange={this.handleChange} style={editSty} />
+          <TextArea onChange={this.handleChange} style={editSty} value={this.state.content} />
           {
             content &&
             <div className={`markdown-body ${styles['md-wrapper']}`}>

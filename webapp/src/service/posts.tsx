@@ -19,9 +19,9 @@ export async function fetchPublishPosts (params: object) {
 
 // update posts
 export async function fetchUpdatePosts (params: object) {
-  const res = await request('update', {
+  const res = await request('deno.posts.update', {
     ...params
-  }, { basePath: 'api/article' })
+  }, { method: 'POST' })
   return res
 }
 
