@@ -11,13 +11,13 @@ export async function createArticle(req: ServerRequest, next) {
         let praseBodyString = new TextDecoder().decode(body);
         const params = JSON.parse(praseBodyString);
         const {
-            title = '', content = '', read_num = 0,
+            title = '', article_content = '', read_num = 0,
             support_num = 0, type = 1, gitlab_id = ''
         } = params || {}
-        if (!title && !content) {
+        if (!title && !article_content) {
             req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, '标题内容不能为空')), status: 200 });
         }
-        let sql = `INSERT INTO "public"."article"("title", "content", "read_num", "support_num", "type", "gitlab_id") VALUES('${title}', '${content}', ${read_num}, ${support_num}, ${type}, ${gitlab_id}) RETURNING  "article_id";`
+        let sql = `INSERT INTO "public"."article"("title", "article_content", "read_num", "support_num", "type", "gitlab_id") VALUES('${title}', '${article_content}', ${read_num}, ${support_num}, ${type}, ${gitlab_id}) RETURNING  "article_id";`
         let result: any = formatSelectResult(await transaction(sql));
         if (result) {
             reponseUtil(req, {

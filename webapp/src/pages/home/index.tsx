@@ -23,13 +23,13 @@ export default class Home extends React.Component<any, HomeState> {
     size: 10
   }
 
-  _getData = async ({ page = 1, size = 10 }) => {
-    const { result: {data = [], recoders = 1} = {} } = await fetchPostsList({ page, size })
+  _getData = async ({ page = 1, size = 10, type = 1 }) => {
+    const { result: {data = [], recoders = 1} = {} } = await fetchPostsList({ page, size, type })
     console.log('文章列表:', data, recoders, page)
     this.setState({ dataSource: data, loading: false, recoders, page })
   }
   async componentDidMount () {
-    this._getData({ page: 1, size: 10 })
+    this._getData({ page: 1, size: 10, type: 1 })
   }
 
   _jumpTo = (path) => () => {
@@ -74,7 +74,7 @@ export default class Home extends React.Component<any, HomeState> {
           pageSize: this.state.size,
           onChange: (page, size) => {
             this.setState({ page, size }, () => {
-              this._getData({ page, size })
+              this._getData({ page, size, type: 1 })
             })
           }
         }}

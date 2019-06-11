@@ -11,18 +11,20 @@ const { Content, Sider } = Layout
 const { TextArea } = Input
 
 interface State {
-  content: string,
+  article_content: string,
   type?: string,
   title?: string,
-  img?: string
+  img?: string,
+  loading?:boolean
 }
 class Publish extends React.Component<any, State> {
 
   state = {
-    content: '',
+    article_content: '',
     type: '1',
     title: '',
-    img: ''
+    img: '',
+    loading: false
   }
 
   componentDidMount () {
@@ -37,27 +39,33 @@ class Publish extends React.Component<any, State> {
 
   handleSubmit = (e) => {
     const { validateFields: V } = this.props.form
-    const { content } = this.state
-    if (!content) return
+    const { article_content } = this.state
+    if (!article_content) return
     e.preventDefault()
     V(async (err, values) => {
       if (!err) {
         console.log('values:', values)
-        /** 根据是否有 article_id 判断是更新文章还是创建文章 */
-        // await fetchPublishPosts({...values, content, user_id: '123'})
-        await fetchUpdatePosts({ ...values, content, article_id: '123' })
+        this.setState({ loading: true })
+        try {
+          /** 根据是否有 article_id 判断是更新文章还是创建文章 */
+          await fetchPublishPosts({...values, article_content, gitlab_id: '123'})
+          // const res = await fetchUpdatePosts({ ...values, article_content, article_id: '30' })
+          this.setState({ loading: false })
+        } catch (err) {
+          this.setState({ loading: false })
+        }
       }
       console.log('err:', err)
     })
   }
 
-  handleChange = (event: { target }) => { this.setState({ content: event.target.value }) }
+  handleChange = (event: { target }) => { this.setState({ article_content: event.target.value }) }
 
   _renderContent = () => {
     const { getFieldDecorator: D, getFieldsValue: G } = this.props.form
-    const { content = '', type = '', title = '', img = '' } = this.state
-    console.log(content);
-    let editSty = content
+    const { article_content = '', type = '', title = '', img = '' } = this.state
+    console.log(article_content);
+    let editSty = article_content
       ? { flex: 1, height: 'auto', marginRight: 20, minHeight: '500px', maxHeight: '700px' }
       : { width: '100%', height: 'auto', minHeight: '500px', maxHeight: '700px' }
     return (<Content>
@@ -90,11 +98,11 @@ class Publish extends React.Component<any, State> {
           })(<Input placeholder='主图链接' style={{ width: 500 }} />)}
         </Form.Item>
         <div style={{ marginTop: 10, display: 'flex', flexDirection: 'row', width: '100%' }}>
-          <TextArea onChange={this.handleChange} style={editSty} value={this.state.content} />
+          <TextArea onChange={this.handleChange} style={editSty} value={article_content} />
           {
-            content &&
+            article_content &&
             <div className={`markdown-body ${styles['md-wrapper']}`}>
-              <div dangerouslySetInnerHTML={{ __html: Marked(this.state.content) }} />
+              <div dangerouslySetInnerHTML={{ __html: Marked(article_content) }} />
             </div>
           }
         </div>
@@ -120,7 +128,7 @@ class Publish extends React.Component<any, State> {
           {this._renderSider()}
         </Layout>
         <div style={{ padding: '5px 50px' }}>
-          <Button size='small' type='primary' onClick={this.handleSubmit}>发布</Button>
+          <Button size='small' type='primary' onClick={this.handleSubmit} loading={this.state.loading}>发布</Button>
         </div>
       </Page>
     )

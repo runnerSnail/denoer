@@ -12,7 +12,8 @@ interface itemProps {
 }
 
 export default function ({ title, onClick, content, info }: itemProps) {
-  const { support_num = '-', read_num = '-' } = info
+  const { support_num = '-', read_num = '-', img } = info
+  console.log('文章列:', info)
   return (
     <List.Item
       key={title}
@@ -25,7 +26,7 @@ export default function ({ title, onClick, content, info }: itemProps) {
         <img
           width={272}
           alt='logo'
-          src='https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
+          src={img || 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'}
         />
       }
     >

@@ -8,7 +8,7 @@ export default function setUpdateSql(tablename: string, whereValue: {
             if(key==='support_num' || key==='read_num'){
                 sql+=` ${key} = ${obj[key]} + 1,`
             }else{
-                sql+=` ${key} = ${obj[key]},`;
+                sql+=` ${key} = '${obj[key]}',`;
             }
         }
     }
