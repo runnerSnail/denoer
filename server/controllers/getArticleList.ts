@@ -30,12 +30,13 @@ export async function getArticleList(req: ServerRequest, next) {
             if(type == 1) typesql = `(type = 1 or type = 10)`;
             else{ typesql = `type = ${type}`;}
             let sql = `select * from article where ${typesql}  order by create_time desc limit ${size} offset ${(page-1)*size}`;
-            let result: any = formatSelectResult(await transaction(sql));
+            let result: any = formatSelectResult(await transaction(sql), 'array');
             let recodersSql = `select count(*) from article where article.type = ${type}`;
             let recoders: any = formatSelectResult(await transaction(recodersSql));
+            console.log('列表:', result)
             getLogger().info(`开始返回`)
             result = {
-                data:result,
+                data:result || [],
                 recoders:recoders.count,
                 page,
                 size

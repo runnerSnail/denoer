@@ -1,17 +1,19 @@
 import React from 'react'
 import { Layout, List, Carousel, Button } from 'antd'
+import isEmpty from 'lodash/isEmpty'
 
 import { Page } from 'components'
 import { fetchPostsList } from 'service/posts'
 
 import Item from './components/item'
+import { TYPE_ARRAY } from './const'
 import './style.sass'
 
 const { Content, Footer, Sider } = Layout
 
 interface HomeState {}
 
-export default class Home extends React.Component<any, HomeState> {
+export default class Home extends React.Component<any, any> {
   constructor (props: any) {
     super(props)
   }
@@ -19,14 +21,21 @@ export default class Home extends React.Component<any, HomeState> {
   state= {
     dataSource: [],
     loading: true,
+    selectedType: 1,
     recoders: 1,
-    size: 10
+    size: 10,
+    type: 1
   }
 
   _getData = async ({ page = 1, size = 10, type = 1 }) => {
-    const { result: {data = [], recoders = 1} = {} } = await fetchPostsList({ page, size, type })
-    console.log('文章列表:', data, recoders, page)
-    this.setState({ dataSource: data, loading: false, recoders, page })
+    this.setState({ loading: true })
+    try {
+      const { result: {data = [], recoders = 1} = {} } = await fetchPostsList({ page, size, type })
+      console.log('文章列表:', data, recoders, page)
+      this.setState({ dataSource: data, loading: false, recoders, page })
+    } catch (err) {
+      this.setState({ loading: false, dataSource: [] })
+    }
   }
   async componentDidMount () {
     this._getData({ page: 1, size: 10, type: 1 })
@@ -47,13 +56,29 @@ export default class Home extends React.Component<any, HomeState> {
 
   _listHeader = () => (
     <div className='list-header'>
-      <span>全部</span>
-      <span>精华</span>
-      <span>分享</span>
-      <span>问答</span>
-      <span>测试</span>
+      {
+        TYPE_ARRAY.map(({ key, value }) => {
+          const { selectedType } = this.state
+          let activeCls = selectedType === key ? 'list-header-active' : ''
+          return (
+            <span
+              onClick={this._selectPosts(key)}
+              className={`list-header-item ${activeCls}`}
+            >{value || '-'}</span>
+          )
+        })
+      }
     </div>
   )
+
+  _selectPosts = (type: number) => () => {
+    console.log('type:', type, typeof type)
+    this.setState({
+      selectedType: type
+    }, () => {
+      this._getData({ page: 1, size: 10, type })
+    })
+  }
 
   _renderContent = () => (
     <Content>
@@ -96,9 +121,9 @@ export default class Home extends React.Component<any, HomeState> {
           </div>
         </div>
         <div className='sider-btn'>
-          <Button size='small' type='primary' onClick={this._jumpTo('/publish')}>发表文章</Button>
+          <Button size='small' type='primary' onClick={this._jumpTo('/publish')} className='sider-btn-publish'>发表文章</Button>
           <Button size='small' type='primary'>撰写文章</Button>
-          <Button size='small' type='primary'>分享资源</Button>
+          <Button size='small' type='primary' style={{ background: '#f00', borderColor: '#fff' }}>分享资源</Button>
         </div>
       </div>
       {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#999', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))}

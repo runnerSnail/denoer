@@ -1,12 +1,20 @@
-export default function formatSelectResult(queryResult:any){
+export default function formatSelectResult(queryResult:any, type?: string){
     let result : Object | Array<any>;
     if(!queryResult || !queryResult.rows || queryResult.rows.length === 0) return null;
     // 单行结果
-    console.log(queryResult.rows.length)
     if(queryResult.rows.length === 1){
-        result = {};
-        for (let index = 0; index < queryResult.rows[0].length; index++) {
-            result[queryResult.rowDescription.columns[index].name] = queryResult.rows[0][index];
+        if (type === 'array') {
+            result = []
+            let obj = {}
+            for (let index = 0; index < queryResult.rows[0].length; index++) {
+                obj[queryResult.rowDescription.columns[index].name] = queryResult.rows[0][index];
+            }
+            result = [obj]
+        } else {
+            result = {};
+            for (let index = 0; index < queryResult.rows[0].length; index++) {
+                result[queryResult.rowDescription.columns[index].name] = queryResult.rows[0][index];
+            }
         }
     }
     // 多行结果
