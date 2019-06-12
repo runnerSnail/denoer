@@ -437,7 +437,7 @@ module.exports = function (webpackEnv) {
               use: [...getStyleLoaders({ importLoaders: 2 }), {
                 loader: 'less-loader', // compiles Less to CSS
                 options: {
-                  // modifyVars: require(paths.appTheme),
+                  modifyVars: require(paths.appTheme),
                   javascriptEnabled: true
                 } }],
               // Don't consider CSS imports dead code even if the

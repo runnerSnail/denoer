@@ -3,6 +3,7 @@ import { Layout, List } from 'antd' // Carousel, Button
 
 import { Page } from 'components'
 import { fetchPostsList } from 'service/posts'
+import { loginConfig } from 'utils'
 
 import Item from './components/item'
 import './style.sass'
@@ -42,7 +43,11 @@ export default class Home extends React.Component<any, HomeState> {
       // desc={desc}
       content={article_content}
       info={args}
-      onClick={this._jumpTo(`/posts/${article_id}`)}
+      // onClick={this._jumpTo(`/posts/${article_id}`)}
+      onClick={() => {
+        const href = window.location.href
+        window.location.href = `https://github.com/login/oauth/authorize?client_id=${loginConfig.client_id}&redirect_uri=${`http://denoer.cn`}`
+      }}
     />
   )
 

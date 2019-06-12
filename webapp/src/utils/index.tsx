@@ -27,10 +27,14 @@ const TYPE_ARRAY = [
   }
 ]
 
-
+const loginConfig = {
+  client_id: '8bf81a16134ffeef7284'
+  // client_secret: 'b93eb413a2e1e3243f8deadb3fc31f8dca18e404'
+}
 
 export {
   request,
   sleep,
+  loginConfig,
   TYPE_ARRAY
 }
