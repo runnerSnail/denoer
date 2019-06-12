@@ -3,11 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import reducer from './redux/reducers';
+import store from './models/index'
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-// 1、创建 store
-const store = createStore(reducer);
 
 ReactDOM.render(
 // 2、然后使用react-redux的Provider将props与容器连通起来
