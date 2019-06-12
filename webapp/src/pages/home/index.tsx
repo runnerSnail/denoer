@@ -1,19 +1,21 @@
 import React from 'react'
 import { Layout, List, Carousel, Button } from 'antd'
+import { connect } from 'react-redux'
 // import isEmpty from 'lodash/isEmpty'
 
 import { Page } from 'components'
 import { fetchPostsList } from 'service/posts'
+import { loginAuthByCode } from 'service/user'
 
 import Item from './components/item'
-import { TYPE_ARRAY } from 'utils'
+import { TYPE_ARRAY, loginConfig } from 'utils'
 import './style.sass'
 
 const { Content, Footer, Sider } = Layout
 
 interface HomeState {}
 
-export default class Home extends React.Component<any, any> {
+class Home extends React.Component<any, any> {
   constructor (props: any) {
     super(props)
   }
@@ -37,6 +39,20 @@ export default class Home extends React.Component<any, any> {
     }
   }
   async componentDidMount () {
+    console.log('render url:', window.location)
+    // const { search } = window.location
+    // const matchArr = search.match(/\?code=(\S+)/)
+    // if (search && matchArr && matchArr.length === 2) {
+    //   try {
+    //     console.log('mathArr:', matchArr[1])
+    //     const aa = await loginAuthByCode(matchArr[1])
+    //     console.log('aa:', aa)
+    //   } catch (err) {
+    //     console.log('错误', err)
+    //   }
+    // }
+    // window.location.search = 'x'
+    // this.props.user.updateUserInfo({aa: 1, bb: 2})
     this._getData({ page: 1, size: 10, type: 1 })
   }
 
@@ -121,14 +137,31 @@ export default class Home extends React.Component<any, any> {
         </div>
         <div className='sider-btn'>
           <Button size='small' type='primary' onClick={this._jumpTo('/publish')} className='sider-btn-publish'>发表文章</Button>
-          <Button size='small' type='primary'>撰写文章</Button>
-          <Button size='small' type='primary'>分享资源</Button>
+          <Button size='small' type='primary' onClick={async () => {
+            // const href = window.location.href
+            console.log('点击登录', window.location)
+            const { search } = window.location
+            const matchArr = search.match(/\?code=(\S+)/)
+            if (search && matchArr && matchArr.length === 2) {
+              try {
+                console.log('mathArr:', matchArr[1])
+                const aa = await loginAuthByCode(matchArr[1])
+                console.log('aa:', aa)
+              } catch (err) {
+                console.log('错误', err)
+              }
+            }
+            // console.log('zxc', `https://github.com/login/oauth/authorize?client_id=${loginConfig.client_id}&redirect_uri=${href}login`)
+            // window.location.href = `https://github.com/login/oauth/authorize?client_id=${loginConfig.client_id}&redirect_uri=${`http://denoer.cn`}`
+          }}>合作推广</Button>
+          <Button size='small' type='primary'>个人信息</Button>
         </div>
       </div>
       {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#999', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))}
     </Sider>
   )
   render () {
+    console.log('home render:', this.props)
     return (
       <Page
         {...this.props}
@@ -142,3 +175,12 @@ export default class Home extends React.Component<any, any> {
     )
   }
 }
+
+const mapToState = (reduxState) => ({
+  reduxState
+})
+const mapToDispatch = ({ user }: any) => ({
+  user
+})
+
+export default connect(mapToState, mapToDispatch)(Home)

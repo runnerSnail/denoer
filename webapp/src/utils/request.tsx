@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const productUrl = 'http://localhost:3000'
-const developUrl = ''
+const developUrl = 'http://127.0.0.1:8000'
 const customAxios = axios.create()
 
 interface option {
@@ -34,7 +34,7 @@ export default (apiName, params = {}, opt: option) => {
   const url = process.env.NODE_ENV === 'development'
     ? `${developUrl}/${reqCustom.basePath}/${apiName}`
     : `${productUrl}/${reqCustom.basePath}/${apiName}`
-
+console.log('请求 url:', url)
   return customAxios({
     method,
     withCredentials: false,
@@ -47,6 +47,6 @@ export default (apiName, params = {}, opt: option) => {
     console.log('err:', err)
     // 错误捕获。。
     // 未登录。。
-    return err
+    // return err
   })
 }

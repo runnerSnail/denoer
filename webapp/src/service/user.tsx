@@ -8,3 +8,11 @@ export async function fetchUserInfo (user_id) {
   )
   return res
 }
+
+export async function loginAuthByCode (code) {
+  const res = await request('login',
+  { code },
+  { method: 'GET' }
+  )
+  return res
+}
