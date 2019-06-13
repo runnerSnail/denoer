@@ -94,6 +94,11 @@ module.exports = function(proxy, allowedHost) {
         "target": "http://127.0.0.1:8000/",
         "secure": false,
         "changeOrigin": true
+      },
+      "/home": {
+        "target": "http://127.0.0.1:8000",
+        "secure": false,
+        "changeOrigin": true
       }
     },
     before(app, server) {

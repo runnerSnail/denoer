@@ -1,7 +1,7 @@
 import { request } from 'utils'
 
 // 获取用户信息
-export async function fetchUserInfo (user_id) {
+export async function fetchUserInfo (user_id: number) {
   const res = await request('deno.user.getUserInfoById',
   { user_id },
   { method: 'GET' }

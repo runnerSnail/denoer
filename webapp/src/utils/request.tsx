@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const productUrl = 'http://localhost:3000'
-const developUrl = 'http://127.0.0.1:8000'
+const developUrl = ''
 const customAxios = axios.create()
 
 interface option {

@@ -5,15 +5,13 @@ import { connect } from 'react-redux'
 
 import { Page } from 'components'
 import { fetchPostsList } from 'service/posts'
-import { loginAuthByCode } from 'service/user'
+import { loginAuthByCode, fetchUserInfo } from 'service/user'
 
 import Item from './components/item'
-import { TYPE_ARRAY, loginConfig } from 'utils'
+import { TYPE_ARRAY, authUrl } from 'utils'
 import './style.sass'
 
-const { Content, Footer, Sider } = Layout
-
-interface HomeState {}
+const { Content, Sider } = Layout
 
 class Home extends React.Component<any, any> {
   constructor (props: any) {
@@ -39,20 +37,31 @@ class Home extends React.Component<any, any> {
     }
   }
   async componentDidMount () {
-    console.log('render url:', window.location)
-    // const { search } = window.location
-    // const matchArr = search.match(/\?code=(\S+)/)
-    // if (search && matchArr && matchArr.length === 2) {
-    //   try {
-    //     console.log('mathArr:', matchArr[1])
-    //     const aa = await loginAuthByCode(matchArr[1])
-    //     console.log('aa:', aa)
-    //   } catch (err) {
-    //     console.log('错误', err)
-    //   }
-    // }
-    // window.location.search = 'x'
-    // this.props.user.updateUserInfo({aa: 1, bb: 2})
+    const { updateUserInfo = () => void 0 } = this.props
+    const { search } = window.location
+    const matchArr = search.match(/\?code=(\S+)/)
+    if (search && matchArr && matchArr.length === 2) {
+      try {
+        this.setState({ loading: true })
+        const { result: { user_id = '' } = {} } = await loginAuthByCode(matchArr[1])
+        if (user_id) {
+          const { result = {} } = await fetchUserInfo(Number(user_id))
+          if (result) {
+            await updateUserInfo({...result})
+            this.setState({ loading: false })
+            console.log('result:', result)
+          } else {
+            console.log(`获取 user_id=${user_id} 的用户信息失败，请重试!`)
+            this.setState({ loading: false })
+          }
+        } else {
+          window.location.href = `${authUrl}`
+        }
+      } catch (err) {
+        this.setState({ loading: false })
+        window.location.href = `${authUrl}`
+      }
+    }
     this._getData({ page: 1, size: 10, type: 1 })
   }
 
@@ -87,7 +96,6 @@ class Home extends React.Component<any, any> {
   )
 
   _selectPosts = (type: number) => () => {
-    console.log('type:', type, typeof type)
     this.setState({
       selectedType: type
     }, () => {
@@ -122,44 +130,42 @@ class Home extends React.Component<any, any> {
     </Content>
   )
 
-  _renderSider = () => (
-    <Sider
-      className='sider'
-      style={{ marginLeft: 50 }}
-    >
-      <div className='sider-wrapper'>
-        <div className='sider-desc'>
-          <img src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' className='sider-avator' />
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: 14 }}>runSnail</span>
-            <span style={{ fontSize: 12, marginTop: 10 }}>个人说明: 人生如棋，我愿为卒，行动虽慢，可谁见我后退一步。</span>
+  _renderSider = () => {
+    const {
+      gitlab_id = '', user_name = '-',
+      user_img = 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+      company = '-'
+    } = this.props.userInfo || {}
+    return (
+      <Sider
+        className='sider'
+        style={{ marginLeft: 50 }}
+      >
+        {
+        gitlab_id ? <div className='sider-wrapper'>
+          <div className='sider-desc'>
+            <img src={user_img} className='sider-avator' />
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontSize: 14 }}>{user_name}</span>
+              <span style={{ fontSize: 12, marginTop: 10 }}>{`公司: ${company},`}</span>
+            </div>
           </div>
-        </div>
-        <div className='sider-btn'>
-          <Button size='small' type='primary' onClick={this._jumpTo('/publish')} className='sider-btn-publish'>发表文章</Button>
-          <Button size='small' type='primary' onClick={async () => {
-            // const href = window.location.href
-            console.log('点击登录', window.location)
-            const { search } = window.location
-            const matchArr = search.match(/\?code=(\S+)/)
-            if (search && matchArr && matchArr.length === 2) {
-              try {
-                console.log('mathArr:', matchArr[1])
-                const aa = await loginAuthByCode(matchArr[1])
-                console.log('aa:', aa)
-              } catch (err) {
-                console.log('错误', err)
-              }
-            }
-            // console.log('zxc', `https://github.com/login/oauth/authorize?client_id=${loginConfig.client_id}&redirect_uri=${href}login`)
-            // window.location.href = `https://github.com/login/oauth/authorize?client_id=${loginConfig.client_id}&redirect_uri=${`http://denoer.cn`}`
-          }}>合作推广</Button>
-          <Button size='small' type='primary'>个人信息</Button>
-        </div>
-      </div>
-      {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#999', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))}
-    </Sider>
-  )
+          <div className='sider-btn'>
+            <Button size='small' type='primary' onClick={this._jumpTo('/publish')} className='sider-btn-publish'>发表文章</Button>
+            <Button size='small' type='primary' onClick={async () => {
+              console.log('点击登录', window.location)
+            }}>合作推广</Button>
+            <Button size='small' type='primary'>个人信息</Button>
+          </div>
+        </div> : <div className='sider-wrapper' style={{ textAlign: 'center' }} onClick={this._toLogin}><span style={{ cursor: 'pointer' }}>点击登录</span></div>}
+        {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#999', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))}
+      </Sider>
+    )
+  }
+
+  _toLogin = async () => {
+    window.location.href = `${authUrl}`
+  }
   render () {
     console.log('home render:', this.props)
     return (
@@ -176,11 +182,11 @@ class Home extends React.Component<any, any> {
   }
 }
 
-const mapToState = (reduxState) => ({
-  reduxState
+const mapToState = ({ user }) => ({
+  userInfo: user
 })
 const mapToDispatch = ({ user }: any) => ({
-  user
+  updateUserInfo: user.updateUserInfo
 })
 
 export default connect(mapToState, mapToDispatch)(Home)

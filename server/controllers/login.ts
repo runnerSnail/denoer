@@ -61,15 +61,14 @@ export async function getLogin(req: ServerRequest, next) {
                 .catch(e => getLogger().error(e));
             // 检验用户是否 利用GitHub注册，如果没注册创建userid，如果已经注册关联已有的userId
             userinfo = await getUser(userinfo);
-            console.log('userinfo===>')
-            console.log(userinfo.gitlab_id);
             let headers = new Headers();
             headers.set("Location","/home")
             let res = { body: new TextEncoder().encode(), status: 301, headers };
             setCookie(res, {
                 name: "user_id",
                 value: userinfo.gitlab_id,
-                maxAge: 2678400
+                maxAge: 2678400,
+                path: '/'
             });
             req.respond(res);
         }

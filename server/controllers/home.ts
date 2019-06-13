@@ -6,12 +6,10 @@ import { getCookies } from "../dependcy/dep.ts";
 export async function getHome(req: ServerRequest, next) {
     try {
         if (req.url === undefined || req.url.match(/^\/$/) || req.url.match(/^\/home$/)) {
-            console.log('进入home')
-            const cookies = getCookies(req);
+            const cookies = await getCookies(req);
             let user_id = cookies['user_id'];
-            console.log(user_id);
             reponseUtil(req, {
-                body: successHandle(200, 'user_id', '用户信息'),
+                body: successHandle(200, { user_id }, '用户信息'),
                 status: 200,
                 headers: {
                     "Content-Type": "application/json"

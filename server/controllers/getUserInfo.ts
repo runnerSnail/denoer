@@ -7,7 +7,7 @@ import successHandle from "../utils/successHandle.ts";
 import reponseUtil from "../utils/response.ts";
 
 export async function getUserInfo(req: ServerRequest, next) {
-    if (req.url.match(/\/api\/getUserInfo/)) {
+    if (req.url.match(/\/api\/deno.user.getUserInfoById/)) {
         try {
             let matchArr = req.url.match(/\S*user_id=(\S+)/);
             let gitlab_id: string;

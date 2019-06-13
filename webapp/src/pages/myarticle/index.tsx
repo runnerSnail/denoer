@@ -1,9 +1,10 @@
 import React from 'react'
 import { Layout, List } from 'antd' // Carousel, Button
+import { connect } from 'react-redux'
 
 import { Page } from 'components'
 import { fetchPostsList } from 'service/posts'
-import { loginConfig } from 'utils'
+import { authUrl } from 'utils'
 
 import Item from './components/item'
 import './style.sass'
@@ -12,7 +13,7 @@ const { Content } = Layout // Footer, Sider
 
 interface HomeState {}
 
-export default class Home extends React.Component<any, HomeState> {
+class Home extends React.Component<any, HomeState> {
   constructor (props: any) {
     super(props)
   }
@@ -24,12 +25,17 @@ export default class Home extends React.Component<any, HomeState> {
     size: 10
   }
   async componentDidMount () {
-    this._getData({ page: 1, size: 10 })
+    const { gitlab_id = '' } = this.props.userInfo || {}
+    if (!gitlab_id) {
+      window.location.href = `${authUrl}`
+    } else {
+      this._getData({ page: 1, size: 10, type: 1 })
+    }
   }
 
-  _getData = async ({ page, size }) => {
+  _getData = async ({ page, size, type = 1 }) => {
     this.setState({ loading: true })
-    const { result: {data = [], recoders = 1} = {} } = await fetchPostsList({ page, size })
+    const { result: {data = [], recoders = 1} = {} } = await fetchPostsList({ page, size, type })
     this.setState({ dataSource: data, loading: false, recoders, page })
   }
 
@@ -43,11 +49,7 @@ export default class Home extends React.Component<any, HomeState> {
       // desc={desc}
       content={article_content}
       info={args}
-      // onClick={this._jumpTo(`/posts/${article_id}`)}
-      onClick={() => {
-        const href = window.location.href
-        window.location.href = `https://github.com/login/oauth/authorize?client_id=${loginConfig.client_id}&redirect_uri=${`http://denoer.cn`}`
-      }}
+      onClick={this._jumpTo(`/posts/${article_id}`)}
     />
   )
 
@@ -74,6 +76,7 @@ export default class Home extends React.Component<any, HomeState> {
   )
 
   render () {
+    console.log('我的文章:', this.props.userInfo)
     return (
       <Page
         {...this.props}
@@ -86,3 +89,9 @@ export default class Home extends React.Component<any, HomeState> {
     )
   }
 }
+
+const mapToState = ({ user }) => ({
+  userInfo: { ...user }
+})
+
+export default connect(mapToState)(Home)
