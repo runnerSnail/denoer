@@ -34,7 +34,6 @@ export default (apiName, params = {}, opt: option) => {
   const url = process.env.NODE_ENV === 'development'
     ? `${developUrl}/${reqCustom.basePath}/${apiName}`
     : `${productUrl}/${reqCustom.basePath}/${apiName}`
-console.log('请求 url:', url)
   return customAxios({
     method,
     withCredentials: false,

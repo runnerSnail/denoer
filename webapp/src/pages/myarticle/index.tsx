@@ -1,6 +1,7 @@
 import React from 'react'
 import { Layout, List } from 'antd' // Carousel, Button
 import { connect } from 'react-redux'
+import isEmpty from 'lodash/isEmpty'
 
 import { Page } from 'components'
 import { fetchPostsList } from 'service/posts'
@@ -61,7 +62,7 @@ class Home extends React.Component<any, HomeState> {
         itemLayout='vertical'
         dataSource={this.state.dataSource}
         renderItem={this._renderRow}
-        pagination={{
+        pagination={!isEmpty(this.state.dataSource) && {
           // showQuickJumper: true,
           total: this.state.recoders,
           pageSize: this.state.size,
