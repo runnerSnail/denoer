@@ -44,22 +44,18 @@ class Home extends React.Component<any, any> {
       try {
         this.setState({ loading: true })
         const { result: { user_id = '' } = {} } = await loginAuthByCode(matchArr[1])
-        if (user_id) {
-          const { result = {} } = await fetchUserInfo(Number(user_id))
-          if (result) {
-            await updateUserInfo({...result})
-            this.setState({ loading: false })
-            console.log('result:', result)
-          } else {
-            console.log(`获取 user_id=${user_id} 的用户信息失败，请重试!`)
-            this.setState({ loading: false })
-          }
+        const { result = {} } = await fetchUserInfo(Number(user_id))
+        if (result) {
+          await updateUserInfo({...result})
+          this.setState({ loading: false })
+          console.log('result:', result)
         } else {
-          window.location.href = `${authUrl}`
+          console.log(`获取 user_id=${user_id} 的用户信息失败，请重试!`)
+          this.setState({ loading: false })
         }
-      } catch (err) {
+    } catch (err) {
         this.setState({ loading: false })
-        window.location.href = `${authUrl}`
+        // window.location.href = `${authUrl}`
       }
     }
     this._getData({ page: 1, size: 10, type: 1 })
