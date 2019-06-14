@@ -1,3 +1,4 @@
+import { fetchUserInfo } from 'service/user'
 interface StoreState {
   user_id?: number,
   user_name?: string,
@@ -28,9 +29,16 @@ export default {
     ...initState
   },
   effects: {
-    async updateUserInfo (payload: object = {}, rootState) {
-      await new Promise(resolve => setTimeout(resolve, 1000))
+    async updateUserInfo (payload: object = {}, rootState: object = {}) {
+      // await new Promise(resolve => setTimeout(resolve, 1000))
       this.updateState({ ...payload })
+    },
+    async init (payload, rootState) {
+      const matchArr = document.cookie.match(/user_id=(\S+)/)
+      if (matchArr && matchArr.length === 2) {
+        const { result = {} } = await fetchUserInfo(Number(matchArr[1]))
+        this.updateState({ ...result })
+      }
     }
   },
   reducers: {

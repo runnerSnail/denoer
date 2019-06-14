@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter as Router, Route, Switch } from "react-router-dom"; // BrowserRouter
 import { renderRoutes } from 'react-router-config'
+import { connect } from 'react-redux'
 
 import routes from './routes'
 import './styles/base.sass'
 
-// 引入 container 组件 CountCon
-// import CountCon from './container/CounterCon';
-
-const App: React.FC = () => {
+const App = ({ ...args }) => {
+  useEffect(() => {
+    args.init()
+  })
   return (
     <Router>
       <Switch>{renderRoutes(routes)}</Switch>
@@ -16,4 +17,9 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+const mapToState = (): object => ({})
+const mapToDispatch = ({ user }): object => ({
+  init: user.init
+})
+
+export default connect(mapToState, mapToDispatch)(App)
