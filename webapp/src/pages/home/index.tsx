@@ -48,7 +48,6 @@ class Home extends React.Component<any, any> {
         if (result) {
           await updateUserInfo({...result})
           this.setState({ loading: false })
-          console.log('result:', result)
         } else {
           console.log(`获取 user_id=${user_id} 的用户信息失败，请重试!`)
           this.setState({ loading: false })
@@ -130,7 +129,7 @@ class Home extends React.Component<any, any> {
     const {
       gitlab_id = '', user_name = '-',
       user_img = 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-      company = '-'
+      company = '-', gitlab_url = ''
     } = this.props.userInfo || {}
     return (
       <Sider
@@ -143,18 +142,23 @@ class Home extends React.Component<any, any> {
             <img src={user_img} className='sider-avator' />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontSize: 14 }}>{user_name}</span>
-              <span style={{ fontSize: 12, marginTop: 10 }}>{`公司: ${company},`}</span>
+              <span style={{ fontSize: 12, marginTop: 10 }}>{`公司: ${company}`}</span>
             </div>
           </div>
           <div className='sider-btn'>
             <Button size='small' type='primary' onClick={this._jumpTo('/publish')} className='sider-btn-publish'>发表文章</Button>
             <Button size='small' type='primary' onClick={async () => {
               console.log('点击登录', window.location)
-            }}>合作推广</Button>
-            <Button size='small' type='primary'>个人信息</Button>
+              if (gitlab_url && gitlab_url !== 'null') {
+                window.location.href = gitlab_url
+              }
+            }}>交友地址</Button>
+            <Button size='small' type='primary' onClick={this._jumpTo('/user')}>个人信息</Button>
           </div>
         </div> : <div className='sider-wrapper' style={{ textAlign: 'center' }} onClick={this._toLogin}><span style={{ cursor: 'pointer' }}>点击登录</span></div>}
-        {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#999', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))}
+        <div style={{ width: 300, height: 200, marginTop: 20, backgroundImage: 'url(http://placem.at/people?w=300&h=200)' }} />
+        <div style={{ width: 300, height: 200, marginTop: 20, backgroundImage: 'url(http://placem.at/place?w=300&h=200)' }} />
+        <div style={{ width: 300, height: 200, marginTop: 20, backgroundImage: 'url(http://placem.at/things?w=300&h=200)' }} />
       </Sider>
     )
   }

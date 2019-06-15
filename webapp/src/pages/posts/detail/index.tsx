@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Marked from 'marked'
+import { connect } from 'react-redux'
 
 import { fetchPostsInfo } from 'service/posts'
 import { Page } from 'components'
 
 import styles from './style.module.sass'
 
-export default class PostsDetails extends Component<any> {
+class PostsDetails extends Component<any> {
   state = {
     article_content: ``,
     support_num: ``,
@@ -16,13 +17,17 @@ export default class PostsDetails extends Component<any> {
   }
   async componentDidMount () {
     const { params = {} } = this.props.match || {}
-    const { result = {} } = await fetchPostsInfo(params.article_id)
-    this.setState({ ...result })
+    try {
+      const { result = {} } = await fetchPostsInfo(params.article_id)
+      this.setState({ ...result })
+    } catch (err) {
+      console.log('err:', err)
+    }
   }
 
   render () {
-    // const { params = {} } = this.props.match || {}
     const { article_content = '', support_num, read_num, title, img } = this.state
+    // const { user_img = '', user_name = '' } = this.props.userInfo ||
     const defaultImg = 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
     return (
       <Page
@@ -32,7 +37,7 @@ export default class PostsDetails extends Component<any> {
           <div className={styles['title']}>{`${title || '-'}`}</div>
           <div className={styles['introduce']}>
             <img
-              src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+              src={'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'}
               className={styles['img']}
             />
             <div className={styles['introduce-detail']}>
@@ -45,7 +50,28 @@ export default class PostsDetails extends Component<any> {
             <div dangerouslySetInnerHTML={{ __html: Marked(article_content) }} />
           </div>
         </div>
+        <div style={{
+          width: 150,
+          height: '50px',
+          lineHeight: '50px',
+          background: '#7e7e7e',
+          textAlign: 'center',
+          position: 'fixed',
+          right: '50px',
+          top: '100px',
+          cursor: 'pointer',
+          borderRadius: 50,
+          color: '#eee',
+          opacity: 0.3
+          }}>去编辑</div>
       </Page>
     )
   }
 }
+
+const mapToState = ({ user }) => ({
+  userInfo: user
+})
+const mapToDispatch = () => ({})
+
+export default connect(mapToState, mapToDispatch)(PostsDetails)

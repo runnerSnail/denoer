@@ -36,8 +36,10 @@ export default {
     async init (payload, rootState) {
       const matchArr = document.cookie.match(/user_id=(\S+)/)
       if (matchArr && matchArr.length === 2) {
-        const { result = {} } = await fetchUserInfo(Number(matchArr[1]))
-        this.updateState({ ...result })
+        const res = await fetchUserInfo(Number(matchArr[1]))
+        if (res) {
+          this.updateState({ ...res.result })
+        }
       }
     }
   },

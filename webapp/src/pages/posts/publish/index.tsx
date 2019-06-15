@@ -65,7 +65,6 @@ class Publish extends React.Component<any, State> {
   _renderContent = () => {
     const { getFieldDecorator: D, getFieldsValue: G } = this.props.form
     const { article_content = '', type = '', title = '', img = '' } = this.state
-    console.log(article_content);
     let editSty = article_content
       ? { flex: 1, height: 'auto', marginRight: 20, minHeight: '500px', maxHeight: '700px' }
       : { width: '100%', height: 'auto', minHeight: '500px', maxHeight: '700px' }
@@ -115,7 +114,10 @@ class Publish extends React.Component<any, State> {
     <Sider
       className={`sider ${styles['sider-container']}`}
     >
-      {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#bbb', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))}
+      <div style={{ width: 300, height: 200, marginTop: 20, backgroundImage: 'url(http://placem.at/people?w=300&h=200)' }} />
+      <div style={{ width: 300, height: 200, marginTop: 20, backgroundImage: 'url(http://placem.at/place?w=300&h=200)' }} />
+      <div style={{ width: 300, height: 200, marginTop: 20, backgroundImage: 'url(http://placem.at/things?w=300&h=200)' }} />
+      {/* {[1,2,3].map(e => (<div style={{ width: 300, height: 200, background: '#bbb', marginTop: 20, textAlign: 'center', lineHeight: '200px' }}>广告位</div>))} */}
     </Sider>
   )
 
