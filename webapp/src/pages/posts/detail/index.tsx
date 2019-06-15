@@ -32,6 +32,7 @@ class PostsDetails extends Component<any> {
     return (
       <Page
         {...this.props}
+        selectKey='2'
       >
         <div className={styles['wrapper']}>
           <div className={styles['title']}>{`${title || '-'}`}</div>
@@ -41,7 +42,7 @@ class PostsDetails extends Component<any> {
               className={styles['img']}
             />
             <div className={styles['introduce-detail']}>
-              <span>Mark Scofield</span>
+              <span>Michael Scofield</span>
               <span>{`点赞 ${support_num || '0'} 个，阅读 ${read_num || '0'} 次`}</span>
             </div>
           </div>
