@@ -41,7 +41,7 @@ $('#comments-container').comments({
     postComment: function (commentJSON, success, error) {
         if (getCookie('user_id')) user_id = getCookie('user_id');
         else {
-            window.location.href = "https://github.com/login/oauth/authorize?client_id=8bf81a16134ffeef7284&redirect_uri=http://denoer.cn"
+            window.location.href = "https://github.com/login/oauth/authorize?client_id=8bf81a16134ffeef7284&redirect_uri=http://denoer.cn/login"
         }
         var commentJSON = $.extend(commentJSON, {
             article_id: article_id,
