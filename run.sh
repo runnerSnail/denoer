@@ -1,4 +1,4 @@
-git chekout .
+git checkout .
 git pull
 echo '前端打包'
 cd webapp && npm i && npm run build
