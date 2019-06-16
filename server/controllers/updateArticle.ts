@@ -13,7 +13,6 @@ export async function updateArticle(req:ServerRequest,next){
         let body = await req.body();
         let praseBodyString = new TextDecoder().decode(body);
         const params = JSON.parse(praseBodyString);
-        console.log('文章id:', params['article_id'])
         article_id = params['article_id'];
         // 禁止更新id 创建时间 //
         let newObj:any = {};
@@ -26,7 +25,6 @@ export async function updateArticle(req:ServerRequest,next){
         if(params['support_num'])newObj['support_num']=1;
         if(params['read_num'])newObj['read_num']=1;
         let sql = setUpdateSql('article',{column:'article_id',id:article_id},newObj);
-        console.log(sql);
         await transaction(sql);
         reponseUtil(req, {
             body: successHandle(200,{},'更新成功'),

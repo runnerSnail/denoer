@@ -20,16 +20,13 @@ export async function updateArticleSupport(req: ServerRequest, next) {
 
         // 检查是否点过赞
         let result = await checkSupport('support_article', user_id, article_id);
-        console.log(result);
         if (!result) {
             support_num = 'support_num + 1';
             let sqlInsertArticleSprrort = `INSERT INTO "public"."support_article"("article_id", "gitlab_id") VALUES('${params['article_id']}', '${params['user_id']}') RETURNING  "support_article_id";`;
-            console.log(sqlInsertArticleSprrort);
             await transaction(sqlInsertArticleSprrort);
         } else {
             support_num = 'support_num - 1';
             let sqldeleteArticleSprrort = `delete from support_article  where article_id = '${article_id}' and gitlab_id = '${user_id}'`;
-            console.log(sqldeleteArticleSprrort);
             await transaction(sqldeleteArticleSprrort);
         }
 

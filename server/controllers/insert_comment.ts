@@ -27,9 +27,7 @@ export default async function insertComment(req: ServerRequest, next) {
 
         // 拼接sql
         let sql = `INSERT INTO "public"."comment"("content", "gitlab_id", "article_id", "parent_id") VALUES('${params['content']}', '${params['user_id']}', ${params['article_id']}, ${params['parent_id']}) RETURNING  "comment_id";`
-        console.log(await transaction(sql))
         let result: any = formatSelectResult(await transaction(sql));
-        console.log(result);
         //执行sql返回结果
         if(result){
             reponseUtil(req, {

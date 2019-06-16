@@ -21,7 +21,6 @@ export async function getArticleList(req: ServerRequest, next) {
                 page = parseInt(matchArr[1]);
                 size = parseInt(matchArr[2]);
                 type = parseInt(matchArr[3]);
-                console.log(type);
             } else {
                 page = 1;
                 size = 10;
@@ -33,7 +32,6 @@ export async function getArticleList(req: ServerRequest, next) {
             let result: any = formatSelectResult(await transaction(sql), 'array');
             let recodersSql = `select count(*) from article where article.type = ${type}`;
             let recoders: any = formatSelectResult(await transaction(recodersSql));
-            console.log('列表:', result)
             getLogger().info(`开始返回`)
             result = {
                 data:result || [],

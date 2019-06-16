@@ -15,20 +15,19 @@ export async function getArticleTemplate(req: ServerRequest, next) {
     let article_id;
     const cookies = getCookies(req);
     let user_id = cookies['user_id'];
-
     try {
-        console.log('runnerSnail')
         article_id = req.url.match(/\/article\.html\?article_id=(\d+)/)[1];
         if (article_id && req.method === 'GET') {
             let sql = `select * from article,useres where article.article_id = ${article_id} and useres.gitlab_id = article.gitlab_id;`;
             let result: any = formatSelectResult(await transaction(sql));
             let checkHas = await checkSupport('support_article',user_id,article_id);
             if(checkHas){
+                //@ts-ignore
                 result['has_support'] = 'true';
             }else{
+                //@ts-ignore
                 result['has_support'] = 'false';
             }
-            console.log(result)
             if (result) {
                 let htmlText = await handleHtmlTemplate('template/article.html',result);
                 reponseUtil(req, {
@@ -39,9 +38,9 @@ export async function getArticleTemplate(req: ServerRequest, next) {
                     }
                 })
             } else {
-                getLogger().error(`查询 article_id:${article_id} 失败`);
+                getLogger().error(`查询 article_id:${article_id} failed`);
                 reponseUtil(req, {
-                    body: errorReponseHandle(500,'文章查询失败'),
+                    body: errorReponseHandle(500,'article select failed'),
                     status:200,
                     headers:{
                         "Content-Type":"application/json"
@@ -51,7 +50,7 @@ export async function getArticleTemplate(req: ServerRequest, next) {
         } else {
             getLogger().error(`查询 article_id:${article_id} 失败`);
             reponseUtil(req, {
-                body: errorReponseHandle(500,'id不存在'),
+                body: errorReponseHandle(500,'id not found'),
                 status:200,
                 headers:{
                     "Content-Type":"application/json"
@@ -60,7 +59,7 @@ export async function getArticleTemplate(req: ServerRequest, next) {
         }
     } catch (error) {
         getLogger().error(`selectArticle: ${error}`);
-        req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, 'id不存在')), status: 200 });
+        req.respond({ body: new TextEncoder().encode(errorReponseHandle(500, 'id not found')), status: 200 });
         return;
     }
 

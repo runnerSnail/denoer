@@ -16,7 +16,6 @@ export async function getGoodArticleList(req: ServerRequest, next) {
         if (req.url.indexOf('/api/getGoodArticle') > -1) {
             
             let sql = `select * from article where type = 10 `;
-            console.log(sql);
             let result: any = formatSelectResult(await transaction(sql));
             reponseUtil(req, {
                 body: successHandle(200, result, '查询成功'),
