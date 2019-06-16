@@ -8,7 +8,7 @@ import { handleHtmlTemplate } from "../config/templateHandle.ts";
 export async function getHome(req: ServerRequest, next) {
     try {
         if (req.url === undefined || req.url.match(/^\/$/) || req.url.match(/^\/home$/)) {
-            let htmlText = await handleHtmlTemplate('template/article.html');
+            let htmlText = await handleHtmlTemplate('template/index.html');
             reponseUtil(req, {
                 body: htmlText,
                 status:200,
