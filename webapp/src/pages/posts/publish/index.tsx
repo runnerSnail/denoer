@@ -1,10 +1,11 @@
 import React from 'react'
 import { Select, Input, Layout, Button, Form } from 'antd'
 import Marked from 'marked'
+import { connect } from 'react-redux'
 
 import { Page } from 'components' // Nav
 import { fetchPostsInfo, fetchPublishPosts, fetchUpdatePosts } from 'service/posts'
-import { TYPE_ARRAY } from 'utils'
+import { TYPE_ARRAY, authUrl } from 'utils'
 
 import styles from './style.module.sass'
 
@@ -29,8 +30,12 @@ class Publish extends React.Component<any, State> {
   }
 
   componentDidMount () {
+    const { gitlab_id = '' } = this.props.userInfo
     /** 根据 article_id 查询文章详情 */
     // this._getData(116)
+    if (!gitlab_id || gitlab_id === 'null') {
+      window.location.href = `${authUrl}`
+    }
   }
 
   _getData = async (article_id) => {
@@ -40,6 +45,7 @@ class Publish extends React.Component<any, State> {
 
   handleSubmit = (e) => {
     const { validateFields: V } = this.props.form
+    const { gitlab_id = '' } = this.props.userInfo
     const { article_content } = this.state
     if (!article_content) return
     e.preventDefault()
@@ -49,7 +55,7 @@ class Publish extends React.Component<any, State> {
         this.setState({ loading: true })
         try {
           /** 根据是否有 article_id 判断是更新文章还是创建文章 */
-          await fetchPublishPosts({...values, article_content, gitlab_id: '123'})
+          await fetchPublishPosts({...values, article_content, gitlab_id})
           // const res = await fetchUpdatePosts({ ...values, article_content, article_id: '30' })
           this.setState({ loading: false })
         } catch (err) {
@@ -138,4 +144,6 @@ class Publish extends React.Component<any, State> {
   }
 }
 
-export default Form.create()(Publish)
+const mapToState = ({ user }) => ({ userInfo: user })
+
+export default connect(mapToState)(Form.create()(Publish))
