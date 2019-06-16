@@ -1,11 +1,14 @@
 import { Loadable } from 'components'
 
+import User from '../pages/user'
+
 export default [
   {
     path: '/user',
     exact: true,
-    component: Loadable({
-      loader: import(/* webpackChunkName: "user" */ '../pages/user')
-    })
+    component: User
+    // component: Loadable({
+    //   loader: import(/* webpackChunkName: "user" */ '../pages/user')
+    // })
   }
 ]

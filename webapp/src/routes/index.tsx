@@ -3,21 +3,29 @@ import { Loadable } from 'components'
 import UserRoutes from './user'
 import PostsRoutes from './posts'
 
+import Home from '../pages/home'
+import MyArticle from '../pages/myarticle'
+import About from '../pages/about'
+import New from '../pages/new'
+import NotFound from '../pages/404'
+
 const routes = [
   {
     root: true,
     path: ['/', '/home', '/index'],
     exact: true,
-    component: Loadable({
-      loader: import(/* webpackChunkName: "home" */ '../pages/home')
-    })
+    component: Home
+    // component: Loadable({
+    //   loader: import(/* webpackChunkName: "home" */ '../pages/home')
+    // })
   },{
     root: true,
     path: ['/myarticle'],
     exact: true,
-    component: Loadable({
-      loader: import(/* webpackChunkName: "home" */ '../pages/myarticle')
-    })
+    component: MyArticle
+    // component: Loadable({
+    //   loader: import(/* webpackChunkName: "myarticle" */ '../pages/myarticle')
+    // })
   },
   ...UserRoutes,
   ...PostsRoutes,
@@ -25,21 +33,24 @@ const routes = [
     root: true,
     path: '/about',
     exact: true,
-    component: Loadable({
-      loader: import(/* webpackChunkName: "home" */ '../pages/about')
-    })
+    component: About
+    // component: Loadable({
+    //   loader: import(/* webpackChunkName: "about" */ '../pages/about')
+    // })
   },{
     root: true,
     path: '/new',
     exact: true,
-    component: Loadable({
-      loader: import(/* webpackChunkName: "home" */ '../pages/new')
-    })
+    component: New
+    // component: Loadable({
+    //   loader: import(/* webpackChunkName: "new" */ '../pages/new')
+    // })
   },
   {
-    component: Loadable({
-      loader: import(/* webpackChunkName: "404" */ '../pages/404')
-    })
+    component: NotFound
+    // component: Loadable({
+    //   loader: import(/* webpackChunkName: "404" */ '../pages/404')
+    // })
   }
 ]
 
