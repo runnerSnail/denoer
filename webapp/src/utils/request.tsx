@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const productUrl = 'http://localhost:3000'
+const productUrl = ''
 const developUrl = ''
 const customAxios = axios.create()
 
