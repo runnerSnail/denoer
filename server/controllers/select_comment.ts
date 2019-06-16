@@ -13,7 +13,8 @@ export default async function selectCommit(req: ServerRequest, next) {
         if(matchArr && matchArr.length==2){
             article_id = parseInt(matchArr[1]);
             let sql = `select * from comment,useres  where comment.article_id = ${article_id} and comment.gitlab_id = useres.gitlab_id;`;
-            let result = formatSelectResult(await transaction(sql));
+            let temp = await transaction(sql);
+            let result = formatSelectResult(temp);
             if(result){
                 reponseUtil(req,{
                     body:successHandle(200,result,''),
