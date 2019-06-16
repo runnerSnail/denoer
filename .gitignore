@@ -2,4 +2,4 @@
 /webapp/package-lock.json
 /temp
 /webapp/config/OSSConfig.js
-log.txt
+/server/log.txt
