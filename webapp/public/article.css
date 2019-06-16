@@ -146,23 +146,34 @@ body {
   font-size: 14px;
 }
 header {
-  max-width: 750px;
-  margin: 0 auto;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
   height: 63px;
-  max-height: 40px;
-  line-height: 40px;
+  line-height: 63px;
+  padding-left: 10px;
   border-bottom: 1px solid #ececec;
   background: #fff;
 }
 
 header ul {
   display: flex;
+  height: 63px;
+  max-height: 63px;
+  line-height: 63px;
+  white-space: nowrap;
+  box-shadow: none;
 }
 
 header ul li {
-  max-width: 100px;
+  max-width: 120px;
   flex: 1;
   text-align: center;
+  position: relative;
+  top: 1px;
+  vertical-align: bottom;
+  border-bottom: 2px solid transparent;
 }
 
 header ul li:hover {
@@ -177,13 +188,14 @@ header ul li a {
 header ul li a i {
   display: inline-block;
   vertical-align: middle;
-  height: 36px;
+  height: 60px;
 }
 .logo {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background: #000;
+  width: 120px;
+  height: 31px;
+  background: #fff;
+  margin: 16px 24px 16px 0;
+  float: left;
 }
 .container {
   margin: 20px auto;
@@ -296,4 +308,8 @@ a {
 }
 .read_hover{
   color:#2c6ca7
+}
+
+.text {
+  margin-left: 10px;
 }
