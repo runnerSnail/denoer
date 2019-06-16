@@ -5,7 +5,7 @@ import { getLogger } from "../log/config.ts";
 export default async function addUser(user: UserInfo): Promise<any> {
     try {
         let sql = `INSERT INTO "public"."useres"("user_name", "user_img", "gitlab_id", "gitlab_url", "company", "location","email","followers") VALUES('${user.login}', '${user.avatar_url}', '${user.id}', '${user.html_url}','${user.company}', '${user.location}', '${user.email}', '${user.followers}') RETURNING  "user_id";`
-        getLogger().info('addUser===>',sql);
+        getLogger().info(`addUser===>${sql}`);
         let sqlResult = await transaction(sql);
         let result: any = formatSelectResult(sqlResult);
         return result;
