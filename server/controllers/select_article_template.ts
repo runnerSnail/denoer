@@ -18,8 +18,14 @@ export async function getArticleTemplate(req: ServerRequest, next) {
     try {
         article_id = req.url.match(/\/article\.html\?article_id=(\d+)/)[1];
         if (article_id && req.method === 'GET') {
-            let sql = `select * from article,useres where article.article_id = ${article_id} and useres.gitlab_id = article.gitlab_id;`;
+            let sql = '';
+            if(user_id){
+                sql = `select * from article,useres where article.article_id = ${article_id} and useres.gitlab_id = article.gitlab_id;`;
+            }else{
+                sql = `select * from article where article.article_id = ${article_id};`;
+            }
             let result: any = formatSelectResult(await transaction(sql));
+            console.log(result);
             let checkHas = await checkSupport('support_article',user_id,article_id);
             if(checkHas){
                 //@ts-ignore
