@@ -74,7 +74,7 @@ class Home extends React.Component<any, any> {
       content={article_content}
       info={args}
       // onClick={this._jumpTo(`/posts/${article_id}`)}
-      onClick={this._hrefTo(`/article.html?${article_id}`)}
+      onClick={this._hrefTo(`/article.html?article_id=${article_id}`)}
     />
   )
 

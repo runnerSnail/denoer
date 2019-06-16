@@ -54,7 +54,7 @@ class Home extends React.Component<any, HomeState> {
       // desc={desc}
       content={article_content}
       info={args}
-      onClick={this._hrefTo(`/article.html?${article_id}`)}
+      onClick={this._hrefTo(`/article.html?article_id=${article_id}`)}
       // onClick={this._jumpTo(`/posts/${article_id}`)}
     />
   )
