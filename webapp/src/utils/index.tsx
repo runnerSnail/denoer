@@ -32,7 +32,7 @@ const loginConfig = {
   // client_secret: 'b93eb413a2e1e3243f8deadb3fc31f8dca18e404'
 }
 
-const authUrl = `https://github.com/login/oauth/authorize?client_id=${loginConfig.client_id}&redirect_uri=${`http://denoer.cn`}`
+const authUrl = `https://github.com/login/oauth/authorize?client_id=${loginConfig.client_id}&redirect_uri=${`http://denoer.cn/login`}`
 
 export {
   request,

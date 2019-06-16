@@ -24,7 +24,6 @@ export default function About(props: RouteComponentProps<{}>) {
 function Txt() {
     return (
         <div className="main margin-20 resource">
-            <img src="https://raw.githubusercontent.com/denoland/deno/master/website/images/deno_logo_3.svg?sanitize=true" width="200" className="resource_logo"></img>
             <ul>
                 <h1 className="margin-10">
                     网页资源

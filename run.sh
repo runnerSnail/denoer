@@ -1,5 +1,8 @@
+git chekout .
+git pull
 echo '前端打包'
 cd webapp && npm i && npm run build
+
 
 echo '前端上传cdn'
 cd webapp && npm run deploy
