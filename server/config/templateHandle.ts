@@ -5,7 +5,7 @@ function reader(s: string): TextProtoReader {
     return new TextProtoReader(new BufReader(stringsReader(s)));
 }
 type filename = string;
-export async function handleHtmlTemplate(file: filename | string, obj: Object) {
+export async function handleHtmlTemplate(file: filename | string, obj?: Object) {
     const decoder = new TextDecoder("utf-8");
     let unit8data: Uint8Array, textHtml: string;
     const actual = path.posix.resolve.apply(null, [cwd(),file]);
@@ -15,9 +15,11 @@ export async function handleHtmlTemplate(file: filename | string, obj: Object) {
     } else {
         textHtml = file;
     }
-    let reg = /\${\s*(.*)\s*}/gm;
-    textHtml = textHtml.replace(reg, (match, key) => {
-        return obj[key.trim()];
-    })
+    if(obj){
+        let reg = /\${\s*(.*)\s*}/gm;
+        textHtml = textHtml.replace(reg, (match, key) => {
+            return obj[key.trim()];
+        })
+    }
     return textHtml;
 }
