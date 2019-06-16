@@ -14,7 +14,6 @@ export default function reponseUtil(req: ServerRequest, res: Response) {
     }else{
         body = res.body;
     }
-    getLogger().info(`打印response: ${body}`)
     let response:any = {
         body: new TextEncoder().encode(body),
         status: res.status

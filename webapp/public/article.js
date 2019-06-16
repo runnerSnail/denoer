@@ -10,7 +10,7 @@ else{
 
 $.ajax({
     type: 'POST',
-    url: '/api/article/update',
+    url: '/api/deno.posts.update',
     data: JSON.stringify({
         article_id: article_id,
         read_num: 1
