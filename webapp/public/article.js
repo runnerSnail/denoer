@@ -3,10 +3,7 @@ article_id = article_id.match(/\S+\?article_id=(\d+)/)[1];
 var user_id = '';
 var supportFlag = false;
 
-if (getCookie('user_id')) user_id = getCookie('user_id');
-else{
-    window.location.href="https://github.com/login/oauth/authorize?client_id=8bf81a16134ffeef7284&redirect_uri=http://denoer.cn"
-}
+
 
 $.ajax({
     type: 'POST',
@@ -42,6 +39,10 @@ $('#comments-container').comments({
             });
     },
     postComment: function (commentJSON, success, error) {
+        if (getCookie('user_id')) user_id = getCookie('user_id');
+        else {
+            window.location.href = "https://github.com/login/oauth/authorize?client_id=8bf81a16134ffeef7284&redirect_uri=http://denoer.cn"
+        }
         var commentJSON = $.extend(commentJSON, {
             article_id: article_id,
             user_id: user_id
@@ -56,6 +57,10 @@ $('#comments-container').comments({
         success(commentJSON);
     },
     upvoteComment: function (commentJSON, success, error) {
+        if (getCookie('user_id')) user_id = getCookie('user_id');
+        else {
+            window.location.href = "https://github.com/login/oauth/authorize?client_id=8bf81a16134ffeef7284&redirect_uri=http://denoer.cn"
+        }
         var commentJSON = $.extend(commentJSON, {
             article_id: article_id,
             user_id: user_id
@@ -76,7 +81,10 @@ $(".comment-wrapper .name").click(function (e) {
 });
 
 $("#clickSupportArea").click(function () {
-
+    if (getCookie('user_id')) user_id = getCookie('user_id');
+    else{
+        window.location.href="https://github.com/login/oauth/authorize?client_id=8bf81a16134ffeef7284&redirect_uri=http://denoer.cn"
+    }
     $.ajax({
         type: 'POST',
         url: '/api/article/clicksupport',
@@ -85,12 +93,12 @@ $("#clickSupportArea").click(function () {
             article_id: article_id
         }),
         success: function (data) {
-            if(supportFlag){
+            if (supportFlag) {
                 $('#support').removeClass('support_hover');
-                $('#support_num').text($('#support_num').text()-0-1);
-            }else{
+                $('#support_num').text($('#support_num').text() - 0 - 1);
+            } else {
                 $('#support').addClass('support_hover');
-                $('#support_num').text($('#support_num').text()-0+1);
+                $('#support_num').text($('#support_num').text() - 0 + 1);
             }
             supportFlag = !supportFlag;
         },

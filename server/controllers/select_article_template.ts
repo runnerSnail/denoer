@@ -25,7 +25,6 @@ export async function getArticleTemplate(req: ServerRequest, next) {
                 sql = `select * from article where article.article_id = ${article_id};`;
             }
             let result: any = formatSelectResult(await transaction(sql));
-            console.log(result);
             let checkHas = await checkSupport('support_article',user_id,article_id);
             if(checkHas){
                 //@ts-ignore

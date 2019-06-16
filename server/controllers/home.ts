@@ -3,16 +3,17 @@ import errorReponseHandle from "../utils/errorReponseHandle.ts";
 import reponseUtil from "../utils/response.ts";
 import successHandle from "../utils/successHandle.ts";
 import { getCookies } from "../dependcy/dep.ts";
+import { handleHtmlTemplate } from "../config/templateHandle.ts";
+
 export async function getHome(req: ServerRequest, next) {
     try {
         if (req.url === undefined || req.url.match(/^\/$/) || req.url.match(/^\/home$/)) {
-            const cookies = await getCookies(req);
-            let user_id = cookies['user_id'];
+            let htmlText = await handleHtmlTemplate('template/article.html');
             reponseUtil(req, {
-                body: successHandle(200, { user_id }, '用户信息'),
-                status: 200,
-                headers: {
-                    "Content-Type": "application/json"
+                body: htmlText,
+                status:200,
+                headers:{
+                    "Content-Type":"text/html"
                 }
             })
         }
