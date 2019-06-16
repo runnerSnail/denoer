@@ -44,13 +44,18 @@ class Home extends React.Component<any, HomeState> {
     this.props.history.push(path)
   }
 
+  _hrefTo = (path) => () => {
+    window.location.href = path
+  }
+
   _renderRow = ({ title = '', article_content = '', article_id, ...args }) => (
     <Item
       title={title}
       // desc={desc}
       content={article_content}
       info={args}
-      onClick={this._jumpTo(`/posts/${article_id}`)}
+      onClick={this._hrefTo(`/article.html?${article_id}`)}
+      // onClick={this._jumpTo(`/posts/${article_id}`)}
     />
   )
 
