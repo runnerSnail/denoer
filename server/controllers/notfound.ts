@@ -21,7 +21,7 @@ export async function notFound(req: ServerRequest, next) {
         req.url.indexOf("/login") > -1||
         req.url.indexOf('/article.html')>-1||
         req.url.indexOf('/api/getGoodArticle')>-1 || 
-        req.url.indexOf('/api/deno.posts.update')>-1 
+        req.url.indexOf('/api/deno.posts.list')>-1 
     ) { 
     }
     else {
