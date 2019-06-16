@@ -57,13 +57,13 @@ export default class Nav extends React.PureComponent<any, NavState> {
           defaultSelectedKeys={[selectKey || '1']}
         >
           <Menu.Item key='1' title='nav1' onClick={this._jumpTo('/')}>
-            <Icon type='mail' />首页
+            <Icon type='home' />首页
           </Menu.Item>
           <Menu.Item key='2' title='nav2' onClick={this._jumpTo('/myarticle')}>
-            <Icon type="appstore" />我的文章
+            <Icon type="read" />我的文章
           </Menu.Item>
           <Menu.Item key='3' title='nav3' onClick={this._jumpTo('/new')}>
-            资源汇总
+          <Icon type="appstore" />资源汇总
           </Menu.Item>
           <Menu.Item key='4' title='nav5' onClick={this._jumpTo('/about')}>
             <Icon type="user" />关于
@@ -78,7 +78,7 @@ export default class Nav extends React.PureComponent<any, NavState> {
                   window.location.href = this.state.searchvalueBaiduPrex + value
               }
             }}
-            style={{ width: 200 }}
+            style={{ width: 200, marginLeft: 20 }}
           />
         </Menu>
       </Header>

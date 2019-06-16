@@ -13,7 +13,7 @@ const { TextArea } = Input
 
 interface State {
   article_content: string,
-  type?: string,
+  type?: number,
   title?: string,
   img?: string,
   loading?:boolean
@@ -22,7 +22,7 @@ class Publish extends React.Component<any, State> {
 
   state = {
     article_content: '',
-    type: '1',
+    type: 1,
     title: '',
     img: '',
     loading: false
@@ -30,7 +30,7 @@ class Publish extends React.Component<any, State> {
 
   componentDidMount () {
     /** 根据 article_id 查询文章详情 */
-    this._getData(116)
+    // this._getData(116)
   }
 
   _getData = async (article_id) => {
