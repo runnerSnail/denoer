@@ -45,7 +45,7 @@ function Txt() {
           </h1>
             您想参与网站建设请提交pr至---><a href="https://github.com/runnerSnail/denoer">项目地址</a><br />
 
-            <h1 className="margin-20">QQ交流群: 698469316</h1>
+            <h1 className="margin-20">QQ交流群: 867151175</h1>
 
         </div>
     )

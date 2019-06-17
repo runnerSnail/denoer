@@ -4,10 +4,23 @@
 > 本站采用travis.ci自动化部署
 > 您可以提交pr参与本站建设以及添加优秀资源超链接到 [资源汇总](https://deno.cn/new)
 
+## 版本规范
+
+1. 通过 `npm version --help` 查看，对应 `major`、`minor`、`patch` 三种版本， `major` 指较大的版本更新，可能与之前版本不兼容等。`minor`，指日常迭代，`patch`，指打补丁，一般 bugfix 日常修复。
+2. `tag`，对应的 tag 与 `npm version` 版本保持一致。
+
+```JavaScript
+
+ npm version major // v1.0.0
+ git tag v1.0.0
+ git push --follow-tags
+ 
+```
+
 
 ## 前端实现
 
-    . react + typescript + redux + 待补充
+    . react + typescript + rematch + 待补充
 
 ## 后端实现
 
